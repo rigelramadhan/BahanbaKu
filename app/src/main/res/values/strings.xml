@@ -6,4 +6,6 @@
     <string name="login_with_google">Login with Google</string>
     <string name="create_an_account_instead">Create an account instead?</string>
     <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>
