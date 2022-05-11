@@ -1,0 +1,39 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.BahanbaKu" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="TextField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="strokeColor">@color/primary</item>
+        <item name="boxCornerRadiusBottomStart">11dp</item>
+        <item name="boxCornerRadiusBottomEnd">11dp</item>
+        <item name="boxCornerRadiusTopStart">11dp</item>
+        <item name="boxCornerRadiusTopEnd">11dp</item>
+    </style>
+
+    <style name="Button">
+        <item name="backgroundTint">@null</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="Button.Active">
+        <item name="android:background">@drawable/dr_button_active</item>
+    </style>
+
+    <style name="Button.ActiveGoogle">
+        <item name="android:background">@drawable/dr_button_google</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+</resources>
