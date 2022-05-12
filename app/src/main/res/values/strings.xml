@@ -8,4 +8,16 @@
     <string name="register">Register</string>
     <string name="name">Name</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="placeholder_cook_level">Cook Level</string>
+    <string name="placeholder_level_description">This is the description of the level</string>
+    <string name="featured_this_week">Featured this week!</string>
+    <string name="recipe_name">Recipe Name</string>
+    <string name="placeholder_average_price">avg. of Rp35.000</string>
+    <string name="placeholder_recipe_description">This is the description of the recipe. The recipe description will be put here for users to see and the recipe will contain ingredients below this</string>
+    <string name="placeholder_author">by Author Name</string>
+    <string name="discover_new_recipes">Discover new recipes</string>
+    <string name="categories">Categories</string>
+    <string name="placeholder_recipe_name">Pancake with Chocolate and Mozzarella Toppings</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
 </resources>
