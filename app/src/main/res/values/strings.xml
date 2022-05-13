@@ -24,4 +24,7 @@
     <string name="placeholder_servings">4 servings</string>
     <string name="placeholder_ingredient">Ingredient name 100g</string>
     <string name="get_ingredients">Get Ingredients</string>
+    <string name="placeholder_store_name">Store Name</string>
+    <string name="placeholder_price">Rp20.000</string>
+    <string name="go_to_app">Go to App</string>
 </resources>

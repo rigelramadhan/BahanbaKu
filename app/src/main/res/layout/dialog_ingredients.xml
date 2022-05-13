@@ -26,9 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="4dp"
-            style="@style/Button.Active"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
+            style="@style/Button.Small"
             android:text="@string/get_ingredients"
             app:layout_constraintEnd_toEndOf="@+id/recyclerView"
             app:layout_constraintTop_toBottomOf="@+id/recyclerView" />

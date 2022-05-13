@@ -94,7 +94,7 @@
 
     <Button
         android:id="@+id/btn_login_with_google"
-        style="@style/Button.ActiveGoogle"
+        style="@style/Button.Active.Google"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -118,6 +118,7 @@
         android:id="@+id/tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/Text.Body.Small"
         android:text="@string/already_have_an_account"
         app:layout_constraintStart_toStartOf="@id/img_container2"
         app:layout_constraintEnd_toEndOf="@id/img_container2"

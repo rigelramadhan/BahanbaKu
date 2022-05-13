@@ -14,6 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
+<!--    TEXT FIELD-->
     <style name="TextField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/primary</item>
         <item name="boxStrokeWidth">2dp</item>
@@ -23,18 +24,78 @@
         <item name="boxCornerRadiusTopEnd">11dp</item>
     </style>
 
+<!--    BUTTON-->
     <style name="Button">
         <item name="backgroundTint">@null</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:padding">10dp</item>
     </style>
 
     <style name="Button.Active">
         <item name="android:background">@drawable/dr_button_active</item>
+        <item name="android:padding">10dp</item>
     </style>
 
-    <style name="Button.ActiveGoogle">
+    <style name="Button.Small">
+        <item name="android:background">@drawable/dr_button_active</item>
+        <item name="android:paddingStart">32dp</item>
+        <item name="android:paddingEnd">32dp</item>
+    </style>
+
+    <style name="Button.Active.Google">
         <item name="android:background">@drawable/dr_button_google</item>
         <item name="android:textColor">@color/primary</item>
+    </style>
+
+<!--    TYPOGRAPHY-->
+    <style name="Text">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Text.Body">
+        <item name="android:textColor">#8E8E8E</item>
+    </style>
+
+    <style name="Text.Body.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Text.Body.Medium">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.Body.Large">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Title">
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="Text.Title.Small">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.Title.Medium">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Title.Large">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="Text.Headline">
+        <item name="fontFamily">sans-serif-black</item>
+    </style>
+
+    <style name="Text.Headline.Small">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="Text.Headline.Medium">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="Text.Headline.Large">
+        <item name="android:textSize">32sp</item>
     </style>
 </resources>
