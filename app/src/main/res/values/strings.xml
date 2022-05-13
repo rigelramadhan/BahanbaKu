@@ -20,4 +20,8 @@
     <string name="placeholder_recipe_name">Pancake with Chocolate and Mozzarella Toppings</string>
     <string name="ingredients">Ingredients</string>
     <string name="instructions">Instructions</string>
+    <string name="check_ingredients">Check Ingredients</string>
+    <string name="placeholder_servings">4 servings</string>
+    <string name="placeholder_ingredient">Ingredient name 100g</string>
+    <string name="get_ingredients">Get Ingredients</string>
 </resources>
