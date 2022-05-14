@@ -11,7 +11,7 @@ object DummyData {
                 "rec$i",
                 "Recipe Number $i",
                 "This is the description for the recipe number $i",
-                "https://lightwidget.com/wp-content/uploads/local-file-not-found.png",
+                "https://miro.medium.com/max/800/1*hFwwQAW45673VGKrMPE2qQ.png",
                 i,
                 4.6
             )
@@ -27,7 +27,7 @@ object DummyData {
                 "foo$i",
                 "Food Number $i",
                 "This is the description for the food number $i",
-                "https://lightwidget.com/wp-content/uploads/local-file-not-found.png"
+                "https://miro.medium.com/max/800/1*hFwwQAW45673VGKrMPE2qQ.png"
             )
             list.add(food)
         }
@@ -39,7 +39,7 @@ object DummyData {
             "user12121",
             "User Name",
             "user@email.com",
-            "https://lightwidget.com/wp-content/uploads/local-file-not-found.png"
+            "https://miro.medium.com/max/800/1*hFwwQAW45673VGKrMPE2qQ.png"
         )
     }
 }

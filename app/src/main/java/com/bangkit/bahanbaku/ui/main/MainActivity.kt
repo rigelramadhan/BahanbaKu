@@ -3,6 +3,8 @@ package com.bangkit.bahanbaku.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.bahanbaku.adapter.HomeRecipeAdapter
 import com.bangkit.bahanbaku.databinding.ActivityMainBinding
 import com.bangkit.bahanbaku.utils.Result
 import com.bumptech.glide.Glide
@@ -44,6 +46,30 @@ class MainActivity : AppCompatActivity() {
                     Glide.with(this)
                         .load(data.photoUrl)
                         .into(binding.imgFeaturedRecipe)
+                }
+            }
+        }
+
+        mainViewModel.getRecipes().observe(this) { result ->
+            when (result) {
+                is Result.Loading -> {
+
+                }
+
+                is Result.Error -> {
+
+                }
+
+                is Result.Success -> {
+                    val data = result.data
+                    binding.rvDiscoverRecipes.apply {
+                        adapter = HomeRecipeAdapter(data)
+                        layoutManager = LinearLayoutManager(
+                            this@MainActivity,
+                            LinearLayoutManager.HORIZONTAL,
+                            false
+                        )
+                    }
                 }
             }
         }

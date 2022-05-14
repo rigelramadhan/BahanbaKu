@@ -9,12 +9,12 @@ import com.bangkit.bahanbaku.data.remote.response.FoodEntity
 
 @Dao
 interface FoodDao {
-    @Query("SELECT * FROM food")
-    fun getFoods(): LiveData<List<FoodEntity>>
-
-    @Query("DELETE FROM food")
-    fun deleteAllFoods()
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertFoods(foods: List<FoodEntity>)
+//    @Query("SELECT * FROM food")
+//    fun getFoods(): LiveData<List<FoodEntity>>
+//
+//    @Query("DELETE FROM food")
+//    fun deleteAllFoods()
+//
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    fun insertFoods(foods: List<FoodEntity>)
 }
