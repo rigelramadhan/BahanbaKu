@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BahanbaKu">
         <activity
-            android:name=".SnapFoodActivity"
+            android:name=".ui.bookmark.BookmarkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.snaprecipe.SnapRecipeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.snapfood.SnapFoodActivity"
             android:exported="false" />
         <activity
             android:name=".ui.search.SearchActivity"

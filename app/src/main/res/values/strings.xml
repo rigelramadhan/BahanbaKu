@@ -27,4 +27,12 @@
     <string name="placeholder_store_name">Store Name</string>
     <string name="placeholder_price">Rp20.000</string>
     <string name="go_to_app">Go to App</string>
+    <string name="placeholder_is_it_food">Is it Food Name?</string>
+    <string name="turn_snap_into_reality">Turn snap into reality!</string>
+    <string name="snapfood_description_before">Take a picture of a food and we’ll identified for you and provide recipes</string>
+    <string name="snap_a_food">Snap a Food</string>
+    <string name="placeholder_food_name">Food Name</string>
+    <string name="placeholder_description_food">This is the description of the food that is taken by the camera of the SnapFood feature.</string>
+    <string name="snap_again">Snap Again</string>
+    <string name="recipes_found">Here’s some recipes we found for this food!</string>
 </resources>

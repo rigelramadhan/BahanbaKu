@@ -34,20 +34,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             style="@style/Text.Title.Small"
-            android:text="@string/recipe_name"
+            android:text="@string/placeholder_food_name"
             app:layout_constraintStart_toEndOf="@+id/card_img"
             app:layout_constraintTop_toTopOf="@+id/card_img" />
-
-        <TextView
-            android:id="@+id/tv_average_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/placeholder_average_price"
-            style="@style/Text.Body.Small"
-            app:layout_constraintStart_toStartOf="@+id/tv_recipe"
-            app:layout_constraintTop_toBottomOf="@+id/tv_recipe"
-            tools:fontFamily="sans-serif-medium" />
 
         <TextView
             android:id="@+id/tv_recipe_description"
@@ -55,11 +44,11 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="@string/placeholder_recipe_description"
+            android:text="@string/placeholder_description_food"
             style="@style/Text.Body.Medium"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_average_price"
-            app:layout_constraintTop_toBottomOf="@id/tv_average_price" />
+            app:layout_constraintStart_toStartOf="@id/tv_recipe"
+            app:layout_constraintTop_toBottomOf="@id/tv_recipe" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
