@@ -11,6 +11,7 @@ object DummyData {
                 "rec$i",
                 "Recipe Number $i",
                 "This is the description for the recipe number $i",
+                "https://lightwidget.com/wp-content/uploads/local-file-not-found.png",
                 i,
                 4.6
             )
@@ -25,7 +26,8 @@ object DummyData {
             val food = FoodEntity(
                 "foo$i",
                 "Food Number $i",
-                "This is the description for the food number $i"
+                "This is the description for the food number $i",
+                "https://lightwidget.com/wp-content/uploads/local-file-not-found.png"
             )
             list.add(food)
         }
@@ -36,7 +38,8 @@ object DummyData {
         return ProfileResponse(
             "user12121",
             "User Name",
-            "user@email.com"
+            "user@email.com",
+            "https://lightwidget.com/wp-content/uploads/local-file-not-found.png"
         )
     }
 }

@@ -1,13 +1,10 @@
 package com.bangkit.bahanbaku.data.remote.response
 
-import androidx.room.Entity
-
-data class RecipeResponse(
-    val list: List<RecipeEntity>
+data class FeaturedRecipeResponse(
+    val recipe: FeaturedRecipeEntity
 )
 
-@Entity(tableName = "recipe")
-data class RecipeEntity(
+data class FeaturedRecipeEntity(
     val id: String,
 
     val name: String,
@@ -18,5 +15,7 @@ data class RecipeEntity(
 
     val servings: Int,
 
-    val rating: Double
+    val rating: Double,
+
+    val author: String
 )

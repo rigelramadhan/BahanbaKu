@@ -5,5 +5,7 @@ data class ProfileResponse(
 
     val name: String,
 
-    val email: String
+    val email: String,
+
+    val photoUrl: String
 )
