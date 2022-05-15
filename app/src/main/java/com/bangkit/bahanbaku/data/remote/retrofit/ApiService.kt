@@ -13,17 +13,8 @@ class ApiService {
     }
 
     suspend fun getFeaturedRecipe(): FeaturedRecipeResponse {
-        val recipe = DummyData.recipeDummies().list[0]
-        val featured = FeaturedRecipeEntity(
-            recipe.id,
-            recipe.name,
-            recipe.description,
-            recipe.photoUrl,
-            recipe.servings,
-            recipe.rating,
-            "Author"
-        )
-        return FeaturedRecipeResponse(featured)
+        val recipe = DummyData.recipeDummies().result[0]
+        return FeaturedRecipeResponse(recipe)
     }
 
     suspend fun getProfile(): ProfileResponse {

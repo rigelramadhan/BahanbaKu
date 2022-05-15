@@ -48,12 +48,12 @@ class HomeFragment : Fragment() {
 
                 is Result.Success -> {
                     val data = result.data
-                    binding.tvFeaturedRecipe.text = data.name
-                    binding.tvFeaturedRecipeDescription.text = data.description
+                    binding.tvFeaturedRecipe.text = data.title
+                    binding.tvFeaturedRecipeDescription.text = data.desc
                     binding.tvFeaturedAuthor.text = data.author
 
                     Glide.with(this)
-                        .load(data.photoUrl)
+                        .load(data.images)
                         .into(binding.imgFeaturedRecipe)
                 }
             }

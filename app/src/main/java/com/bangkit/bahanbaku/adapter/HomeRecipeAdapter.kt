@@ -31,12 +31,12 @@ class HomeRecipeAdapter(private val list: List<RecipeEntity>) : RecyclerView.Ada
     inner class ViewHolder(val binding: ItemRecipeHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: RecipeEntity?) {
             binding.let {
-                binding.tvFeaturedRecipe.text = recipe?.name
-                binding.tvFeaturedRecipeDescription.text = recipe?.description
+                binding.tvFeaturedRecipe.text = recipe?.title
+                binding.tvFeaturedRecipeDescription.text = recipe?.desc
                 binding.tvServings.text = "${recipe?.servings}"
 
                 Glide.with(itemView.context)
-                    .load(recipe?.photoUrl)
+                    .load(recipe?.images)
                     .into(binding.imgFeaturedRecipe)
             }
         }

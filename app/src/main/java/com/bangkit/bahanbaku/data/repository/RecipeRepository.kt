@@ -3,7 +3,6 @@ package com.bangkit.bahanbaku.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.bahanbaku.data.local.room.RecipeDatabase
-import com.bangkit.bahanbaku.data.remote.response.FeaturedRecipeEntity
 import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
@@ -13,14 +12,14 @@ class RecipeRepository private constructor(private val apiService: ApiService, p
         emit(Result.Loading)
         try {
             val response = apiService.getRecipes()
-            val recipes = response.list
+            val recipes = response.result
             emit(Result.Success(recipes))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }
     }
 
-    fun getFeaturedRecipe(): LiveData<Result<FeaturedRecipeEntity>> = liveData {
+    fun getFeaturedRecipe(): LiveData<Result<RecipeEntity>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.getFeaturedRecipe()
