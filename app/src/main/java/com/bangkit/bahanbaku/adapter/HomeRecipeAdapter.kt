@@ -1,10 +1,12 @@
 package com.bangkit.bahanbaku.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
 import com.bangkit.bahanbaku.databinding.ItemRecipeHomeBinding
+import com.bangkit.bahanbaku.ui.detail.DetailActivity
 import com.bumptech.glide.Glide
 
 class HomeRecipeAdapter(private val list: List<RecipeEntity>) : RecyclerView.Adapter<HomeRecipeAdapter.ViewHolder>() {
@@ -16,6 +18,12 @@ class HomeRecipeAdapter(private val list: List<RecipeEntity>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = list[position]
         holder.bind(recipe)
+
+        holder.binding.cardRecipe.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            intent.putExtra(DetailActivity.EXTRA_RECIPE, recipe)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount() = list.size

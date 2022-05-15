@@ -35,4 +35,11 @@
     <string name="placeholder_description_food">This is the description of the food that is taken by the camera of the SnapFood feature.</string>
     <string name="snap_again">Snap Again</string>
     <string name="recipes_found">Here’s some recipes we found for this food!</string>
+    <string name="search_for_recipes">Search for recipes</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="snapfood">SnapFood</string>
 </resources>

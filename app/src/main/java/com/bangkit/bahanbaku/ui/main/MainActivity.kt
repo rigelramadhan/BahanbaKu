@@ -1,77 +1,35 @@
 package com.bangkit.bahanbaku.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkit.bahanbaku.adapter.HomeRecipeAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.ActivityMainBinding
-import com.bangkit.bahanbaku.utils.Result
-import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding: ActivityMainBinding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
-    }
-
-    private val mainViewModel: MainViewModel by viewModels {
-        MainViewModel.MainViewModelFactory.getInstance(this)
-    }
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupViews()
-    }
+        val navView: BottomNavigationView = binding.navView
 
-    private fun setupViews() {
-        mainViewModel.getFeaturedRecipe().observe(this) { result ->
-            when (result) {
-                is Result.Loading -> {
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
-                }
-
-                is Result.Error -> {
-
-                }
-
-                is Result.Success -> {
-                    val data = result.data
-                    binding.tvFeaturedRecipe.text = data.name
-                    binding.tvFeaturedRecipeDescription.text = data.description
-                    binding.tvFeaturedAuthor.text = data.author
-
-                    Glide.with(this)
-                        .load(data.photoUrl)
-                        .into(binding.imgFeaturedRecipe)
-                }
-            }
-        }
-
-        mainViewModel.getRecipes().observe(this) { result ->
-            when (result) {
-                is Result.Loading -> {
-
-                }
-
-                is Result.Error -> {
-
-                }
-
-                is Result.Success -> {
-                    val data = result.data
-                    binding.rvDiscoverRecipes.apply {
-                        adapter = HomeRecipeAdapter(data)
-                        layoutManager = LinearLayoutManager(
-                            this@MainActivity,
-                            LinearLayoutManager.HORIZONTAL,
-                            false
-                        )
-                    }
-                }
-            }
-        }
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_bookmark, R.id.navigation_snapfood
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 }
