@@ -12,12 +12,16 @@ class ApiService {
         return DummyData.foodDummies()
     }
 
+    suspend fun getRecipe(id: Int): RecipeResponse {
+        return RecipeResponse(listOf(DummyData.recipeDummies().result[id]))
+    }
+
     suspend fun getFeaturedRecipe(): FeaturedRecipeResponse {
         val recipe = DummyData.recipeDummies().result[0]
         return FeaturedRecipeResponse(recipe)
     }
 
     suspend fun getProfile(): ProfileResponse {
-        return DummyData.profileDummies()
+        return DummyData.profileDummy()
     }
 }

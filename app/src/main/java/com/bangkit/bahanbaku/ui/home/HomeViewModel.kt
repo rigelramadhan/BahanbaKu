@@ -3,20 +3,29 @@ package com.bangkit.bahanbaku.ui.home
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.bangkit.bahanbaku.data.repository.ProfileRepository
 import com.bangkit.bahanbaku.data.repository.RecipeRepository
 import com.bangkit.bahanbaku.di.AppModule
 
-class HomeViewModel(private val repository: RecipeRepository) : ViewModel() {
-    fun getRecipes() = repository.getRecipes()
+class HomeViewModel(
+    private val recipeRepository: RecipeRepository,
+    private val profileRepository: ProfileRepository
+) : ViewModel() {
+    fun getRecipes() = recipeRepository.getRecipes()
 
-    fun getFeaturedRecipe() = repository.getFeaturedRecipe()
+    fun getFeaturedRecipe() = recipeRepository.getFeaturedRecipe()
 
-    class HomeViewModelFactory private constructor(private val recipeRepository: RecipeRepository) :
+    fun getProfile() = profileRepository.getProfile()
+
+    class HomeViewModelFactory private constructor(
+        private val recipeRepository: RecipeRepository,
+        private val profileRepository: ProfileRepository
+    ) :
         ViewModelProvider.NewInstanceFactory() {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
-                return HomeViewModel(recipeRepository) as T
+                return HomeViewModel(recipeRepository, profileRepository) as T
             }
 
             throw IllegalArgumentException("Unknown ViewModel class ${modelClass.name}")
@@ -28,7 +37,10 @@ class HomeViewModel(private val repository: RecipeRepository) : ViewModel() {
 
             fun getInstance(context: Context): HomeViewModelFactory =
                 instance ?: synchronized(this) {
-                    instance ?: HomeViewModelFactory(AppModule.provideRecipeRepository(context))
+                    instance ?: HomeViewModelFactory(
+                        AppModule.provideRecipeRepository(context),
+                        AppModule.provideProfileRepository(context)
+                    )
                 }.also { instance = it }
         }
     }

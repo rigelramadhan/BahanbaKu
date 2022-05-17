@@ -4,6 +4,24 @@ import com.bangkit.bahanbaku.data.remote.response.*
 
 object DummyData {
 
+    fun profileDummy(): ProfileResponse {
+        return ProfileResponse(ProfileEntity(
+            "2012-08-12",
+            "user",
+            Origin(127.0, -5.0),
+            "https://miro.medium.com/max/800/1*hFwwQAW45673VGKrMPE2qQ.png",
+            "this.is.token",
+            "2012-08-12",
+            listOf(2, 5, 11),
+            "thisispassword",
+            listOf(ShippingItem(25000, 1)),
+            "John John",
+            1,
+            "john@email.com",
+            "2012-08-12"
+        ))
+    }
+
     fun recipeDummies(): RecipeResponse {
         val list = mutableListOf<RecipeEntity>()
         for (i in 0..20) {
@@ -41,14 +59,5 @@ object DummyData {
             list.add(food)
         }
         return FoodResponse(list)
-    }
-
-    fun profileDummies(): ProfileResponse {
-        return ProfileResponse(
-            "user12121",
-            "User Name",
-            "user@email.com",
-            "https://miro.medium.com/max/800/1*hFwwQAW45673VGKrMPE2qQ.png"
-        )
     }
 }

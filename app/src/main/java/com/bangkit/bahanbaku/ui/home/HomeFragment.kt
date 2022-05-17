@@ -82,6 +82,25 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+
+        viewModel.getProfile().observe(requireActivity()) { result ->
+            when (result) {
+                is Result.Loading -> {
+
+                }
+
+                is Result.Error -> {
+
+                }
+
+                is Result.Success -> {
+                    val data = result.data
+                    Glide.with(requireContext())
+                        .load(data.photo)
+                        .into(binding.imgProfile)
+                }
+            }
+        }
     }
 
     companion object {

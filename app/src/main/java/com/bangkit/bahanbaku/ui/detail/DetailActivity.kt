@@ -2,7 +2,10 @@ package com.bangkit.bahanbaku.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.adapter.DetailItemAdapter
 import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
 import com.bangkit.bahanbaku.databinding.ActivityDetailBinding
@@ -43,6 +46,22 @@ class DetailActivity : AppCompatActivity() {
                 .into(binding.imgFeaturedRecipe)
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_item_recipe, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.bookmark -> {
+
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {
