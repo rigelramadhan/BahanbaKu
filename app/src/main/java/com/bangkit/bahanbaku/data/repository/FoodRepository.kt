@@ -8,16 +8,16 @@ import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
 
 class FoodRepository private constructor(private val apiService: ApiService, private val database: FoodDatabase) {
-    fun getFoods(): LiveData<Result<List<FoodEntity>>> = liveData {
-        emit(Result.Loading)
-        try {
-            val response = apiService.getFoods()
-            val foods = response.list
-            emit(Result.Success(foods))
-        } catch (e: Exception) {
-            emit(Result.Error(e.message.toString()))
-        }
-    }
+//    fun getFoods(): LiveData<Result<List<FoodEntity>>> = liveData {
+//        emit(Result.Loading)
+//        try {
+//            val response = apiService.getFoods()
+//            val foods = response.list
+//            emit(Result.Success(foods))
+//        } catch (e: Exception) {
+//            emit(Result.Error(e.message.toString()))
+//        }
+//    }
 
     companion object {
         @Volatile

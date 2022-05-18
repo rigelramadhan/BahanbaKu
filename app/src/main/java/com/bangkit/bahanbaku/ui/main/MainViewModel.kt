@@ -7,9 +7,9 @@ import com.bangkit.bahanbaku.data.repository.RecipeRepository
 import com.bangkit.bahanbaku.di.AppModule
 
 class MainViewModel(private val repository: RecipeRepository) : ViewModel() {
-    fun getRecipes() = repository.getRecipes()
+    fun getRecipes(token: String) = repository.getNewRecipes(token)
 
-    fun getFeaturedRecipe() = repository.getFeaturedRecipe()
+    fun getFeaturedRecipe(token: String) = repository.getFeaturedRecipe(token)
 
     class MainViewModelFactory private constructor(private val recipeRepository: RecipeRepository) :
         ViewModelProvider.NewInstanceFactory() {

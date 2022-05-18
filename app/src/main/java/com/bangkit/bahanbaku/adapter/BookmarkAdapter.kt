@@ -29,7 +29,7 @@ class BookmarkAdapter(private val bookmarks: List<RecipeEntity>) :
             binding.tvFeaturedRecipeDescription.text = recipe.title
 
             Glide.with(itemView.context)
-                .load(recipe.images)
+                .load(recipe.image)
                 .into(binding.imgFeaturedRecipe)
         }
     }

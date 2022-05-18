@@ -51,6 +51,7 @@ interface ApiService {
 
     @GET("/recipe")
     suspend fun getRecipe(
+        @Header("Authorization") token: String,
         @Query("search") search: String? = null,
         @Query("featured") featured: Int? = null,
         @Query("new") new: Int? = null
@@ -58,6 +59,7 @@ interface ApiService {
 
     @GET("/recipe/{id}")
     suspend fun getRecipeById(
+        @Header("Authorization") token: String,
         @Path("id") id: String
     ): RecipeResponse
 
@@ -69,11 +71,13 @@ interface ApiService {
 
     @GET("/ingredient")
     suspend fun getIngredient(
+        @Header("Authorization") token: String,
         @Query("search") search: String
     ) // TODO: CREATE RESPONSE OBJECT ===> (NOT YET AVAILABLE)
 
     @GET("/supplier/{id}")
     suspend fun getSupplierById(
+        @Header("Authorization") token: String,
         @Path("id") id: String
     ): SupplierResponse
 }

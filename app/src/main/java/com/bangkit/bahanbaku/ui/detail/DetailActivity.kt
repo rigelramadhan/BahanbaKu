@@ -28,7 +28,7 @@ class DetailActivity : AppCompatActivity() {
         val recipe = intent.getParcelableExtra<RecipeEntity>(EXTRA_RECIPE)
         if (recipe != null) {
             binding.tvFeaturedRecipe.text = recipe.title
-            binding.tvDescription.text = recipe.desc
+            binding.tvDescription.text = recipe.description
             binding.tvServings.text = "${recipe.servings} servings"
 
             binding.rvIngredients.apply {
@@ -42,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
             }
 
             Glide.with(this)
-                .load(recipe.images)
+                .load(recipe.image)
                 .into(binding.imgFeaturedRecipe)
         }
 

@@ -1,8 +1,10 @@
 package com.bangkit.bahanbaku.data.remote.response
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class RecipeResponse(
@@ -11,6 +13,7 @@ data class RecipeResponse(
 	val results: List<RecipeEntity>
 ) : Parcelable
 
+@Entity(tableName = "recipe")
 @Parcelize
 data class RecipeEntity(
 
@@ -32,6 +35,7 @@ data class RecipeEntity(
 	@field:SerializedName("description")
 	val description: String,
 
+	@PrimaryKey
 	@field:SerializedName("id")
 	val id: String,
 

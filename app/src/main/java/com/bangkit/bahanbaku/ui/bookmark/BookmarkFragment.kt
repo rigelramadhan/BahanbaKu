@@ -35,19 +35,19 @@ class BookmarkFragment : Fragment() {
     }
 
     private fun setupView(viewModel: BookmarkViewModel) {
-        viewModel.getBookmark().observe(requireActivity()) { result ->
-            when (result) {
-                is Result.Loading -> {}
-                is Result.Error -> {}
-                is Result.Success -> {
-                    val data = result.data
-                    binding.rvBookmark.apply {
-                        adapter = BookmarkAdapter(data)
-                        layoutManager = LinearLayoutManager(requireContext())
-                    }
-                }
-            }
-        }
+//        viewModel.getBookmark().observe(requireActivity()) { result ->
+//            when (result) {
+//                is Result.Loading -> {}
+//                is Result.Error -> {}
+//                is Result.Success -> {
+//                    val data = result.data
+//                    binding.rvBookmark.apply {
+//                        adapter = BookmarkAdapter(data)
+//                        layoutManager = LinearLayoutManager(requireContext())
+//                    }
+//                }
+//            }
+//        }
     }
 
     companion object {

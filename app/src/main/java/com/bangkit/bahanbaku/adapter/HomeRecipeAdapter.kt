@@ -32,11 +32,11 @@ class HomeRecipeAdapter(private val list: List<RecipeEntity>) : RecyclerView.Ada
         fun bind(recipe: RecipeEntity?) {
             binding.let {
                 binding.tvFeaturedRecipe.text = recipe?.title
-                binding.tvFeaturedRecipeDescription.text = recipe?.desc
+                binding.tvFeaturedRecipeDescription.text = recipe?.description
                 binding.tvServings.text = "${recipe?.servings}"
 
                 Glide.with(itemView.context)
-                    .load(recipe?.images)
+                    .load(recipe?.image)
                     .into(binding.imgFeaturedRecipe)
             }
         }

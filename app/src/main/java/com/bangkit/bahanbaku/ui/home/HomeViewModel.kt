@@ -11,11 +11,11 @@ class HomeViewModel(
     private val recipeRepository: RecipeRepository,
     private val profileRepository: ProfileRepository
 ) : ViewModel() {
-    fun getRecipes() = recipeRepository.getRecipes()
+    fun getRecipes(token: String) = recipeRepository.getNewRecipes(token)
 
-    fun getFeaturedRecipe() = recipeRepository.getFeaturedRecipe()
+    fun getFeaturedRecipe(token: String) = recipeRepository.getFeaturedRecipe(token)
 
-    fun getProfile() = profileRepository.getProfile()
+    fun getProfile(token: String) = profileRepository.getProfile(token)
 
     class HomeViewModelFactory private constructor(
         private val recipeRepository: RecipeRepository,

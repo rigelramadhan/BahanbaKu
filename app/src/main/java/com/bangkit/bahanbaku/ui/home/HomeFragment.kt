@@ -36,7 +36,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupView(viewModel: HomeViewModel) {
-        viewModel.getFeaturedRecipe().observe(requireActivity()) { result ->
+        val token = ""
+
+        viewModel.getFeaturedRecipe(token).observe(requireActivity()) { result ->
             when (result) {
                 is Result.Loading -> {
 
@@ -49,17 +51,17 @@ class HomeFragment : Fragment() {
                 is Result.Success -> {
                     val data = result.data
                     binding.tvFeaturedRecipe.text = data.title
-                    binding.tvFeaturedRecipeDescription.text = data.desc
+                    binding.tvFeaturedRecipeDescription.text = data.description
                     binding.tvFeaturedAuthor.text = data.author
 
                     Glide.with(this)
-                        .load(data.images)
+                        .load(data.image)
                         .into(binding.imgFeaturedRecipe)
                 }
             }
         }
 
-        viewModel.getRecipes().observe(requireActivity()) { result ->
+        viewModel.getRecipes(token).observe(requireActivity()) { result ->
             when (result) {
                 is Result.Loading -> {
 
@@ -83,7 +85,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        viewModel.getProfile().observe(requireActivity()) { result ->
+        viewModel.getProfile(token).observe(requireActivity()) { result ->
             when (result) {
                 is Result.Loading -> {
 
@@ -96,7 +98,7 @@ class HomeFragment : Fragment() {
                 is Result.Success -> {
                     val data = result.data
                     Glide.with(requireContext())
-                        .load(data.photo)
+                        .load(data.picture)
                         .into(binding.imgProfile)
                 }
             }

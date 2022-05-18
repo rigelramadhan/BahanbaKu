@@ -7,7 +7,7 @@ import com.bangkit.bahanbaku.data.repository.ProfileRepository
 import com.bangkit.bahanbaku.di.AppModule
 
 class BookmarkViewModel(private val repository: ProfileRepository) : ViewModel() {
-    fun getBookmark() = repository.getBookmarks()
+//    fun getBookmark() = repository.getBookmarks()
 
     class BookmarkViewModelFactory private constructor(private val profileRepository: ProfileRepository) :
         ViewModelProvider.NewInstanceFactory() {

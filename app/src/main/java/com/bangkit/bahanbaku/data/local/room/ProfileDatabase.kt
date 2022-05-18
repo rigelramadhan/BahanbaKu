@@ -4,11 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.bangkit.bahanbaku.data.remote.response.FoodEntity
 
 @Database(entities = [FoodEntity::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class ProfileDatabase : RoomDatabase() {
-    abstract fun profileDao(): FoodDao
+    abstract fun profileDao(): ProfileDao
 
     companion object {
         @Volatile
