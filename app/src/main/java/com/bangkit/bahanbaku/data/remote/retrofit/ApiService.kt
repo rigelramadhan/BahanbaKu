@@ -53,7 +53,7 @@ interface ApiService {
     suspend fun getRecipe(
         @Header("Authorization") token: String,
         @Query("search") search: String? = null,
-        @Query("featured") featured: Int? = null,
+        @Query("featured") featured: Int = 0,
         @Query("new") new: Int? = null
     ): RecipeResponse
 
