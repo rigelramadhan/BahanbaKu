@@ -51,7 +51,7 @@ object AppModule {
         return ProfileRepository.getInstance(provideApiService(), provideProfileDatabase(context))
     }
 
-    fun providePreferencesDataStore(context: Context): DataStore<Preferences> {
+    private fun providePreferencesDataStore(context: Context): DataStore<Preferences> {
         return PreferenceDataStoreFactory.create(
             corruptionHandler = ReplaceFileCorruptionHandler(produceNewData = { emptyPreferences() }),
             migrations = listOf(SharedPreferencesMigration(context, USER_PREFERENCES)),
