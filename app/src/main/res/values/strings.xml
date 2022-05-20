@@ -42,4 +42,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="bookmark">Bookmark</string>
     <string name="snapfood">SnapFood</string>
+    <string name="klik_disini">Klik Di Sini</string>
+    <string name="lupa_kata_sandi">Lupa kata sandi?</string>
+    <string name="Daftar">Daftar</string>
 </resources>
