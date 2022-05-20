@@ -10,8 +10,10 @@
     <color name="blue_300">#0091ea</color>
     <color name="yellow_100">#ffff00</color>
 
+    <color name="primary">#FDD835</color>
+    <color name="secondary">#555555</color>
+
     <color name="container_primary">#FFFFFF</color>
     <color name="container_secondary">#F0F0F0</color>
-
-    <color name="primary">#2591EF</color>
+    <color name="background">#FFFFFF</color>
 </resources>
