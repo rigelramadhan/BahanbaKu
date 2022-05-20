@@ -25,7 +25,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_register_illustration"
-        app:srcCompat="@drawable/dr_page_container_up" />
+        app:srcCompat="@drawable/dr_page_container_up"
+        app:tint="@color/primary" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tf_name"
@@ -86,7 +87,7 @@
 
     <Button
         android:id="@+id/btn_register"
-        style="@style/Button.Active"
+        style="@style/Button.Active.Secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -97,7 +98,7 @@
 
     <Button
         android:id="@+id/btn_login_with_google"
-        style="@style/Button.Active.Google"
+        style="@style/Button.Active.Secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -130,7 +131,7 @@
 
     <Button
         android:id="@+id/btn_login"
-        style="@style/Button.Active"
+        style="@style/Button.Active.Secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
