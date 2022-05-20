@@ -22,14 +22,14 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/img_featured_recipe"
+                android:id="@+id/img_recipe"
                 android:layout_width="86dp"
                 android:layout_height="86dp"
                 tools:srcCompat="@tools:sample/avatars" />
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/tv_featured_recipe"
+            android:id="@+id/tv_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -46,12 +46,12 @@
             android:fontFamily="sans-serif-medium"
             android:text="@string/placeholder_average_price"
             style="@style/Text.Body.Small"
-            app:layout_constraintStart_toStartOf="@+id/tv_featured_recipe"
-            app:layout_constraintTop_toBottomOf="@+id/tv_featured_recipe"
+            app:layout_constraintStart_toStartOf="@+id/tv_recipe"
+            app:layout_constraintTop_toBottomOf="@+id/tv_recipe"
             tools:fontFamily="sans-serif-medium" />
 
         <TextView
-            android:id="@+id/tv_featured_recipe_description"
+            android:id="@+id/tv_recipe_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -68,8 +68,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             android:src="@drawable/ic_baseline_bookmark_24"
-            app:layout_constraintTop_toTopOf="@id/tv_featured_recipe"
-            app:layout_constraintBottom_toBottomOf="@id/tv_featured_recipe"/>
+            app:layout_constraintTop_toTopOf="@id/tv_recipe"
+            app:layout_constraintBottom_toBottomOf="@id/tv_recipe"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

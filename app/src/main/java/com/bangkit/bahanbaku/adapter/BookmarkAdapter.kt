@@ -25,12 +25,12 @@ class BookmarkAdapter(private val bookmarks: List<RecipeEntity>) :
     inner class ViewHolder(val binding: ItemBookmarkBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: RecipeEntity) {
-            binding.tvFeaturedRecipe.text = recipe.title
-            binding.tvFeaturedRecipeDescription.text = recipe.title
+            binding.tvRecipe.text = recipe.title
+            binding.tvRecipeDescription.text = recipe.title
 
             Glide.with(itemView.context)
                 .load(recipe.image)
-                .into(binding.imgFeaturedRecipe)
+                .into(binding.imgRecipe)
         }
     }
 }

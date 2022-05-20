@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BahanbaKu">
         <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.snaprecipe.SnapRecipeActivity"
             android:exported="false" />
         <activity

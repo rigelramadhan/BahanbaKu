@@ -1,26 +1,32 @@
-package com.bangkit.bahanbaku.ui.detail
+package com.bangkit.bahanbaku.ui.search
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
 import com.bangkit.bahanbaku.data.repository.RecipeRepository
 import com.bangkit.bahanbaku.di.AppModule
 
-class DetailViewModel(
+class SearchViewModel private constructor(
     private val recipeRepository: RecipeRepository,
     private val userPreferences: UserPreferences
 ) : ViewModel() {
-    fun getRecipe(token: String, id: String) = recipeRepository.getRecipeById(token, id)
+    fun searchRecipe(token: String, search: String) = recipeRepository.searchRecipe(token, search)
 
-    class DetailViewModelFactory private constructor(
+    fun getToken(): LiveData<String> {
+        return userPreferences.getToken().asLiveData()
+    }
+
+    class SearchViewModelFactory private constructor(
         private val recipeRepository: RecipeRepository,
         private val userPreferences: UserPreferences
     ) : ViewModelProvider.NewInstanceFactory() {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
-                return DetailViewModel(recipeRepository, userPreferences) as T
+            if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
+                return SearchViewModel(recipeRepository, userPreferences) as T
             }
 
             throw IllegalArgumentException("Unknown viewModel class ${modelClass.name}")
@@ -28,11 +34,11 @@ class DetailViewModel(
 
         companion object {
             @Volatile
-            private var instance: DetailViewModelFactory? = null
+            private var instance: SearchViewModelFactory? = null
 
-            fun getInstance(context: Context): DetailViewModelFactory =
+            fun getInstance(context: Context): SearchViewModelFactory =
                 instance ?: synchronized(this) {
-                    instance ?: DetailViewModelFactory(
+                    instance ?: SearchViewModelFactory(
                         AppModule.provideRecipeRepository(context),
                         AppModule.provideUserPreferences(context)
                     )

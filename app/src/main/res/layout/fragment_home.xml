@@ -17,21 +17,45 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/dr_page_container_down_2" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/sv_recipe"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_search"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/dr_edittext_primary"
-        android:backgroundTint="@color/white"
-        android:elevation="2dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="24dp"
         app:queryHint="@string/search_for_recipes"
         android:queryHint="Search a recipe"
         app:layout_constraintEnd_toStartOf="@+id/img_profile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/img_search_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_search_24"
+        app:layout_constraintTop_toTopOf="@id/card_search"
+        app:layout_constraintBottom_toBottomOf="@id/card_search"
+        app:layout_constraintStart_toStartOf="@id/card_search"
+        android:elevation="2dp"
+        android:layout_marginStart="16dp"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/img_search_icon"
+        app:layout_constraintBottom_toBottomOf="@id/img_search_icon"
+        app:layout_constraintStart_toEndOf="@id/img_search_icon"
+        android:layout_marginStart="8dp"
+        android:elevation="2dp"
+        style="@style/Text.Body.Medium"
+        android:text="@string/search_for_recipes"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile"
@@ -40,9 +64,9 @@
         android:layout_marginEnd="16dp"
         android:elevation="2dp"
         android:src="@color/primary"
-        app:layout_constraintBottom_toBottomOf="@id/sv_recipe"
+        app:layout_constraintBottom_toBottomOf="@id/card_search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/sv_recipe" />
+        app:layout_constraintTop_toTopOf="@id/card_search" />
 
     <TextView
         android:id="@+id/tv_featured"
@@ -53,7 +77,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/featured_this_week"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sv_recipe" />
+        app:layout_constraintTop_toBottomOf="@id/card_search" />
 
     <ImageView
         android:id="@+id/container_featured"
@@ -83,7 +107,7 @@
         app:layout_constraintTop_toTopOf="@+id/container_featured">
 
         <ImageView
-            android:id="@+id/img_featured_recipe"
+            android:id="@+id/img_recipe"
             android:layout_width="145dp"
             android:scaleType="centerCrop"
             android:layout_height="145dp"
@@ -91,7 +115,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/tv_featured_recipe"
+        android:id="@+id/tv_recipe"
         style="@style/Text.Title.Small"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -112,12 +136,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:text="@string/placeholder_average_price"
-        app:layout_constraintStart_toStartOf="@+id/tv_featured_recipe"
-        app:layout_constraintTop_toBottomOf="@+id/tv_featured_recipe"
+        app:layout_constraintStart_toStartOf="@+id/tv_recipe"
+        app:layout_constraintTop_toBottomOf="@+id/tv_recipe"
         tools:fontFamily="sans-serif-medium" />
 
     <TextView
-        android:id="@+id/tv_featured_recipe_description"
+        android:id="@+id/tv_recipe_description"
         style="@style/Text.Body.Medium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -131,14 +155,14 @@
         app:layout_constraintTop_toBottomOf="@id/tv_average_price" />
 
     <TextView
-        android:id="@+id/tv_featured_author"
+        android:id="@+id/tv_author"
         style="@style/Text.Body.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:text="@string/placeholder_author"
         app:layout_constraintBottom_toBottomOf="@id/card_img"
-        app:layout_constraintStart_toStartOf="@id/tv_featured_recipe_description" />
+        app:layout_constraintStart_toStartOf="@id/tv_recipe_description" />
     <!--    -->
 
     <TextView

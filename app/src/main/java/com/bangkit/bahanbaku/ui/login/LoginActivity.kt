@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.bangkit.bahanbaku.databinding.ActivityLoginBinding
 import com.bangkit.bahanbaku.ui.main.MainActivity
+import com.bangkit.bahanbaku.ui.register.RegisterActivity
 import com.bangkit.bahanbaku.utils.Result
 
 class LoginActivity : AppCompatActivity() {
@@ -45,6 +46,13 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        binding.btnRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            finish()
         }
     }
 }

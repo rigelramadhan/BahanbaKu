@@ -41,6 +41,17 @@ class RecipeRepository private constructor(private val apiService: ApiService, p
         }
     }
 
+    fun getRecipeById(token: String, id: String): LiveData<Result<RecipeEntity>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getRecipeById(token, id)
+            val recipe = response.results.first()
+            emit(Result.Success(recipe))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
     companion object {
         @Volatile
         private var instance: RecipeRepository? = null

@@ -1,5 +1,6 @@
 package com.bangkit.bahanbaku.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.adapter.HomeRecipeAdapter
 import com.bangkit.bahanbaku.databinding.FragmentHomeBinding
+import com.bangkit.bahanbaku.ui.profile.ProfileActivity
+import com.bangkit.bahanbaku.ui.search.SearchActivity
 import com.bangkit.bahanbaku.utils.Result
 import com.bumptech.glide.Glide
 
@@ -32,10 +34,23 @@ class HomeFragment : Fragment() {
             HomeViewModel.HomeViewModelFactory.getInstance(requireContext())
         }
 
-        setupView(viewModel)
+        setupView()
+        setupData(viewModel)
     }
 
-    private fun setupView(viewModel: HomeViewModel) {
+    private fun setupView() {
+        binding.imgProfile.setOnClickListener {
+            val intent = Intent(requireContext(), ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.cardSearch.setOnClickListener {
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setupData(viewModel: HomeViewModel) {
         val token = ""
 
         viewModel.getFeaturedRecipe(token).observe(requireActivity()) { result ->
@@ -50,13 +65,13 @@ class HomeFragment : Fragment() {
 
                 is Result.Success -> {
                     val data = result.data
-                    binding.tvFeaturedRecipe.text = data.title
-                    binding.tvFeaturedRecipeDescription.text = data.description
-                    binding.tvFeaturedAuthor.text = data.author
+                    binding.tvRecipe.text = data.title
+                    binding.tvRecipeDescription.text = data.description
+                    binding.tvAuthor.text = data.author
 
                     Glide.with(this)
                         .load(data.image)
-                        .into(binding.imgFeaturedRecipe)
+                        .into(binding.imgRecipe)
                 }
             }
         }

@@ -40,6 +40,7 @@
         app:layout_constraintTop_toTopOf="@id/img_container1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -58,6 +59,7 @@
         app:layout_constraintTop_toBottomOf="@id/tf_name">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -76,6 +78,7 @@
         app:layout_constraintTop_toBottomOf="@id/tf_email">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

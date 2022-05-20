@@ -21,7 +21,7 @@ class HomeRecipeAdapter(private val list: List<RecipeEntity>) : RecyclerView.Ada
 
         holder.binding.cardRecipe.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.putExtra(DetailActivity.EXTRA_RECIPE, recipe)
+            intent.putExtra(DetailActivity.EXTRA_RECIPE_ID, recipe)
             holder.itemView.context.startActivity(intent)
         }
     }
@@ -31,13 +31,13 @@ class HomeRecipeAdapter(private val list: List<RecipeEntity>) : RecyclerView.Ada
     inner class ViewHolder(val binding: ItemRecipeHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: RecipeEntity?) {
             binding.let {
-                binding.tvFeaturedRecipe.text = recipe?.title
-                binding.tvFeaturedRecipeDescription.text = recipe?.description
+                binding.tvRecipe.text = recipe?.title
+                binding.tvRecipeDescription.text = recipe?.description
                 binding.tvServings.text = "${recipe?.servings}"
 
                 Glide.with(itemView.context)
                     .load(recipe?.image)
-                    .into(binding.imgFeaturedRecipe)
+                    .into(binding.imgRecipe)
             }
         }
     }

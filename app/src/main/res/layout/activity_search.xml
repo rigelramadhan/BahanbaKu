@@ -7,17 +7,22 @@
     tools:context=".ui.search.SearchActivity">
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/sv_recipe"
+        android:id="@+id/sv_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/dr_edittext_primary"
+        android:drawableStart="@drawable/ic_baseline_search_24"
+        app:queryHint="@string/search_for_recipes"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_recipes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/sv_recipe"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/item_recipe_search"/>
+        app:layout_constraintTop_toBottomOf="@id/sv_search"
+        tools:listitem="@layout/item_recipe_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
