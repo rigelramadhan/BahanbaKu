@@ -45,4 +45,11 @@
     <string name="register_success">Account registered successfully</string>
     <string name="click_here">Click here!</string>
     <string name="forgot_password">Forgot your password?</string>
+    <string name="forgot_password_title">Forgot Password</string>
+    <string name="text_forgot_password_page">forgot your password? Don\'t worry, help us to fill in your email and we will send you a new password right away.</string>
+    <string name="create_new_password">Create New Password</string>
+    <string name="profile">Profile</string>
+    <string name="name_profile">marianita</string>
+    <string name="email_profile">marianita12@gmail.com</string>
+    <string name="account_information">Account Information</string>
 </resources>
