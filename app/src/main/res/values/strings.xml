@@ -43,7 +43,6 @@
     <string name="bookmark">Bookmark</string>
     <string name="snapfood">SnapFood</string>
     <string name="register_success">Account registered successfully</string>
-    <string name="klik_disini">Klik Di Sini</string>
-    <string name="lupa_kata_sandi">Lupa kata sandi?</string>
-    <string name="Daftar">Daftar</string>
+    <string name="click_here">Click here!</string>
+    <string name="forgot_password">Forgot your password?</string>
 </resources>
