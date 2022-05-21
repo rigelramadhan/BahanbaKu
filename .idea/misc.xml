@@ -44,6 +44,7 @@
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36302083333333335" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/menu/menu_item_recipe.xml" value="0.3619791666666667" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1895" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1885" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/activity_forgot_password.xml" value="0.264" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/activity_ingredient.xml" value="0.25" />
@@ -56,9 +57,23 @@
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/card_snapfood.xml" value="0.25" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/dialog_ingredients.xml" value="0.25" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/fragment_bookmark.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/fragment_recipe_detail.xml" value="0.2" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/fragment_snap_food.xml" value="0.25" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/item_bookmark.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/item_detail_list.xml" value="0.264" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/item_ecomm.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/item_featured_recipe.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/item_food.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/item_ingredient_ecomm.xml" value="0.25" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/item_ingredients.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/item_recipe_home.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/item_recipe_list_detail.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/item_recipe_search.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/item_step_detail.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/layout/recipe_detail.xml" value="0.25" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/menu/bottom_nav_menu_search.xml" value="0.25" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonku/app/src/main/res/menu/menu_item_recipe.xml" value="0.25" />
       </map>
     </option>

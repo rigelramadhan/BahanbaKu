@@ -52,4 +52,11 @@
     <string name="name_profile">marianita</string>
     <string name="email_profile">marianita12@gmail.com</string>
     <string name="account_information">Account Information</string>
+    <string name="stored">Stored</string>
+    <string name="title_recipe">Chicken Rice Box</string>
+    <string name="title_recipe_detail">Chicken Rice Box</string>
+    <string name="recipe">Recipe</string>
+    <string name="detail_recipe">detail recipe needed</string>
+    <string name="step">Step</string>
+    <string name="detail_step">Detail step</string>
 </resources>
