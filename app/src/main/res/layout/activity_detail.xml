@@ -73,7 +73,7 @@
             app:layout_constraintTop_toBottomOf="@+id/card_servings" />
 
         <ImageView
-            android:id="@+id/container_container_featured"
+            android:id="@+id/img_background_oval"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
@@ -92,7 +92,7 @@
             android:text="@string/ingredients"
             app:layout_constraintEnd_toEndOf="@+id/tv_description"
             app:layout_constraintStart_toStartOf="@+id/tv_description"
-            app:layout_constraintTop_toTopOf="@+id/container_container_featured" />
+            app:layout_constraintTop_toTopOf="@+id/img_background_oval" />
 
          <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_ingredients"

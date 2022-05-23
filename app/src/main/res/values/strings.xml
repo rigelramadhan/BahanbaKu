@@ -59,4 +59,5 @@
     <string name="detail_recipe">detail recipe needed</string>
     <string name="step">Step</string>
     <string name="detail_step">Detail step</string>
+    <string name="placeholder_rating">4.5</string>
 </resources>

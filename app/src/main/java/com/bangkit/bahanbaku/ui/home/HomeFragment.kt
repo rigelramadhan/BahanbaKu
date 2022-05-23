@@ -65,13 +65,12 @@ class HomeFragment : Fragment() {
 
                 is Result.Success -> {
                     val data = result.data
-                    binding.tvRecipe.text = data.title
-                    binding.tvRecipeDescription.text = data.description
-                    binding.tvAuthor.text = data.author
+                    binding.cardFeatured.tvRecipe.text = data.title
+                    binding.cardFeatured.tvRecipeDescription.text = data.description
 
                     Glide.with(this)
                         .load(data.image)
-                        .into(binding.imgRecipe)
+                        .into(binding.cardFeatured.imgRecipe)
                 }
             }
         }

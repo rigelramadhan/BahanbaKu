@@ -2,21 +2,22 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="152dp"
     android:id="@+id/card_recipe"
-    android:foreground="?android:attr/selectableItemBackground"
-    android:clickable="true"
-    android:focusable="true"
+    android:layout_width="182dp"
     android:layout_height="wrap_content"
+    android:layout_marginVertical="2dp"
     android:layout_marginStart="14dp"
     android:layout_marginEnd="2dp"
-    android:layout_marginVertical="2dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="4dp">
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_img"
@@ -29,20 +30,30 @@
 
             <ImageView
                 android:id="@+id/img_recipe"
-                android:layout_width="143dp"
-                android:layout_height="143dp"
+                android:layout_width="172dp"
+                android:layout_height="172dp"
                 android:scaleType="centerCrop"
                 tools:srcCompat="@tools:sample/avatars" />
         </androidx.cardview.widget.CardView>
 
+        <include
+            android:id="@+id/rating"
+            layout="@layout/item_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/card_img"
+            app:layout_constraintTop_toTopOf="@id/card_img" />
+
         <TextView
             android:id="@+id/tv_recipe"
+            style="@style/Text.Title.Small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
             android:ellipsize="end"
-            style="@style/Text.Title.Small"
             android:maxLines="1"
             android:text="@string/recipe_name"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,48 +62,49 @@
 
         <TextView
             android:id="@+id/tv_average_price"
+            style="@style/Text.Body.Small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/placeholder_average_price"
-            style="@style/Text.Body.Small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_recipe"
             app:layout_constraintTop_toBottomOf="@+id/tv_recipe" />
 
         <TextView
             android:id="@+id/tv_recipe_description"
+            style="@style/Text.Body.Small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/placeholder_recipe_description"
-            style="@style/Text.Body.Small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_average_price"
             app:layout_constraintTop_toBottomOf="@id/tv_average_price" />
 
 
-
         <androidx.cardview.widget.CardView
             android:id="@+id/card_servings"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginVertical="4dp"
+            android:backgroundTint="@color/primary"
             app:cardCornerRadius="8dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_recipe_description"
-            app:layout_constraintStart_toStartOf="@id/tv_recipe_description"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_height="wrap_content">
+            app:layout_constraintStart_toStartOf="@id/tv_recipe_description"
+            app:layout_constraintTop_toBottomOf="@id/tv_recipe_description">
 
             <TextView
                 android:id="@+id/tv_servings"
-                android:textSize="11sp"
-                android:layout_marginHorizontal="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/placeholder_servings"/>
+                android:layout_marginHorizontal="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/placeholder_servings"
+                android:textSize="11sp" />
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

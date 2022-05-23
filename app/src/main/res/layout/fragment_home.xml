@@ -3,19 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
     android:paddingBottom="16dp">
 
     <ImageView
-        android:id="@+id/container_container_featured"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="-24dp"
-        app:layout_constraintBottom_toBottomOf="@id/container_featured"
+        android:id="@+id/img_background_oval"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginEnd="-48dp"
+        android:layout_marginTop="-48dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dr_oval_background" />
+
+    <ImageView
+        android:id="@+id/img_background_oval2"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="-48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dr_page_container_down_2" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/dr_oval_background" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_search"
@@ -79,90 +89,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_search" />
 
-    <ImageView
-        android:id="@+id/container_featured"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="-16dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/dr_container_white_all_rounded"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@+id/card_img"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_featured" />
-
     <!--    -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:cardCornerRadius="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/container_featured"
-        app:layout_constraintTop_toTopOf="@+id/container_featured">
-
-        <ImageView
-            android:id="@+id/img_recipe"
-            android:layout_width="145dp"
-            android:scaleType="centerCrop"
-            android:layout_height="145dp"
-            tools:srcCompat="@tools:sample/avatars" />
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/tv_recipe"
-        style="@style/Text.Title.Small"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/recipe_name"
-        app:layout_constraintEnd_toEndOf="@+id/container_featured"
-        app:layout_constraintStart_toEndOf="@+id/card_img"
-        app:layout_constraintTop_toTopOf="@+id/card_img" />
-
-    <TextView
-        android:id="@+id/tv_average_price"
-        style="@style/Text.Body.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/placeholder_average_price"
-        app:layout_constraintStart_toStartOf="@+id/tv_recipe"
-        app:layout_constraintTop_toBottomOf="@+id/tv_recipe"
-        tools:fontFamily="sans-serif-medium" />
-
-    <TextView
-        android:id="@+id/tv_recipe_description"
-        style="@style/Text.Body.Medium"
+    <include
+        android:id="@+id/card_featured"
+        layout="@layout/item_featured_recipe"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:ellipsize="end"
-        android:maxLines="4"
-        android:text="@string/placeholder_recipe_description"
-        app:layout_constraintEnd_toEndOf="@+id/container_featured"
-        app:layout_constraintStart_toStartOf="@id/tv_average_price"
-        app:layout_constraintTop_toBottomOf="@id/tv_average_price" />
-
-    <TextView
-        android:id="@+id/tv_author"
-        style="@style/Text.Body.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/placeholder_author"
-        app:layout_constraintBottom_toBottomOf="@id/card_img"
-        app:layout_constraintStart_toStartOf="@id/tv_recipe_description" />
+        app:layout_constraintTop_toBottomOf="@id/tv_featured"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="16dp"
+        />
     <!--    -->
 
     <TextView
@@ -174,7 +112,7 @@
         android:layout_marginTop="19dp"
         android:text="@string/discover_new_recipes"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container_container_featured" />
+        app:layout_constraintTop_toBottomOf="@+id/card_featured" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_discover_recipes"
