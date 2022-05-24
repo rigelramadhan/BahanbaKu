@@ -1,6 +1,7 @@
 package com.bangkit.bahanbaku.data.remote.retrofit
 
 import com.bangkit.bahanbaku.data.remote.response.*
+import okhttp3.MultipartBody
 import retrofit2.http.*
 
 interface ApiService {
@@ -23,29 +24,35 @@ interface ApiService {
     ): ProfileResponse
 
     @PUT("user/edit")
-    suspend fun editProfile(
+    suspend fun updateProfile(
         @Header("Authorization") token: String,
         @Field("username") username: String,
         @Field("email") email: String,
-        @Field("password") password: String
-    ): EditProfileResponse
-
-    @PUT("user/edit-password")
-    suspend fun editProfilePassword(
-        @Header("Authorization") token: String,
-        @Field("current-password") currentPassword: String,
-        @Field("new-password") newPassword: String,
-        @Field("new-password-confirmation") newPasswordConfirmation: String
-    ): EditProfileResponse
+        @Field("password") password: String,
+        @Field("new-password") newPassword: String
+    ): UpdateProfileResponse
 
     @PUT("user/update-location")
     suspend fun updateLocation(
         @Header("Authorization") token: String,
-        @Field("lon") lon: Double,
-        @Field("lat") lat: Double
+        @Field("location") location: List<Double>
     ): UpdateLocationResponse
 
-    // TODO: UPLOAD PICTURE ===> (NOT YET DECIDED)
+    @POST("user/upload-picture")
+    suspend fun uploadPicture(
+        @Header("Authorization") token: String,
+        @Part file: MultipartBody.Part
+    ): UploadPictureResponse
+
+    @POST("user/bookmarks/{id}")
+    suspend fun addBookmark(
+        @Path("id") id: String
+    ): AddBookmarkResponse
+
+    @DELETE("user/bookmarks/{id}")
+    suspend fun deleteBookmark(
+        @Path("id") id: String
+    ): DeleteBookmarkResponse
 
     // TODO: DELETE USER ===> (ADMIN)
 
@@ -53,7 +60,7 @@ interface ApiService {
     suspend fun getRecipe(
         @Header("Authorization") token: String,
         @Query("search") search: String? = null,
-        @Query("featured") featured: Int = 0,
+        @Query("featured") featured: Int? = null,
         @Query("new") new: Int? = null
     ): RecipeResponse
 
@@ -61,7 +68,7 @@ interface ApiService {
     suspend fun getRecipeById(
         @Header("Authorization") token: String,
         @Path("id") id: String
-    ): RecipeResponse
+    ): RecipeByIdResponse
 
     // TODO: CREATE RECIPE ===> (ADMIN)
 
@@ -75,9 +82,14 @@ interface ApiService {
         @Query("search") search: String
     ) // TODO: CREATE RESPONSE OBJECT ===> (NOT YET AVAILABLE)
 
+    @GET("/supplier")
+    suspend fun getSupplier(
+        @Header("Authorization") token: String
+    ): SupplierResponse
+
     @GET("/supplier/{id}")
     suspend fun getSupplierById(
         @Header("Authorization") token: String,
         @Path("id") id: String
-    ): SupplierResponse
+    ): SupplierByIdResponse
 }

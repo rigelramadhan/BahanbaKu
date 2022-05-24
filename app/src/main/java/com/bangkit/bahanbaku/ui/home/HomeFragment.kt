@@ -110,7 +110,7 @@ class HomeFragment : Fragment() {
                 }
 
                 is Result.Success -> {
-                    val data = result.data.result
+                    val data = result.data.results
                     Glide.with(requireContext())
                         .load(data.picture)
                         .into(binding.imgProfile)

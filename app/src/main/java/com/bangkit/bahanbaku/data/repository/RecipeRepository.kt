@@ -13,7 +13,7 @@ class RecipeRepository @Inject constructor(private val apiService: ApiService, p
         emit(Result.Loading)
         try {
             val response = apiService.getRecipe(token = token, new = 1)
-            val recipes = response.result.recipes
+            val recipes = response.results.recipes
             emit(Result.Success(recipes))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
@@ -24,7 +24,7 @@ class RecipeRepository @Inject constructor(private val apiService: ApiService, p
         emit(Result.Loading)
         try {
             val response = apiService.getRecipe(token = token, featured = 1)
-            val recipe = response.result.recipes.first()
+            val recipe = response.results.recipes.first()
             emit(Result.Success(recipe))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
@@ -35,7 +35,7 @@ class RecipeRepository @Inject constructor(private val apiService: ApiService, p
         emit(Result.Loading)
         try {
             val response = apiService.getRecipe(token = token, search = query)
-            val recipes = response.result.recipes
+            val recipes = response.results.recipes
             emit(Result.Success(recipes))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
@@ -46,7 +46,7 @@ class RecipeRepository @Inject constructor(private val apiService: ApiService, p
         emit(Result.Loading)
         try {
             val response = apiService.getRecipeById(token, id)
-            val recipe = response.result.recipe
+            val recipe = response.results.recipe
             emit(Result.Success(recipe))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))

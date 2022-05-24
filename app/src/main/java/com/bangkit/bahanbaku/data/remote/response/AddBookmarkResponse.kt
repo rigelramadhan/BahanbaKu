@@ -2,7 +2,7 @@ package com.bangkit.bahanbaku.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class UpdateLocationResponse(
+data class AddBookmarkResponse(
 
 	@field:SerializedName("success")
 	val success: Boolean,
@@ -11,9 +11,9 @@ data class UpdateLocationResponse(
 	val message: String,
 
 	@field:SerializedName("results")
-	val results: UpdateLocationResults
+	val results: AddBookmarkResults
 )
 
-data class UpdateLocationResults(
+data class AddBookmarkResults(
 	val any: Any? = null
 )

@@ -4,6 +4,30 @@ import com.google.gson.annotations.SerializedName
 
 data class ProfileResponse(
 
+	@field:SerializedName("success")
+	val success: Boolean,
+
+	@field:SerializedName("message")
+	val message: String,
+
+	@field:SerializedName("results")
+	val results: ProfileResults
+)
+
+data class ShippingItem(
+
+	@field:SerializedName("cost")
+	val cost: Int,
+
+	@field:SerializedName("id")
+	val id: String
+)
+
+data class ProfileResults(
+
+	@field:SerializedName("bookmarks")
+	val bookmarks: List<String>,
+
 	@field:SerializedName("shipping")
 	val shipping: List<ShippingItem>,
 
@@ -21,10 +45,4 @@ data class ProfileResponse(
 
 	@field:SerializedName("username")
 	val username: String
-)
-
-data class ShippingItem(
-
-	@field:SerializedName("gJDNQCOC")
-	val gJDNQCOC: Int
 )

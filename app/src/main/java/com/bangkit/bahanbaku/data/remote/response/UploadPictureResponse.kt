@@ -2,7 +2,7 @@ package com.bangkit.bahanbaku.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class UpdateLocationResponse(
+data class UploadPictureResponse(
 
 	@field:SerializedName("success")
 	val success: Boolean,
@@ -11,9 +11,11 @@ data class UpdateLocationResponse(
 	val message: String,
 
 	@field:SerializedName("results")
-	val results: UpdateLocationResults
+	val results: UploadPictureResults
 )
 
-data class UpdateLocationResults(
-	val any: Any? = null
+data class UploadPictureResults(
+
+	@field:SerializedName("id")
+	val id: String
 )

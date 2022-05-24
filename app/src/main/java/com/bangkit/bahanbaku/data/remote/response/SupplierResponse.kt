@@ -4,11 +4,20 @@ import com.google.gson.annotations.SerializedName
 
 data class SupplierResponse(
 
+	@field:SerializedName("success")
+	val success: Boolean,
+
 	@field:SerializedName("message")
 	val message: String,
 
 	@field:SerializedName("results")
-	val result: SupplierEntity
+	val results: SupplierResults
+)
+
+data class SupplierResults(
+
+	@field:SerializedName("suppliers")
+	val suppliers: List<SuppliersItem>
 )
 
 data class ProductItem(
@@ -18,24 +27,6 @@ data class ProductItem(
 
 	@field:SerializedName("name")
 	val name: String
-)
-
-data class SupplierEntity(
-
-	@field:SerializedName("product")
-	val product: List<ProductItem>,
-
-	@field:SerializedName("address")
-	val address: String,
-
-	@field:SerializedName("origin")
-	val origin: List<Double>,
-
-	@field:SerializedName("name")
-	val name: String,
-
-	@field:SerializedName("address-obj")
-	val addressObj: AddressObj
 )
 
 data class AddressObj(
@@ -54,4 +45,25 @@ data class AddressObj(
 
 	@field:SerializedName("zip-code")
 	val zipCode: String
+)
+
+data class SuppliersItem(
+
+	@field:SerializedName("product")
+	val product: List<ProductItem>,
+
+	@field:SerializedName("address")
+	val address: String,
+
+	@field:SerializedName("origin")
+	val origin: List<Double>,
+
+	@field:SerializedName("name")
+	val name: String,
+
+	@field:SerializedName("address-obj")
+	val addressObj: AddressObj,
+
+	@field:SerializedName("id")
+	val id: String
 )

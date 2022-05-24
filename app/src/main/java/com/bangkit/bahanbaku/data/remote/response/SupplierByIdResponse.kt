@@ -2,18 +2,17 @@ package com.bangkit.bahanbaku.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class UpdateLocationResponse(
-
-	@field:SerializedName("success")
-	val success: Boolean,
+data class SupplierByIdResponse(
 
 	@field:SerializedName("message")
 	val message: String,
 
 	@field:SerializedName("results")
-	val results: UpdateLocationResults
+	val results: SupplierByIdResults
 )
 
-data class UpdateLocationResults(
-	val any: Any? = null
+data class SupplierByIdResults(
+
+	@field:SerializedName("supplier")
+	val supplier: SuppliersItem
 )

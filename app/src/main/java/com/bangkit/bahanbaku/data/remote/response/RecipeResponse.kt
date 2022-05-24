@@ -1,20 +1,22 @@
 package com.bangkit.bahanbaku.data.remote.response
 
-import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class RecipeResponse(
 
+	@field:SerializedName("success")
+	val success: Boolean,
+
+	@field:SerializedName("message")
+	val message: String,
+
 	@field:SerializedName("results")
-	val results: List<RecipeEntity>
-) : Parcelable
+	val results: RecipeResults
+)
 
 @Entity(tableName = "recipe")
-@Parcelize
 data class RecipeEntity(
 
 	@field:SerializedName("image")
@@ -47,4 +49,10 @@ data class RecipeEntity(
 
 	@field:SerializedName("tags")
 	val tags: List<String>
-) : Parcelable
+)
+
+data class RecipeResults(
+
+	@field:SerializedName("recipes")
+	val recipes: List<RecipeEntity>
+)
