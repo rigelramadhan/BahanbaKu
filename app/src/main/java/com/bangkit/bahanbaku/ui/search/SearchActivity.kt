@@ -8,16 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.adapter.SearchRecipeAdapter
 import com.bangkit.bahanbaku.databinding.ActivitySearchBinding
 import com.bangkit.bahanbaku.utils.Result
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchActivity : AppCompatActivity() {
 
     private val binding: ActivitySearchBinding by lazy {
         ActivitySearchBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: SearchViewModel by viewModels {
-        SearchViewModel.SearchViewModelFactory.getInstance(this)
-    }
+    private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

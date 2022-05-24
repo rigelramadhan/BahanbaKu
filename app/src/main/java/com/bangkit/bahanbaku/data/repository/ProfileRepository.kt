@@ -9,8 +9,9 @@ import com.bangkit.bahanbaku.data.remote.response.RegisterResponse
 import com.bangkit.bahanbaku.data.remote.response.UpdateLocationResponse
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
+import javax.inject.Inject
 
-class ProfileRepository private constructor(
+class ProfileRepository @Inject constructor(
     private val apiService: ApiService,
     private val database: ProfileDatabase
 ) {
@@ -56,7 +57,7 @@ class ProfileRepository private constructor(
     ): LiveData<Result<UpdateLocationResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.updateLocation(token, lon, lat)
+            val response = apiService.updateLocation(token, listOf(lon, lat))
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
@@ -77,14 +78,4 @@ class ProfileRepository private constructor(
 //            emit(Result.Error(e.message.toString()))
 //        }
 //    }
-
-    companion object {
-        @Volatile
-        private var instance: ProfileRepository? = null
-
-        fun getInstance(apiService: ApiService, database: ProfileDatabase): ProfileRepository =
-            instance ?: synchronized(this) {
-                instance ?: ProfileRepository(apiService, database)
-            }.also { instance = it }
-    }
 }

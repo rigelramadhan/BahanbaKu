@@ -7,9 +7,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
 import com.bangkit.bahanbaku.data.repository.RecipeRepository
-import com.bangkit.bahanbaku.di.AppModule
+import com.bangkit.bahanbaku.di.DatabaseModule
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SearchViewModel private constructor(
+@HiltViewModel
+class SearchViewModel @Inject constructor(
     private val recipeRepository: RecipeRepository,
     private val userPreferences: UserPreferences
 ) : ViewModel() {
@@ -17,32 +20,5 @@ class SearchViewModel private constructor(
 
     fun getToken(): LiveData<String> {
         return userPreferences.getToken().asLiveData()
-    }
-
-    class SearchViewModelFactory private constructor(
-        private val recipeRepository: RecipeRepository,
-        private val userPreferences: UserPreferences
-    ) : ViewModelProvider.NewInstanceFactory() {
-        @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
-                return SearchViewModel(recipeRepository, userPreferences) as T
-            }
-
-            throw IllegalArgumentException("Unknown viewModel class ${modelClass.name}")
-        }
-
-        companion object {
-            @Volatile
-            private var instance: SearchViewModelFactory? = null
-
-            fun getInstance(context: Context): SearchViewModelFactory =
-                instance ?: synchronized(this) {
-                    instance ?: SearchViewModelFactory(
-                        AppModule.provideRecipeRepository(context),
-                        AppModule.provideUserPreferences(context)
-                    )
-                }.also { instance = it }
-        }
     }
 }

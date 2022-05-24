@@ -6,13 +6,14 @@ import com.bangkit.bahanbaku.data.local.room.RecipeDatabase
 import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
+import javax.inject.Inject
 
-class RecipeRepository private constructor(private val apiService: ApiService, private val database: RecipeDatabase) {
+class RecipeRepository @Inject constructor(private val apiService: ApiService, private val database: RecipeDatabase) {
     fun getNewRecipes(token: String): LiveData<Result<List<RecipeEntity>>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.getRecipe(token = token, new = 1)
-            val recipes = response.results
+            val recipes = response.result.recipes
             emit(Result.Success(recipes))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
@@ -23,7 +24,7 @@ class RecipeRepository private constructor(private val apiService: ApiService, p
         emit(Result.Loading)
         try {
             val response = apiService.getRecipe(token = token, featured = 1)
-            val recipe = response.results.first()
+            val recipe = response.result.recipes.first()
             emit(Result.Success(recipe))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
@@ -34,7 +35,7 @@ class RecipeRepository private constructor(private val apiService: ApiService, p
         emit(Result.Loading)
         try {
             val response = apiService.getRecipe(token = token, search = query)
-            val recipes = response.results
+            val recipes = response.result.recipes
             emit(Result.Success(recipes))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
@@ -45,20 +46,10 @@ class RecipeRepository private constructor(private val apiService: ApiService, p
         emit(Result.Loading)
         try {
             val response = apiService.getRecipeById(token, id)
-            val recipe = response.results.first()
+            val recipe = response.result.recipe
             emit(Result.Success(recipe))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }
-    }
-
-    companion object {
-        @Volatile
-        private var instance: RecipeRepository? = null
-
-        fun getInstance(apiService: ApiService, database: RecipeDatabase): RecipeRepository =
-            instance ?: synchronized(this) {
-                instance ?: RecipeRepository(apiService, database)
-            }.also { instance = it }
     }
 }

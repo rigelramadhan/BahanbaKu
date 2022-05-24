@@ -9,16 +9,16 @@ import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.ActivityRegisterBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.utils.Result
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
 
     private val binding: ActivityRegisterBinding by lazy {
         ActivityRegisterBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: RegisterViewModel by viewModels {
-        RegisterViewModel.RegisterViewModelFactory.getInstance(this)
-    }
+    private val viewModel: RegisterViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

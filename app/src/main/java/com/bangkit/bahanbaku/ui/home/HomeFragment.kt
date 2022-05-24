@@ -14,7 +14,9 @@ import com.bangkit.bahanbaku.ui.profile.ProfileActivity
 import com.bangkit.bahanbaku.ui.search.SearchActivity
 import com.bangkit.bahanbaku.utils.Result
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private val binding: FragmentHomeBinding by lazy {
@@ -30,9 +32,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel: HomeViewModel by viewModels {
-            HomeViewModel.HomeViewModelFactory.getInstance(requireContext())
-        }
+        val viewModel: HomeViewModel by viewModels()
 
         setupView()
         setupData(viewModel)
@@ -110,7 +110,7 @@ class HomeFragment : Fragment() {
                 }
 
                 is Result.Success -> {
-                    val data = result.data
+                    val data = result.data.result
                     Glide.with(requireContext())
                         .load(data.picture)
                         .into(binding.imgProfile)

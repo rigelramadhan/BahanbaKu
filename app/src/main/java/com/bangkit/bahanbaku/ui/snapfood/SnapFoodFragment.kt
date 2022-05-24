@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.FragmentSnapFoodBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SnapFoodFragment : Fragment() {
 
     private val binding: FragmentSnapFoodBinding by lazy {
@@ -24,9 +26,7 @@ class SnapFoodFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel: SnapFoodViewModel by viewModels {
-            SnapFoodViewModel.SnapFoodViewModelFactory.getInstance(requireContext())
-        }
+        val viewModel: SnapFoodViewModel by viewModels()
 
         setupView(viewModel)
     }

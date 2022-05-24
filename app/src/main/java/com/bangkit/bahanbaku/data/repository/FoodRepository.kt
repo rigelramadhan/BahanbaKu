@@ -6,8 +6,9 @@ import com.bangkit.bahanbaku.data.local.room.FoodDatabase
 import com.bangkit.bahanbaku.data.remote.response.FoodEntity
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
+import javax.inject.Inject
 
-class FoodRepository private constructor(private val apiService: ApiService, private val database: FoodDatabase) {
+class FoodRepository @Inject constructor(private val apiService: ApiService, private val database: FoodDatabase) {
 //    fun getFoods(): LiveData<Result<List<FoodEntity>>> = liveData {
 //        emit(Result.Loading)
 //        try {
@@ -18,14 +19,4 @@ class FoodRepository private constructor(private val apiService: ApiService, pri
 //            emit(Result.Error(e.message.toString()))
 //        }
 //    }
-
-    companion object {
-        @Volatile
-        private var instance: FoodRepository? = null
-
-        fun getInstance(apiService: ApiService, database: FoodDatabase): FoodRepository =
-            instance ?: synchronized(this) {
-                instance ?: FoodRepository(apiService, database)
-            }.also { instance = it }
-    }
 }

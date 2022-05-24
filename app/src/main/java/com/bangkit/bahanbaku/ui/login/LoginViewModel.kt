@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
 import com.bangkit.bahanbaku.data.repository.ProfileRepository
-import com.bangkit.bahanbaku.di.AppModule
-import com.bangkit.bahanbaku.ui.register.RegisterViewModel
+import com.bangkit.bahanbaku.di.DatabaseModule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel(
+class LoginViewModel @Inject constructor(
     private val profileRepository: ProfileRepository,
     private val userPreferences: UserPreferences
 ) : ViewModel() {
@@ -20,34 +20,6 @@ class LoginViewModel(
     fun saveToken(token: String) {
         viewModelScope.launch(Dispatchers.IO) {
             userPreferences.setToken(token)
-        }
-    }
-
-    class LoginViewModelFactory private constructor(
-        private val profileRepository: ProfileRepository,
-        private val userPreferences: UserPreferences
-    ) :
-        ViewModelProvider.NewInstanceFactory() {
-        @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-                return LoginViewModel(profileRepository, userPreferences) as T
-            }
-
-            throw IllegalArgumentException("Unknown ViewModel class ${modelClass.name}")
-        }
-
-        companion object {
-            @Volatile
-            private var instance: LoginViewModelFactory? = null
-
-            fun getInstance(context: Context): LoginViewModelFactory =
-                instance ?: synchronized(this) {
-                    instance ?: LoginViewModelFactory(
-                        AppModule.provideProfileRepository(context),
-                        AppModule.provideUserPreferences(context)
-                    )
-                }.also { instance = it }
         }
     }
 }

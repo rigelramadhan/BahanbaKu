@@ -12,16 +12,16 @@ import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
 import com.bangkit.bahanbaku.databinding.ActivityDetailBinding
 import com.bangkit.bahanbaku.utils.Result
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
 
     private val binding: ActivityDetailBinding by lazy {
         ActivityDetailBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: DetailViewModel by viewModels {
-        DetailViewModel.DetailViewModelFactory.getInstance(this)
-    }
+    private val viewModel: DetailViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

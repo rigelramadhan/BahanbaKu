@@ -8,16 +8,16 @@ import com.bangkit.bahanbaku.databinding.ActivityLoginBinding
 import com.bangkit.bahanbaku.ui.main.MainActivity
 import com.bangkit.bahanbaku.ui.register.RegisterActivity
 import com.bangkit.bahanbaku.utils.Result
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private val binding: ActivityLoginBinding by lazy {
         ActivityLoginBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: LoginViewModel by viewModels {
-        LoginViewModel.LoginViewModelFactory.getInstance(this)
-    }
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
                     is Result.Loading -> {}
                     is Result.Error -> {}
                     is Result.Success -> {
-                        val data = result.data
+                        val data = result.data.results
                         viewModel.saveToken(data.token)
 
                         val intent = Intent(this, MainActivity::class.java)

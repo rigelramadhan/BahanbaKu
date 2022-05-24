@@ -4,32 +4,13 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.bahanbaku.data.repository.RecipeRepository
-import com.bangkit.bahanbaku.di.AppModule
+import com.bangkit.bahanbaku.di.DatabaseModule
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel(private val repository: RecipeRepository) : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val repository: RecipeRepository) : ViewModel() {
     fun getRecipes(token: String) = repository.getNewRecipes(token)
 
     fun getFeaturedRecipe(token: String) = repository.getFeaturedRecipe(token)
-
-    class MainViewModelFactory private constructor(private val recipeRepository: RecipeRepository) :
-        ViewModelProvider.NewInstanceFactory() {
-        @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-                return MainViewModel(recipeRepository) as T
-            }
-
-            throw IllegalArgumentException("Unknown ViewModel class ${modelClass.name}")
-        }
-
-        companion object {
-            @Volatile
-            private var instance: MainViewModelFactory? = null
-
-            fun getInstance(context: Context): MainViewModelFactory =
-                instance ?: synchronized(this) {
-                instance ?: MainViewModelFactory(AppModule.provideRecipeRepository(context))
-                }.also { instance = it }
-        }
-    }
 }
