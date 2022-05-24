@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BahanbaKu">
         <activity
+            android:name=".ui.camera.camera"
+            android:exported="false" />
+        <activity
             android:name=".ui.forgotpassword.ForgotPassword"
             android:exported="false" />
         <activity

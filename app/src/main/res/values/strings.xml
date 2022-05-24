@@ -60,4 +60,8 @@
     <string name="step">Step</string>
     <string name="detail_step">Detail step</string>
     <string name="placeholder_rating">4.5</string>
+    <string name="text_body_camera">Take a photo of the food and we\'ll find the recipe and ingredients at the best price for you!</string>
+    <string name="Take_foto">Take a Photo</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

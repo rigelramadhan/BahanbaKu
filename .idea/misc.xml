@@ -48,10 +48,39 @@
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_step_detail.xml" value="0.18333333333333332" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36302083333333335" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/menu/menu_item_recipe.xml" value="0.3619791666666667" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/drawable/dr_container_white_all_rounded.xml" value="0.2145" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/drawable/dr_oval_background.xml" value="0.2145" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_camera.xml" value="0.4" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_detail.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_ingredient.xml" value="0.1743659420289855" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_profile.xml" value="0.1743659420289855" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_register.xml" value="0.1743659420289855" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_search.xml" value="0.1743659420289855" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_snap_recipe.xml" value="0.17346014492753623" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/card_snapfood.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/dialog_ingredients.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/fragment__food__list.xml" value="0.32317736670293795" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/fragment_bookmark.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/fragment_snap_food.xml" value="0.264" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/fragment_snappage.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_bookmark.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_detail_list.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_ecomm.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_featured_recipe.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_food.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_ingredient_ecomm.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_ingredients.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_recipe_home.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_recipe_list_detail.xml" value="0.25" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_recipe_search.xml" value="0.25" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
