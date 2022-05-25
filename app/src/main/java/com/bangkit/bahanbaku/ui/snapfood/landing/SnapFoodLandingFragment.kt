@@ -1,5 +1,6 @@
 package com.bangkit.bahanbaku.ui.snapfood.landing
 
+import android.Manifest
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -13,10 +14,6 @@ import com.bangkit.bahanbaku.databinding.FragmentSnapFoodLandingBinding
 import com.bangkit.bahanbaku.ui.camera.CameraActivity
 
 class SnapFoodLandingFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = SnapFoodLandingFragment()
-    }
 
     private val binding: FragmentSnapFoodLandingBinding by lazy {
         FragmentSnapFoodLandingBinding.inflate(layoutInflater)
@@ -41,5 +38,12 @@ class SnapFoodLandingFragment : Fragment() {
             val intent = Intent(requireContext(), CameraActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    companion object {
+        const val CAMERA_X_RESULT = 200
+
+        private val REQUIRED_PERMISSION = arrayOf(Manifest.permission.CAMERA)
+        private const val REQUEST_CODE_PERMISSION = 10
     }
 }
