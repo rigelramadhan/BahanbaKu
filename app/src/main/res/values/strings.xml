@@ -64,4 +64,6 @@
     <string name="Take_foto">Take a Photo</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="switch_camera">Switch Camera</string>
+    <string name="capture_image">Capture Image</string>
 </resources>

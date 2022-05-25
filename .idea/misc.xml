@@ -55,7 +55,9 @@
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/menu/menu_item_recipe.xml" value="0.3619791666666667" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/drawable/dr_container_white_all_rounded.xml" value="0.2145" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/drawable/dr_oval_background.xml" value="0.2145" />
-        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_camera.xml" value="0.4" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/drawable/ic_capture.xml" value="0.1765" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/drawable/ic_switch_camera.xml" value="0.1765" />
+        <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_camera.xml" value="0.1" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/activity_ingredient.xml" value="0.1743659420289855" />
