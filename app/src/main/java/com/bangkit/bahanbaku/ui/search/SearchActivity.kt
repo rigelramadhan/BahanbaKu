@@ -1,5 +1,6 @@
 package com.bangkit.bahanbaku.ui.search
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -7,6 +8,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.adapter.SearchRecipeAdapter
 import com.bangkit.bahanbaku.databinding.ActivitySearchBinding
+import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.utils.Result
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,8 +25,20 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val token = ""
-        setupView(token)
+        getToken()
+    }
+
+    private fun getToken() {
+        viewModel.getToken().observe(this) {
+            if (it == "null") {
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+            } else {
+                setupView(it)
+            }
+        }
     }
 
     private fun setupView(token: String) {

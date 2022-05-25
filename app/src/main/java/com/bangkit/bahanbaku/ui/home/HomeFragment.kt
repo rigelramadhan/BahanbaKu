@@ -10,6 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.adapter.HomeRecipeAdapter
 import com.bangkit.bahanbaku.databinding.FragmentHomeBinding
+import com.bangkit.bahanbaku.ui.bookmark.BookmarkViewModel
+import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.ui.profile.ProfileActivity
 import com.bangkit.bahanbaku.ui.search.SearchActivity
 import com.bangkit.bahanbaku.utils.Result
@@ -23,6 +25,8 @@ class HomeFragment : Fragment() {
         FragmentHomeBinding.inflate(layoutInflater)
     }
 
+    private var token: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,8 +38,21 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val viewModel: HomeViewModel by viewModels()
 
-        setupView()
-        setupData(viewModel)
+        getToken(viewModel)
+    }
+
+    private fun getToken(viewModel: HomeViewModel) {
+        viewModel.getToken().observe(requireActivity()) {
+            if (it == "null") {
+                val intent = Intent(requireContext(), LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+            } else {
+                token = it
+                setupView()
+                setupData(viewModel)
+            }
+        }
     }
 
     private fun setupView() {
@@ -51,69 +68,70 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupData(viewModel: HomeViewModel) {
-        val token = ""
+        if (token != null) {
+            val token = this.token as String
+            viewModel.getFeaturedRecipe(token).observe(requireActivity()) { result ->
+                when (result) {
+                    is Result.Loading -> {
 
-        viewModel.getFeaturedRecipe(token).observe(requireActivity()) { result ->
-            when (result) {
-                is Result.Loading -> {
+                    }
 
-                }
+                    is Result.Error -> {
 
-                is Result.Error -> {
+                    }
 
-                }
+                    is Result.Success -> {
+                        val data = result.data
+                        binding.cardFeatured.tvRecipe.text = data.title
+                        binding.cardFeatured.tvRecipeDescription.text = data.description
 
-                is Result.Success -> {
-                    val data = result.data
-                    binding.cardFeatured.tvRecipe.text = data.title
-                    binding.cardFeatured.tvRecipeDescription.text = data.description
-
-                    Glide.with(this)
-                        .load(data.image)
-                        .into(binding.cardFeatured.imgRecipe)
-                }
-            }
-        }
-
-        viewModel.getRecipes(token).observe(requireActivity()) { result ->
-            when (result) {
-                is Result.Loading -> {
-
-                }
-
-                is Result.Error -> {
-
-                }
-
-                is Result.Success -> {
-                    val data = result.data
-                    binding.rvDiscoverRecipes.apply {
-                        adapter = HomeRecipeAdapter(data)
-                        layoutManager = LinearLayoutManager(
-                            requireContext(),
-                            LinearLayoutManager.HORIZONTAL,
-                            false
-                        )
+                        Glide.with(this)
+                            .load(data.image)
+                            .into(binding.cardFeatured.imgRecipe)
                     }
                 }
             }
-        }
 
-        viewModel.getProfile(token).observe(requireActivity()) { result ->
-            when (result) {
-                is Result.Loading -> {
+            viewModel.getRecipes(token).observe(requireActivity()) { result ->
+                when (result) {
+                    is Result.Loading -> {
 
+                    }
+
+                    is Result.Error -> {
+
+                    }
+
+                    is Result.Success -> {
+                        val data = result.data
+                        binding.rvDiscoverRecipes.apply {
+                            adapter = HomeRecipeAdapter(data)
+                            layoutManager = LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+                        }
+                    }
                 }
+            }
 
-                is Result.Error -> {
+            viewModel.getProfile(token).observe(requireActivity()) { result ->
+                when (result) {
+                    is Result.Loading -> {
 
-                }
+                    }
 
-                is Result.Success -> {
-                    val data = result.data.results
-                    Glide.with(requireContext())
-                        .load(data.picture)
-                        .into(binding.imgProfile)
+                    is Result.Error -> {
+
+                    }
+
+                    is Result.Success -> {
+                        val data = result.data.results
+                        Glide.with(requireContext())
+                            .load(data.picture)
+                            .into(binding.imgProfile)
+                    }
                 }
             }
         }

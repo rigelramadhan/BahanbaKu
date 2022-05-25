@@ -56,8 +56,6 @@ interface ApiService {
         @Path("id") id: String
     ): DeleteBookmarkResponse
 
-    // TODO: DELETE USER ===> (ADMIN)
-
     @GET("/recipe")
     suspend fun getRecipe(
         @Header("Authorization") token: String,
@@ -71,12 +69,6 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: String
     ): RecipeByIdResponse
-
-    // TODO: CREATE RECIPE ===> (ADMIN)
-
-    // TODO: UPDATE RECIPE ===> (ADMIN)
-
-    // TODO: DELETE RECIPE ===> (ADMIN)
 
     @GET("/ingredient")
     suspend fun getIngredient(
