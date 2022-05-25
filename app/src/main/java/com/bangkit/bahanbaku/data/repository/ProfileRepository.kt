@@ -75,14 +75,39 @@ class ProfileRepository @Inject constructor(
         }
     }
 
-    fun deleteBookmark(token: String, position: Int): LiveData<Result<DeleteBookmarkResponse>> = liveData {
+    fun addBookmark(token: String, id: String): LiveData<Result<AddBookmarkResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.addBookmark(token, id)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun deleteBookmarkByPosition(token: String, position: Int): LiveData<Result<DeleteBookmarkResponse>> = liveData {
         emit(Result.Loading)
         try {
             val bookmarkId = apiService.getProfile(token).results.bookmarks[position]
-            val result = apiService.deleteBookmark(bookmarkId)
+            val result = apiService.deleteBookmark(token, bookmarkId)
             emit(Result.Success(result))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }
+    }
+
+    fun deleteBookmark(token: String, id: String): LiveData<Result<DeleteBookmarkResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.deleteBookmark(token, id)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun checkIfRecipeBookmarked(token: String, id: String): LiveData<Boolean> = liveData {
+        val bookmarks = apiService.getProfile(token).results.bookmarks
+        emit(id in bookmarks)
     }
 }

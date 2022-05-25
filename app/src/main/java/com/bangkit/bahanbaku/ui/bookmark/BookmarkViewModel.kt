@@ -9,5 +9,5 @@ import javax.inject.Inject
 class BookmarkViewModel @Inject constructor(private val repository: ProfileRepository) : ViewModel() {
     fun getBookmarks(token: String) = repository.getBookmarks(token)
 
-    fun deleteBookmarks(token: String, id: Int) = repository.deleteBookmark(token, id)
+    fun deleteBookmarks(token: String, id: Int) = repository.deleteBookmarkByPosition(token, id)
 }
