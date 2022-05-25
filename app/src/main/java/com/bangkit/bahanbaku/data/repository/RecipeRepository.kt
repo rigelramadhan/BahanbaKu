@@ -8,7 +8,10 @@ import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
 import javax.inject.Inject
 
-class RecipeRepository @Inject constructor(private val apiService: ApiService, private val database: RecipeDatabase) {
+class RecipeRepository @Inject constructor(
+    private val apiService: ApiService,
+    private val database: RecipeDatabase
+) {
     fun getNewRecipes(token: String): LiveData<Result<List<RecipeEntity>>> = liveData {
         emit(Result.Loading)
         try {
@@ -31,16 +34,17 @@ class RecipeRepository @Inject constructor(private val apiService: ApiService, p
         }
     }
 
-    fun searchRecipe(token: String, query: String): LiveData<Result<List<RecipeEntity>>> = liveData {
-        emit(Result.Loading)
-        try {
-            val response = apiService.getRecipe(token = token, search = query)
-            val recipes = response.results.recipes
-            emit(Result.Success(recipes))
-        } catch (e: Exception) {
-            emit(Result.Error(e.message.toString()))
+    fun searchRecipe(token: String, query: String): LiveData<Result<List<RecipeEntity>>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiService.getRecipe(token = token, search = query)
+                val recipes = response.results.recipes
+                emit(Result.Success(recipes))
+            } catch (e: Exception) {
+                emit(Result.Error(e.message.toString()))
+            }
         }
-    }
 
     fun getRecipeById(token: String, id: String): LiveData<Result<RecipeEntity>> = liveData {
         emit(Result.Loading)

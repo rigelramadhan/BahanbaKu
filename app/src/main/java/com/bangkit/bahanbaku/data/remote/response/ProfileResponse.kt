@@ -1,5 +1,7 @@
 package com.bangkit.bahanbaku.data.remote.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class ProfileResponse(
@@ -11,7 +13,7 @@ data class ProfileResponse(
 	val message: String,
 
 	@field:SerializedName("results")
-	val results: ProfileResults
+	val results: ProfileEntity
 )
 
 data class ShippingItem(
@@ -23,7 +25,8 @@ data class ShippingItem(
 	val id: String
 )
 
-data class ProfileResults(
+@Entity(tableName = "profile")
+data class ProfileEntity(
 
 	@field:SerializedName("bookmarks")
 	val bookmarks: List<String>,
@@ -34,6 +37,7 @@ data class ProfileResults(
 	@field:SerializedName("origin")
 	val origin: List<Double>,
 
+	@PrimaryKey
 	@field:SerializedName("id")
 	val id: String,
 

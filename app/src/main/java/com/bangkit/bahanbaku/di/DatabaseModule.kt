@@ -4,6 +4,7 @@ import android.content.Context
 import com.bangkit.bahanbaku.data.local.room.FoodDatabase
 import com.bangkit.bahanbaku.data.local.room.ProfileDatabase
 import com.bangkit.bahanbaku.data.local.room.RecipeDatabase
+import com.bangkit.bahanbaku.data.local.room.SupplierDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,5 +32,11 @@ object DatabaseModule {
     @Singleton
     private fun provideProfileDatabase(@ApplicationContext context: Context): ProfileDatabase {
         return ProfileDatabase.getInstance(context)
+    }
+
+    @Provides
+    @Singleton
+    private fun provideSupplierDatabase(@ApplicationContext context: Context): SupplierDatabase {
+        return SupplierDatabase.getInstance(context)
     }
 }
