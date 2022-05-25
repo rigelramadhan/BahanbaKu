@@ -3,10 +3,7 @@ package com.bangkit.bahanbaku.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.bahanbaku.data.local.room.ProfileDatabase
-import com.bangkit.bahanbaku.data.remote.response.LoginResponse
-import com.bangkit.bahanbaku.data.remote.response.ProfileResponse
-import com.bangkit.bahanbaku.data.remote.response.RegisterResponse
-import com.bangkit.bahanbaku.data.remote.response.UpdateLocationResponse
+import com.bangkit.bahanbaku.data.remote.response.*
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
 import javax.inject.Inject
@@ -64,18 +61,28 @@ class ProfileRepository @Inject constructor(
         }
     }
 
-//    fun getBookmarks(token: String): LiveData<Result<List<RecipeEntity>>> = liveData {
-//        emit(Result.Loading)
-//        try {
-//            val profile = apiService.getProfile(token)
-//            val recipeList = mutableListOf<RecipeEntity>()
-//            for (id in profile.bookmark) {
-//                recipeList.add(apiService.getRecipe(id).result.first())
-//            }
-//
-//            emit(Result.Success(recipeList))
-//        } catch (e: Exception) {
-//            emit(Result.Error(e.message.toString()))
-//        }
-//    }
+    fun getBookmarks(token: String): LiveData<Result<List<RecipeEntity>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val profile = apiService.getProfile(token).results
+            val recipeList = mutableListOf<RecipeEntity>()
+            for (id in profile.bookmarks) {
+                recipeList.add(apiService.getRecipeById(token, id).results.recipe)
+            }
+            emit(Result.Success(recipeList))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun deleteBookmark(token: String, position: Int): LiveData<Result<DeleteBookmarkResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val bookmarkId = apiService.getProfile(token).results.bookmarks[position]
+            val result = apiService.deleteBookmark(bookmarkId)
+            emit(Result.Success(result))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
 }

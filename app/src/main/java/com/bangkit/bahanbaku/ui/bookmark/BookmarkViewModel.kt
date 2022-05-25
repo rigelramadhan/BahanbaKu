@@ -1,33 +1,13 @@
 package com.bangkit.bahanbaku.ui.bookmark
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.bangkit.bahanbaku.data.repository.ProfileRepository
-import com.bangkit.bahanbaku.di.AppModule
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class BookmarkViewModel(private val repository: ProfileRepository) : ViewModel() {
-//    fun getBookmark() = repository.getBookmarks()
+@HiltViewModel
+class BookmarkViewModel @Inject constructor(private val repository: ProfileRepository) : ViewModel() {
+    fun getBookmarks(token: String) = repository.getBookmarks(token)
 
-    class BookmarkViewModelFactory private constructor(private val profileRepository: ProfileRepository) :
-        ViewModelProvider.NewInstanceFactory() {
-        @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(BookmarkViewModel::class.java)) {
-                return BookmarkViewModel(profileRepository) as T
-            }
-
-            throw IllegalArgumentException("Unknown ViewModel class ${modelClass.name}")
-        }
-
-        companion object {
-            @Volatile
-            private var instance: BookmarkViewModelFactory? = null
-
-            fun getInstance(context: Context): BookmarkViewModelFactory =
-                instance ?: synchronized(this) {
-                    instance ?: BookmarkViewModelFactory(AppModule.provideProfileRepository(context))
-                }.also { instance = it }
-        }
-    }
+    fun deleteBookmarks(token: String, id: Int) = repository.deleteBookmark(token, id)
 }
