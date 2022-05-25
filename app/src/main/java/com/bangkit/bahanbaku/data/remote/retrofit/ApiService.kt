@@ -46,11 +46,13 @@ interface ApiService {
 
     @POST("user/bookmarks/{id}")
     suspend fun addBookmark(
+        @Header("Authorization") token: String,
         @Path("id") id: String
     ): AddBookmarkResponse
 
     @DELETE("user/bookmarks/{id}")
     suspend fun deleteBookmark(
+        @Header("Authorization") token: String,
         @Path("id") id: String
     ): DeleteBookmarkResponse
 

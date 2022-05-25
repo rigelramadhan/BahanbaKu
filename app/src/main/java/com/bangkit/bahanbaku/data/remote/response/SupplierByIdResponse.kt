@@ -14,5 +14,5 @@ data class SupplierByIdResponse(
 data class SupplierByIdResults(
 
 	@field:SerializedName("supplier")
-	val supplier: SuppliersItem
+	val supplier: SupplierEntity
 )

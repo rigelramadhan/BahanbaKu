@@ -8,7 +8,10 @@ import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
 import javax.inject.Inject
 
-class FoodRepository @Inject constructor(private val apiService: ApiService, private val database: FoodDatabase) {
+class FoodRepository @Inject constructor(
+    private val apiService: ApiService,
+    private val database: FoodDatabase
+) {
 //    fun getFoods(): LiveData<Result<List<FoodEntity>>> = liveData {
 //        emit(Result.Loading)
 //        try {

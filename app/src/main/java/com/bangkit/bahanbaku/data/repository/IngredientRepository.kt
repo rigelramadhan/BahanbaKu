@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class IngredientRepository @Inject constructor(
     private val apiService: ApiService,
-    database: IngredientDatabase
+    private val database: IngredientDatabase
 ) {
 //    fun getIngredient(search: String)
 }

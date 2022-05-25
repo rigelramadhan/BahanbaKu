@@ -1,5 +1,7 @@
 package com.bangkit.bahanbaku.data.remote.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class SupplierResponse(
@@ -17,7 +19,7 @@ data class SupplierResponse(
 data class SupplierResults(
 
 	@field:SerializedName("suppliers")
-	val suppliers: List<SuppliersItem>
+	val suppliers: List<SupplierEntity>
 )
 
 data class ProductItem(
@@ -47,7 +49,8 @@ data class AddressObj(
 	val zipCode: String
 )
 
-data class SuppliersItem(
+@Entity(tableName = "supplier")
+data class SupplierEntity(
 
 	@field:SerializedName("product")
 	val product: List<ProductItem>,
@@ -64,6 +67,7 @@ data class SuppliersItem(
 	@field:SerializedName("address-obj")
 	val addressObj: AddressObj,
 
+	@PrimaryKey
 	@field:SerializedName("id")
 	val id: String
 )
