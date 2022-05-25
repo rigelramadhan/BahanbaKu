@@ -21,7 +21,7 @@ class HomeRecipeAdapter(private val list: List<RecipeEntity>) : RecyclerView.Ada
 
         holder.binding.cardRecipe.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.putExtra(DetailActivity.EXTRA_RECIPE_ID, recipe)
+            intent.putExtra(DetailActivity.EXTRA_RECIPE_ID, recipe.id)
             holder.itemView.context.startActivity(intent)
         }
     }
