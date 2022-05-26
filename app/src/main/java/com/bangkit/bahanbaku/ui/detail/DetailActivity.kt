@@ -12,6 +12,7 @@ import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.adapter.DetailItemAdapter
 import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
 import com.bangkit.bahanbaku.databinding.ActivityDetailBinding
+import com.bangkit.bahanbaku.ui.ingredient.IngredientActivity
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.utils.Result
 import com.bumptech.glide.Glide
@@ -85,8 +86,29 @@ class DetailActivity : AppCompatActivity() {
         }
 
         binding.btnCheckIngredients.setOnClickListener {
-
+            val ingredients = recipe?.ingredients
+            if (ingredients != null) {
+                val cleansedList = cleanseIngredients(ingredients)
+                val arrayList = arrayListOf<String>().addAll(cleansedList)
+                val intent = Intent(this, IngredientActivity::class.java)
+                intent.putExtra(IngredientActivity.EXTRA_SEARCH, arrayList)
+                startActivity(intent)
+            }
         }
+    }
+
+    private fun cleanseIngredients(list: List<String>): List<String> {
+        val mutableList = mutableListOf<String>()
+        list.forEach { s ->
+            val separatedString = s.split(",")
+            val ingredientAndAmountString = separatedString[0]
+            val cleansedString =
+                "${ingredientAndAmountString[2]} ${ingredientAndAmountString[0]} ${ingredientAndAmountString[1]}"
+
+            mutableList.add(cleansedString)
+        }
+
+        return mutableList
     }
 
     private fun checkIfRecipeBookmarked(token: String, id: String) {

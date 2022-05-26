@@ -74,7 +74,7 @@ interface ApiService {
     suspend fun getIngredient(
         @Header("Authorization") token: String,
         @Query("search") search: String
-    ) // TODO: CREATE RESPONSE OBJECT ===> (NOT YET AVAILABLE)
+    ): IngredientResponse
 
     @GET("/supplier")
     suspend fun getSupplier(

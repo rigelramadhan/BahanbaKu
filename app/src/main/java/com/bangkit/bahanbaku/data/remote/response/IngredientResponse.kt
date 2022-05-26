@@ -1,8 +1,10 @@
 package com.bangkit.bahanbaku.data.remote.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-data class IngredientsResponse(
+data class IngredientResponse(
 
 	@field:SerializedName("success")
 	val success: Boolean,
@@ -11,10 +13,10 @@ data class IngredientsResponse(
 	val message: String,
 
 	@field:SerializedName("results")
-	val results: List<IngredientsEntity>
+	val results: List<ResultsItem>
 )
 
-data class IngredientsEntity(
+data class ResultsItem(
 
 	@field:SerializedName("shippingPrice")
 	val shippingPrice: List<ShippingPriceItem>,
