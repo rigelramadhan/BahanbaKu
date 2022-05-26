@@ -48,6 +48,7 @@
             android:id="@+id/card_servings"
             android:layout_width="wrap_content"
             app:cardCornerRadius="8dp"
+            android:backgroundTint="@color/primary"
             app:layout_constraintTop_toBottomOf="@id/tv_recipe"
             app:layout_constraintStart_toStartOf="@id/tv_recipe"
             android:layout_height="wrap_content">
@@ -55,6 +56,7 @@
             <TextView
                 android:id="@+id/tv_servings"
                 android:textSize="12sp"
+                android:fontFamily="sans-serif-medium"
                 android:layout_marginHorizontal="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,17 +74,6 @@
             app:layout_constraintStart_toStartOf="@+id/tv_recipe"
             app:layout_constraintTop_toBottomOf="@+id/card_servings" />
 
-        <ImageView
-            android:id="@+id/img_background_oval"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_description"
-            app:srcCompat="@drawable/dr_page_container_up_2" />
-
         <TextView
             android:id="@+id/tv_ingredients"
             android:layout_width="0dp"
@@ -92,7 +83,7 @@
             android:text="@string/ingredients"
             app:layout_constraintEnd_toEndOf="@+id/tv_description"
             app:layout_constraintStart_toStartOf="@+id/tv_description"
-            app:layout_constraintTop_toTopOf="@+id/img_background_oval" />
+            app:layout_constraintTop_toBottomOf="@id/tv_description"/>
 
          <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_ingredients"

@@ -67,4 +67,5 @@
     <string name="switch_camera">Switch Camera</string>
     <string name="capture_image">Capture Image</string>
     <string name="failed_open_camera">Failed to open camera</string>
+    <string name="dash">-</string>
 </resources>
