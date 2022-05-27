@@ -44,7 +44,7 @@ class SnapFoodResultActivity : AppCompatActivity() {
             compressingDone = true
         }
 
-        binding.imgSnapRecipe.setImageBitmap(result)
+        binding.imgSnapFood.setImageBitmap(result)
     }
 
     companion object {

@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.bangkit.bahanbaku.databinding.ActivityIngredientBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
+import com.bangkit.bahanbaku.utils.Result
 
 class IngredientActivity : AppCompatActivity() {
 
@@ -38,7 +39,16 @@ class IngredientActivity : AppCompatActivity() {
     private fun setupView(token: String) {
         val ingredients = intent.getStringArrayListExtra(EXTRA_SEARCH)
         if (ingredients != null) {
-            viewModel.getIngredients(token, ingredients.toList())
+            viewModel.getIngredients(token, ingredients.toList()).observe(this) { result ->
+                when (result) {
+                    is Result.Error -> {}
+                    is Result.Loading -> {}
+                    is Result.Success -> {
+                        val data = result.data
+
+                    }
+                }
+            }
         }
     }
 
