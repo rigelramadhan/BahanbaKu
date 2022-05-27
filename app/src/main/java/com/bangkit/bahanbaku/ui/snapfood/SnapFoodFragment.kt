@@ -1,5 +1,6 @@
 package com.bangkit.bahanbaku.ui.snapfood
 
+import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,10 +34,22 @@ class SnapFoodFragment : Fragment() {
     }
 
     private fun setupView(viewModel: SnapFoodViewModel) {
+        binding.btnTakePhoto.setOnClickListener {
+
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
     }
 
     companion object {
-        fun newInstance() = SnapFoodFragment()
+        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        private const val REQUEST_CODE_PERMISSIONS = 10
     }
 }
