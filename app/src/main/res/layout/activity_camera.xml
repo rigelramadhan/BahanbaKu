@@ -12,7 +12,7 @@
         android:layout_height="match_parent" />
 
     <ImageView
-        android:id="@+id/Img_capture_Image"
+        android:id="@+id/btn_take_snap"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="24dp"
@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/ic_capture" />
 
     <ImageView
-        android:id="@+id/Img_switchCamera"
+        android:id="@+id/btn_rotate_camera"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"

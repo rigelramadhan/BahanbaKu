@@ -1,10 +1,14 @@
 package com.bangkit.bahanbaku.ui.snapfood
 
 import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -35,17 +39,39 @@ class SnapFoodFragment : Fragment() {
 
     private fun setupView(viewModel: SnapFoodViewModel) {
         binding.btnTakePhoto.setOnClickListener {
-
+            if (!allPermissionsGranted()) {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    REQUIRED_PERMISSIONS,
+                    REQUEST_CODE_PERMISSIONS
+                )
+            }
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE_PERMISSIONS) {
+            if (!allPermissionsGranted()) {
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.permission_not_granted),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
 
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(
+            requireActivity().baseContext,
+            it
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     companion object {
