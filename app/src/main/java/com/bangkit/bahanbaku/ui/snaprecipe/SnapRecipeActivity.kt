@@ -3,7 +3,9 @@ package com.bangkit.bahanbaku.ui.snaprecipe
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bangkit.bahanbaku.databinding.ActivitySnapRecipeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SnapRecipeActivity : AppCompatActivity() {
 
     private val binding: ActivitySnapRecipeBinding by lazy {

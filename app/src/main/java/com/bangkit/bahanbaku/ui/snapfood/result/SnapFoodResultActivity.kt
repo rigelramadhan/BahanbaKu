@@ -8,9 +8,11 @@ import com.bangkit.bahanbaku.databinding.ActivitySnapFoodResultBinding
 import com.bangkit.bahanbaku.utils.AppExecutors
 import com.bangkit.bahanbaku.utils.reduceFileImage
 import com.bangkit.bahanbaku.utils.rotateBitmap
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.io.FileOutputStream
 
+@AndroidEntryPoint
 class SnapFoodResultActivity : AppCompatActivity() {
 
     private val binding: ActivitySnapFoodResultBinding by lazy {

@@ -7,7 +7,9 @@ import androidx.activity.viewModels
 import com.bangkit.bahanbaku.databinding.ActivityIngredientBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.utils.Result
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class IngredientActivity : AppCompatActivity() {
 
     private val binding: ActivityIngredientBinding by lazy {

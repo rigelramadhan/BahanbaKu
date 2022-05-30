@@ -14,7 +14,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    private fun provideApiService(): ApiService {
+    fun provideApiService(): ApiService {
         return ApiConfig.getApiService()
     }
 }

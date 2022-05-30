@@ -5,6 +5,7 @@ import okhttp3.MultipartBody
 import retrofit2.http.*
 
 interface ApiService {
+    @FormUrlEncoded
     @POST("user/register")
     suspend fun register(
         @Field("username") username: String,
@@ -12,6 +13,7 @@ interface ApiService {
         @Field("password") password: String
     ): RegisterResponse
 
+    @FormUrlEncoded
     @POST("user/login")
     suspend fun login(
         @Field("email") email: String,
@@ -23,6 +25,7 @@ interface ApiService {
         @Header("Authorization") token: String
     ): ProfileResponse
 
+    @FormUrlEncoded
     @PUT("user/edit")
     suspend fun updateProfile(
         @Header("Authorization") token: String,

@@ -8,8 +8,10 @@ import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
 import com.bangkit.bahanbaku.data.remote.response.ResultsItem
 import com.bangkit.bahanbaku.data.repository.IngredientRepository
 import com.bangkit.bahanbaku.utils.Result
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+@HiltViewModel
 class IngredientViewModel @Inject constructor(
     private val repository: IngredientRepository,
     private val userPreferences: UserPreferences

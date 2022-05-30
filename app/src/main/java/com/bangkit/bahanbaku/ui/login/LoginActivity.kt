@@ -3,7 +3,11 @@ package com.bangkit.bahanbaku.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.view.isInvisible
 import com.bangkit.bahanbaku.databinding.ActivityLoginBinding
 import com.bangkit.bahanbaku.ui.main.MainActivity
 import com.bangkit.bahanbaku.ui.register.RegisterActivity
@@ -33,11 +37,19 @@ class LoginActivity : AppCompatActivity() {
 
             viewModel.login(email, password).observe(this) { result ->
                 when (result) {
-                    is Result.Loading -> {}
-                    is Result.Error -> {}
+                    is Result.Loading -> {
+                        binding.progressBar.isInvisible = false
+                    }
+                    is Result.Error -> {
+                        val error = result.error
+                        Log.d(TAG, error)
+                        binding.progressBar.isInvisible = true
+                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+                    }
                     is Result.Success -> {
                         val data = result.data.results
                         viewModel.saveToken(data.token)
+                        binding.progressBar.isInvisible = true
 
                         val intent = Intent(this, MainActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -54,5 +66,9 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    companion object {
+        const val TAG = "LoginActivity.log"
     }
 }

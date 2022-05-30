@@ -14,7 +14,9 @@ import com.bangkit.bahanbaku.adapter.BookmarkAdapter
 import com.bangkit.bahanbaku.databinding.FragmentBookmarkBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.utils.Result
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BookmarkFragment : Fragment() {
 
     private val binding: FragmentBookmarkBinding by lazy {

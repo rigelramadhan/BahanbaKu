@@ -2,6 +2,7 @@ package com.bangkit.bahanbaku.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,11 +39,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val viewModel: HomeViewModel by viewModels()
 
+        Log.d("MAINACTV", "activity called")
         getToken(viewModel)
     }
 
     private fun getToken(viewModel: HomeViewModel) {
         viewModel.getToken().observe(requireActivity()) {
+            Log.d("MAINACTV", "checking token")
             if (it == "null") {
                 val intent = Intent(requireContext(), LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

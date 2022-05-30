@@ -20,10 +20,12 @@ import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.ui.snapfood.result.SnapFoodResultActivity
 import com.bangkit.bahanbaku.utils.Result
 import com.bangkit.bahanbaku.utils.createFile
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
+@AndroidEntryPoint
 class CameraActivity : AppCompatActivity() {
 
     private val binding: ActivityCameraBinding by lazy {

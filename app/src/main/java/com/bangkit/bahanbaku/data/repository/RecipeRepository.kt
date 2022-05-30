@@ -2,7 +2,6 @@ package com.bangkit.bahanbaku.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.bangkit.bahanbaku.data.local.room.RecipeDatabase
 import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
@@ -10,7 +9,7 @@ import javax.inject.Inject
 
 class RecipeRepository @Inject constructor(
     private val apiService: ApiService,
-    private val database: RecipeDatabase
+//    private val database: RecipeDatabase
 ) {
     fun getNewRecipes(token: String): LiveData<Result<List<RecipeEntity>>> = liveData {
         emit(Result.Loading)

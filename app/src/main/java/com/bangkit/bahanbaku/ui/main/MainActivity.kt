@@ -12,7 +12,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.ActivityMainBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()

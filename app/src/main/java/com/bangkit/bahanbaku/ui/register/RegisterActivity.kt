@@ -3,6 +3,8 @@ package com.bangkit.bahanbaku.ui.register
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.bangkit.bahanbaku.R
@@ -35,10 +37,18 @@ class RegisterActivity : AppCompatActivity() {
 
             viewModel.register(username, email, password).observe(this) { result ->
                 when (result) {
-                    is Result.Error -> {}
-                    is Result.Loading -> {}
+                    is Result.Error -> {
+                        val error = result.error
+                        Log.d(TAG, error)
+                        binding.progressBar.visibility = View.INVISIBLE
+                        Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
+                    }
+                    is Result.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
                     is Result.Success -> {
                         Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_SHORT).show()
+                        binding.progressBar.visibility = View.INVISIBLE
 
                         val intent = Intent(this, LoginActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -55,5 +65,9 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    companion object {
+        const val TAG = "RegisterActivity.Log"
     }
 }

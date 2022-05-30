@@ -21,7 +21,9 @@
 
 <!--    TEXT FIELD-->
     <style name="TextField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">@color/primary</item>
+        <item name="boxStrokeColor">@color/secondary</item>
+        <item name="collapsedTitleTextColor">@color/secondary</item>
+        <item name="titleTextColor">@color/secondary</item>
         <item name="boxStrokeWidth">2dp</item>
         <item name="boxCornerRadiusBottomStart">11dp</item>
         <item name="boxCornerRadiusBottomEnd">11dp</item>
@@ -121,7 +123,6 @@
     </style>
 
     <style name="TextViewBold">
-        <item name="android:fontFamily">@font/bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

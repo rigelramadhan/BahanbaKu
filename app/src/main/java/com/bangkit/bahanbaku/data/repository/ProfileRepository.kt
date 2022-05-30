@@ -2,7 +2,6 @@ package com.bangkit.bahanbaku.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.bangkit.bahanbaku.data.local.room.ProfileDatabase
 import com.bangkit.bahanbaku.data.remote.response.*
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
@@ -10,7 +9,7 @@ import javax.inject.Inject
 
 class ProfileRepository @Inject constructor(
     private val apiService: ApiService,
-    private val database: ProfileDatabase
+//    private val database: ProfileDatabase
 ) {
 
     fun getProfile(token: String): LiveData<Result<ProfileResponse>> = liveData {
