@@ -11,13 +11,9 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/primary</item>
-        <item name="actionBarStyle">@style/ActionBar</item>
         <!-- Customize your theme here. -->
-    </style>
-
-    <style name="ActionBar" parent="Widget.Material3.Light.ActionBar.Solid">
-        <item name="android:background">@color/white</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="android:colorBackground">@color/white</item>
     </style>
 
 <!--    TEXT FIELD-->
@@ -41,6 +37,9 @@
     <style name="Button">
         <item name="backgroundTint">@null</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
     </style>
 
     <style name="Button.Active">

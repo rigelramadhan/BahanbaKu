@@ -80,16 +80,18 @@ class BookmarkFragment : Fragment() {
                 }
             }).attachToRecyclerView(binding.rvBookmark)
 
-            viewModel.getBookmarks(token as String).observe(requireActivity()) { result ->
-                when (result) {
-                    is Result.Loading -> {}
-                    is Result.Error -> {}
-                    is Result.Success -> {
-                        val data = result.data
-                        adapter = BookmarkAdapter(data)
-                        binding.rvBookmark.apply {
-                            adapter = this@BookmarkFragment.adapter
-                            layoutManager = LinearLayoutManager(requireContext())
+            if (activity != null) {
+                viewModel.getBookmarks(token as String).observe(requireActivity()) { result ->
+                    when (result) {
+                        is Result.Loading -> {}
+                        is Result.Error -> {}
+                        is Result.Success -> {
+                            val data = result.data
+                            adapter = BookmarkAdapter(data)
+                            binding.rvBookmark.apply {
+                                adapter = this@BookmarkFragment.adapter
+                                layoutManager = LinearLayoutManager(requireContext())
+                            }
                         }
                     }
                 }
