@@ -3,6 +3,7 @@ package com.bangkit.bahanbaku.ui.detail
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
@@ -57,7 +58,9 @@ class DetailActivity : AppCompatActivity() {
             viewModel.getRecipe(token, recipeId).observe(this) { result ->
                 when (result) {
                     is Result.Loading -> {}
-                    is Result.Error -> {}
+                    is Result.Error -> {
+                        Log.d(TAG, "Error getting recipe")
+                    }
                     is Result.Success -> {
                         val recipe = result.data
                         this.recipe = recipe
@@ -150,6 +153,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     companion object {
+        private const val TAG = "DetailActivity.log"
         const val EXTRA_RECIPE_ID = "extra_recipe_id"
     }
 }

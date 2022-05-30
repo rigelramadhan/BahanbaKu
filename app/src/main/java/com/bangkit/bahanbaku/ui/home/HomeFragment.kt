@@ -35,6 +35,12 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        val actionBar = requireActivity().actionBar
+        actionBar?.hide()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewModel: HomeViewModel by viewModels()

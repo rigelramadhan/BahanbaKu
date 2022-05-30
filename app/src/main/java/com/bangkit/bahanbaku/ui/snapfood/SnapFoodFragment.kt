@@ -37,6 +37,12 @@ class SnapFoodFragment : Fragment() {
         setupView(viewModel)
     }
 
+    override fun onResume() {
+        super.onResume()
+        val actionBar = requireActivity().actionBar
+        actionBar?.show()
+    }
+
     private fun setupView(viewModel: SnapFoodViewModel) {
         binding.btnTakePhoto.setOnClickListener {
             if (!allPermissionsGranted()) {

@@ -10,25 +10,31 @@
         <item name="colorSecondaryVariant">@color/secondary</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:statusBarColor">@color/primary</item>
         <item name="actionBarStyle">@style/ActionBar</item>
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ActionBar" parent="Widget.Material3.AppBarLayout">
+    <style name="ActionBar" parent="Widget.Material3.Light.ActionBar.Solid">
         <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
 <!--    TEXT FIELD-->
     <style name="TextField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/secondary</item>
-        <item name="collapsedTitleTextColor">@color/secondary</item>
+        <item name="hintTextColor">@color/secondary</item>
         <item name="titleTextColor">@color/secondary</item>
         <item name="boxStrokeWidth">2dp</item>
         <item name="boxCornerRadiusBottomStart">11dp</item>
         <item name="boxCornerRadiusBottomEnd">11dp</item>
         <item name="boxCornerRadiusTopStart">11dp</item>
         <item name="boxCornerRadiusTopEnd">11dp</item>
+    </style>
+
+    <style name="TextField.Password">
+        <item name="endIconMode">password_toggle</item>
+        <item name="endIconTint">@color/secondary</item>
     </style>
 
 <!--    BUTTON-->

@@ -106,7 +106,7 @@ class ProfileRepository @Inject constructor(
     }
 
     fun checkIfRecipeBookmarked(token: String, id: String): LiveData<Boolean> = liveData {
-        val bookmarks = apiService.getProfile(token).results.bookmarks
-        emit(id in bookmarks)
+        val bookmarks = apiService.getProfile(token)
+        emit(id in bookmarks.results.bookmarks)
     }
 }

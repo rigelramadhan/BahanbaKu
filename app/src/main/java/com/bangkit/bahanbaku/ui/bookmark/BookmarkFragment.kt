@@ -33,6 +33,12 @@ class BookmarkFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        val actionBar = requireActivity().actionBar
+        actionBar?.show()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewModel: BookmarkViewModel by viewModels()
