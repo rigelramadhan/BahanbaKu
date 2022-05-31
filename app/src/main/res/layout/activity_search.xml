@@ -14,8 +14,9 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/dr_edittext_primary"
         android:drawableStart="@drawable/ic_baseline_search_24"
-        app:queryHint="@string/search_for_recipes"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:iconifiedByDefault="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="@string/search_for_recipes" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_recipes"

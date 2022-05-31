@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.ActivityRegisterBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
@@ -40,15 +41,15 @@ class RegisterActivity : AppCompatActivity() {
                     is Result.Error -> {
                         val error = result.error
                         Log.d(TAG, error)
-                        binding.progressBar.visibility = View.INVISIBLE
+                        binding.progressBar.isVisible = false
                         Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
                     }
                     is Result.Loading -> {
-                        binding.progressBar.visibility = View.VISIBLE
+                        binding.progressBar.isVisible = true
                     }
                     is Result.Success -> {
                         Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_SHORT).show()
-                        binding.progressBar.visibility = View.INVISIBLE
+                        binding.progressBar.isVisible = false
 
                         val intent = Intent(this, LoginActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

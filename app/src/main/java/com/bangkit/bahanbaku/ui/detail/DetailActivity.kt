@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.adapter.DetailItemAdapter
@@ -57,11 +58,16 @@ class DetailActivity : AppCompatActivity() {
         if (recipeId != null) {
             viewModel.getRecipe(token, recipeId).observe(this) { result ->
                 when (result) {
-                    is Result.Loading -> {}
+                    is Result.Loading -> {
+                        binding.progressBar.isVisible = true
+                    }
                     is Result.Error -> {
-                        Log.d(TAG, "Error getting recipe")
+                        binding.progressBar.isVisible = false
+                        val error = result.error
+                        Log.d(TAG, error)
                     }
                     is Result.Success -> {
+                        binding.progressBar.isVisible = false
                         val recipe = result.data
                         this.recipe = recipe
                         checkIfRecipeBookmarked(token, recipe.id)

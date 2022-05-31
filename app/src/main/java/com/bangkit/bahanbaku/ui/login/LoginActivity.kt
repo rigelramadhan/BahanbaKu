@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.bangkit.bahanbaku.databinding.ActivityLoginBinding
 import com.bangkit.bahanbaku.ui.main.MainActivity
 import com.bangkit.bahanbaku.ui.register.RegisterActivity
@@ -38,18 +39,18 @@ class LoginActivity : AppCompatActivity() {
             viewModel.login(email, password).observe(this) { result ->
                 when (result) {
                     is Result.Loading -> {
-                        binding.progressBar.isInvisible = false
+                        binding.progressBar.isVisible = true
                     }
                     is Result.Error -> {
                         val error = result.error
                         Log.d(TAG, error)
-                        binding.progressBar.isInvisible = true
+                        binding.progressBar.isVisible = false
                         Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
                     }
                     is Result.Success -> {
                         val data = result.data.results
                         viewModel.saveToken(data.token)
-                        binding.progressBar.isInvisible = true
+                        binding.progressBar.isVisible = false
 
                         val intent = Intent(this, MainActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

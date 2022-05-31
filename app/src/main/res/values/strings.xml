@@ -71,4 +71,5 @@
     <string name="permission_not_granted">Permission not granted</string>
     <string name="name_title">Name</string>
     <string name="notification_password">Last replaced 2 weeks ago</string>
+    <string name="error_loading_profile">Error loading profile</string>
 </resources>

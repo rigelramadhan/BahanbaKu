@@ -42,6 +42,13 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun setupView(token: String) {
+        binding.svSearch.setOnClickListener {
+            binding.svSearch.apply {
+                requestFocus()
+                isIconified = true
+            }
+        }
+
         binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (!query.isNullOrEmpty()) {
