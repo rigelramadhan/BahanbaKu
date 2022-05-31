@@ -72,4 +72,6 @@
     <string name="name_title">Name</string>
     <string name="notification_password">Last replaced 2 weeks ago</string>
     <string name="error_loading_profile">Error loading profile</string>
+    <string name="carry_on">Continue</string>
+    <string name="search_hint">Looking For Who?</string>
 </resources>
