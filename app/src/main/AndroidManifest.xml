@@ -30,12 +30,14 @@
             android:name=".ui.forgotpassword.ForgotPassword"
             android:exported="false" />
         <activity
+            android:label="@string/profile"
             android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.snaprecipe.SnapRecipeActivity"
             android:exported="false" />
         <activity
+            android:label="Search"
             android:name=".ui.search.SearchActivity"
             android:exported="false" />
         <activity
@@ -45,9 +47,11 @@
             android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
+            android:label="@string/register"
             android:name=".ui.register.RegisterActivity"
             android:exported="false" />
         <activity
+            android:label="@string/login"
             android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity

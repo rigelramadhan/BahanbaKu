@@ -10,10 +10,17 @@
         <item name="colorSecondaryVariant">@color/secondary</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:statusBarColor">@color/secondary</item>
         <!-- Customize your theme here. -->
         <item name="colorSurface">@color/white</item>
         <item name="android:colorBackground">@color/white</item>
+        <item name="android:navigationBarColor">@color/primary</item>
+
+        <item name="actionBarStyle">@style/ActionBar</item>
+    </style>
+
+    <style name="ActionBar" parent="Widget.Material3.Light.ActionBar.Solid">
+        <item name="background">@color/white</item>
     </style>
 
 <!--    TEXT FIELD-->

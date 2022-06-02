@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import javax.inject.Inject
 
@@ -13,8 +16,17 @@ class FoodRepository @Inject constructor(
 ) {
     fun postSnapFood(token: String, file: File): LiveData<Result<List<String>>> = liveData {
         emit(Result.Loading)
+
+        val imageMediaType = "image/jpeg".toMediaTypeOrNull()
+        val imageMultiPart: MultipartBody.Part = MultipartBody.Part.createFormData(
+            "photo",
+            file.name,
+            file.asRequestBody(imageMediaType)
+        )
+
         try {
-            emit(Result.Success(listOf("Food1", "Food2", "Food3")))
+
+//            emit(Result.Success())
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }

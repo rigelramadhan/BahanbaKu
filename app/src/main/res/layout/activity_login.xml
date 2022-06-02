@@ -11,17 +11,17 @@
         android:id="@+id/img_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/tv_create_account"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/dr_page_container_down"/>
+        android:src="@drawable/dr_page_container_down"
+        android:layout_marginBottom="-24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_login_with_google"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/img_login_illustration"
-        android:layout_width="243dp"
-        android:layout_height="145dp"
+        android:layout_width="0dp"
+        android:layout_height="142dp"
         android:layout_marginTop="48dp"
-        android:src="@drawable/logo2"
+        android:src="@drawable/illustration_laptop_veggies"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

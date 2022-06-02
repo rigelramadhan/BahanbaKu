@@ -6,14 +6,14 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#F4F4F4</color>
     <color name="blue_300">#0091ea</color>
     <color name="yellow_100">#ffff00</color>
 
     <color name="primary">#FDD835</color>
     <color name="secondary">#555555</color>
 
-    <color name="container_primary">#FFFFFF</color>
+    <color name="container_primary">#F4F4F4</color>
     <color name="container_secondary">#F0F0F0</color>
     <color name="background">#FFFFFF</color>
 </resources>
