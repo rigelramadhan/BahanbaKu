@@ -1,5 +1,6 @@
 package com.bangkit.bahanbaku.di
 
+import android.app.Application
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
@@ -19,7 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import javax.inject.Singleton
 
-private const val USER_PREFERENCES = "user_pref"
+private const val USER_PREFERENCES = "userpref"
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -57,11 +58,5 @@ object DatabaseModule {
             migrations = listOf(SharedPreferencesMigration(context, USER_PREFERENCES)),
             scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
             produceFile = { context.preferencesDataStoreFile(USER_PREFERENCES) })
-    }
-
-    @Provides
-    @Singleton
-    fun provideUserPreferences(preferenceDataStore: DataStore<Preferences>): UserPreferences {
-        return UserPreferences.getInstance(preferenceDataStore)
     }
 }

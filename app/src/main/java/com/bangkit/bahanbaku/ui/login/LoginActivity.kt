@@ -49,11 +49,11 @@ class LoginActivity : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         val data = result.data.results
-                        viewModel.saveToken(data.token)
                         binding.progressBar.isVisible = false
+                        Log.d(TAG, "Token: ${data.token}")
+                        viewModel.saveToken(data.token)
 
                         val intent = Intent(this, MainActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
                         finish()
                     }

@@ -48,6 +48,11 @@ class BookmarkFragment : Fragment() {
         getToken(viewModel)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.root.removeAllViews()
+    }
+
     private fun getToken(viewModel: BookmarkViewModel) {
         viewModel.getToken().observe(requireActivity()) {
             if (it == "null") {

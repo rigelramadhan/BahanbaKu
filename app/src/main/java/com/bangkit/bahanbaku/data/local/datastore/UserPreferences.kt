@@ -7,8 +7,9 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
-class UserPreferences(private val dataStore: DataStore<Preferences>) {
+class UserPreferences @Inject constructor(private val dataStore: DataStore<Preferences>) {
     private val token = stringPreferencesKey("token")
     private val firstTime = booleanPreferencesKey("first_time")
 
@@ -40,14 +41,5 @@ class UserPreferences(private val dataStore: DataStore<Preferences>) {
         dataStore.edit {
             it[token] = "null"
         }
-    }
-
-    companion object {
-        @Volatile
-        private var instance: UserPreferences? = null
-
-        fun getInstance(dataStore: DataStore<Preferences>): UserPreferences = instance ?: synchronized(this) {
-            instance ?: UserPreferences(dataStore)
-        }.also { instance = it }
     }
 }

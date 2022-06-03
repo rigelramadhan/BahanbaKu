@@ -1,16 +1,30 @@
 package com.bangkit.bahanbaku.data.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
+import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
 import com.bangkit.bahanbaku.data.remote.response.*
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 class ProfileRepository @Inject constructor(
     private val apiService: ApiService,
+    private val userPreferences: UserPreferences,
 //    private val database: ProfileDatabase
-) {
+) : CoroutineScope {
+    fun saveToken(token: String) {
+        launch(Dispatchers.IO) {
+            userPreferences.setToken(token)
+        }
+    }
+
+    fun getToken() = userPreferences.getToken().asLiveData()
 
     fun getProfile(token: String): LiveData<Result<ProfileResponse>> = liveData {
         emit(Result.Loading)
@@ -84,7 +98,10 @@ class ProfileRepository @Inject constructor(
         }
     }
 
-    fun deleteBookmarkByPosition(token: String, position: Int): LiveData<Result<DeleteBookmarkResponse>> = liveData {
+    fun deleteBookmarkByPosition(
+        token: String,
+        position: Int
+    ): LiveData<Result<DeleteBookmarkResponse>> = liveData {
         emit(Result.Loading)
         try {
             val bookmarkId = apiService.getProfile(token).results.bookmarks[position]
@@ -95,18 +112,22 @@ class ProfileRepository @Inject constructor(
         }
     }
 
-    fun deleteBookmark(token: String, id: String): LiveData<Result<DeleteBookmarkResponse>> = liveData {
-        emit(Result.Loading)
-        try {
-            val response = apiService.deleteBookmark(token, id)
-            emit(Result.Success(response))
-        } catch (e: Exception) {
-            emit(Result.Error(e.message.toString()))
+    fun deleteBookmark(token: String, id: String): LiveData<Result<DeleteBookmarkResponse>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiService.deleteBookmark(token, id)
+                emit(Result.Success(response))
+            } catch (e: Exception) {
+                emit(Result.Error(e.message.toString()))
+            }
         }
-    }
 
     fun checkIfRecipeBookmarked(token: String, id: String): LiveData<Boolean> = liveData {
         val bookmarks = apiService.getProfile(token)
         emit(id in bookmarks.results.bookmarks)
     }
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main
 }

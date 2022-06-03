@@ -1,6 +1,7 @@
 package com.bangkit.bahanbaku.ui.login
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -15,13 +16,10 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val profileRepository: ProfileRepository,
-    private val userPreferences: UserPreferences
 ) : ViewModel() {
     fun login(email: String, password: String) = profileRepository.login(email, password)
 
     fun saveToken(token: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            userPreferences.setToken(token)
-        }
+        profileRepository.saveToken(token)
     }
 }

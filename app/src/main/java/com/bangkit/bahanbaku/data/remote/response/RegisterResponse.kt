@@ -9,9 +9,9 @@ data class RegisterResponse(
 
 	@field:SerializedName("message")
 	val message: String,
-
-	@field:SerializedName("results")
-	val results: RegisterResults
+//
+//	@field:SerializedName("results")
+//	val results: RegisterResults
 )
 
 data class RegisterResults(
