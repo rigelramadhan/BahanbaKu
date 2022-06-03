@@ -9,6 +9,8 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
+import com.bangkit.bahanbaku.data.local.datastore.AuthSharedPreferences
+import com.bangkit.bahanbaku.data.local.datastore.DataStoreManager
 import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
 import dagger.Module
 import dagger.Provides
@@ -50,13 +52,19 @@ object DatabaseModule {
 //        return SupplierDatabase.getInstance(context)
 //    }
 
-    @Provides
-    @Singleton
-    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
-        return PreferenceDataStoreFactory.create(
-            corruptionHandler = ReplaceFileCorruptionHandler(produceNewData = { emptyPreferences() }),
-            migrations = listOf(SharedPreferencesMigration(context, USER_PREFERENCES)),
-            scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
-            produceFile = { context.preferencesDataStoreFile(USER_PREFERENCES) })
-    }
+//    @Provides
+//    @Singleton
+//    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
+//        return PreferenceDataStoreFactory.create(
+//            corruptionHandler = ReplaceFileCorruptionHandler(produceNewData = { emptyPreferences() }),
+//            migrations = listOf(SharedPreferencesMigration(context, USER_PREFERENCES)),
+//            scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
+//            produceFile = { context.preferencesDataStoreFile(USER_PREFERENCES) })
+//    }
+
+//    @Provides
+//    @Singleton
+//    fun provideDataStoreManager(@ApplicationContext context: Context): DataStoreManager =
+//        DataStoreManager(context)
+
 }

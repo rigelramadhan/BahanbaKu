@@ -9,10 +9,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val profileRepository: ProfileRepository,
-    private val userPreferences: UserPreferences
+    private val profileRepository: ProfileRepository
 ) : ViewModel() {
     fun getProfile(token: String) = profileRepository.getProfile(token)
 
-    fun getToken() = userPreferences.getToken().asLiveData()
+    fun getToken() = profileRepository.getToken().asLiveData()
 }

@@ -54,6 +54,7 @@ class LoginActivity : AppCompatActivity() {
                         viewModel.saveToken(data.token)
 
                         val intent = Intent(this, MainActivity::class.java)
+                        intent.putExtra("EXTRA_TOKEN", data.token)
                         startActivity(intent)
                         finish()
                     }

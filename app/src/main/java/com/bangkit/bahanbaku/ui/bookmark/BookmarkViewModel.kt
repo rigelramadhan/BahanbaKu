@@ -10,11 +10,11 @@ import javax.inject.Inject
 @HiltViewModel
 class BookmarkViewModel @Inject constructor(
     private val repository: ProfileRepository,
-    private val userPreferences: UserPreferences
+    private val profileRepository: ProfileRepository
 ) : ViewModel() {
     fun getBookmarks(token: String) = repository.getBookmarks(token)
 
-    fun getToken() = userPreferences.getToken().asLiveData()
+    fun getToken() = profileRepository.getToken().asLiveData()
 
     fun deleteBookmarks(token: String, id: Int) = repository.deleteBookmarkByPosition(token, id)
 }

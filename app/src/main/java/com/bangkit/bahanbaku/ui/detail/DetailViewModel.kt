@@ -11,8 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     private val recipeRepository: RecipeRepository,
-    private val profileRepository: ProfileRepository,
-    private val userPreferences: UserPreferences
+    private val profileRepository: ProfileRepository
 ) : ViewModel() {
     fun getRecipe(token: String, id: String) = recipeRepository.getRecipeById(token, id)
 
@@ -22,5 +21,5 @@ class DetailViewModel @Inject constructor(
 
     fun deleteBookmark(token: String, id: String) = profileRepository.deleteBookmark(token, id)
 
-    fun getToken() = userPreferences.getToken().asLiveData()
+    fun getToken() = profileRepository.getToken().asLiveData()
 }

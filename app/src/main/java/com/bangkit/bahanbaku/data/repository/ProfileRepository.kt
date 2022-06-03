@@ -3,6 +3,8 @@ package com.bangkit.bahanbaku.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
+import com.bangkit.bahanbaku.data.local.datastore.AuthSharedPreferences
+import com.bangkit.bahanbaku.data.local.datastore.DataStoreManager
 import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
 import com.bangkit.bahanbaku.data.remote.response.*
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
@@ -11,11 +13,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.coroutines.CoroutineContext
 
+@Singleton
 class ProfileRepository @Inject constructor(
     private val apiService: ApiService,
-    private val userPreferences: UserPreferences,
+    private val userPreferences: UserPreferences
 //    private val database: ProfileDatabase
 ) : CoroutineScope {
     fun saveToken(token: String) {
@@ -24,7 +28,7 @@ class ProfileRepository @Inject constructor(
         }
     }
 
-    fun getToken() = userPreferences.getToken().asLiveData()
+    fun getToken() = userPreferences.getToken()
 
     fun getProfile(token: String): LiveData<Result<ProfileResponse>> = liveData {
         emit(Result.Loading)

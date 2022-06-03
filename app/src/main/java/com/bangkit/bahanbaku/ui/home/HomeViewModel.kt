@@ -14,14 +14,13 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val recipeRepository: RecipeRepository,
-    private val profileRepository: ProfileRepository,
-    private val userPreferences: UserPreferences
+    private val profileRepository: ProfileRepository
 ) : ViewModel() {
     fun getRecipes(token: String) = recipeRepository.getNewRecipes(token)
 
     fun getFeaturedRecipe(token: String) = recipeRepository.getFeaturedRecipe(token)
 
-    fun getToken() = userPreferences.getToken().asLiveData()
+    fun getToken() = profileRepository.getToken().asLiveData()
 
     fun getProfile(token: String) = profileRepository.getProfile(token)
 }
