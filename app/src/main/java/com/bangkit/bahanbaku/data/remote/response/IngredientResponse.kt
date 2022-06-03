@@ -1,34 +1,50 @@
 package com.bangkit.bahanbaku.data.remote.response
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class IngredientResponse(
-
-	@field:SerializedName("success")
-	val success: Boolean,
 
 	@field:SerializedName("message")
 	val message: String,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItem>
+	val results: IngredientResults,
+
+	@field:SerializedName("status")
+	val status: Boolean
 )
 
-data class ResultsItem(
+data class ProductsItem(
 
-	@field:SerializedName("shippingPrice")
-	val shippingPrice: List<ShippingPriceItem>,
+	@field:SerializedName("productName")
+	val productName: String,
+
+	@field:SerializedName("productPrice")
+	val productPrice: Int
+)
+
+data class IngredientResults(
+
+	@field:SerializedName("above")
+	val above: List<AboveBelowItem>,
+
+	@field:SerializedName("under")
+	val under: List<AboveBelowItem>
+)
+
+data class AboveBelowItem(
+
+	@field:SerializedName("suppliers")
+	val suppliers: List<SuppliersItem>,
+
+	@field:SerializedName("missingProduct")
+	val missingProduct: List<String>,
 
 	@field:SerializedName("totalPrice")
-	val totalPrice: Int,
-
-	@field:SerializedName("ingredients")
-	val ingredients: List<IngredientsItem>
+	val totalPrice: Int
 )
 
-data class IngredientsItem(
+data class SuppliersItem(
 
 	@field:SerializedName("supplierName")
 	val supplierName: String,
@@ -36,18 +52,12 @@ data class IngredientsItem(
 	@field:SerializedName("supplierId")
 	val supplierId: String,
 
-	@field:SerializedName("ingredientName")
-	val ingredientName: String,
-
-	@field:SerializedName("ingredientPrice")
-	val ingredientPrice: Int
-)
-
-data class ShippingPriceItem(
-
 	@field:SerializedName("shippingCost")
 	val shippingCost: Int,
 
-	@field:SerializedName("id")
-	val id: String
+	@field:SerializedName("supplierContact")
+	val supplierContact: String,
+
+	@field:SerializedName("products")
+	val products: List<ProductsItem>
 )

@@ -14,25 +14,6 @@ data class ProfileResponse(
 	val results: ProfileEntity
 )
 
-data class ShippingItem(
-
-	@field:SerializedName("cost")
-	val cost: Int,
-
-	@field:SerializedName("id")
-	val id: String
-)
-
-data class Origin(
-
-	@field:SerializedName("lat")
-	val lat: Double,
-
-	@field:SerializedName("long")
-	val jsonMemberLong: Double
-)
-
-
 data class ProfileEntity(
 
 	@field:SerializedName("bookmarks")
@@ -55,4 +36,25 @@ data class ProfileEntity(
 
 	@field:SerializedName("username")
 	val username: String
+)
+
+data class ShippingItem(
+
+	@field:SerializedName("cost")
+	val cost: Int,
+
+	@field:SerializedName("distance")
+	val distance: Int,
+
+	@field:SerializedName("id")
+	val id: String
+)
+
+data class Origin(
+
+	@field:SerializedName("lng")
+	val lng: Double,
+
+	@field:SerializedName("lat")
+	val lat: Double
 )

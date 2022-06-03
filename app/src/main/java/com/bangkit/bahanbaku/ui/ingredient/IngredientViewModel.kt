@@ -3,9 +3,8 @@ package com.bangkit.bahanbaku.ui.ingredient
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.liveData
 import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
-import com.bangkit.bahanbaku.data.remote.response.ResultsItem
+import com.bangkit.bahanbaku.data.remote.response.IngredientResults
 import com.bangkit.bahanbaku.data.repository.IngredientRepository
 import com.bangkit.bahanbaku.utils.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +16,7 @@ class IngredientViewModel @Inject constructor(
     private val userPreferences: UserPreferences
 ) :
     ViewModel() {
-    fun getIngredients(token: String, search: List<String>): LiveData<Result<List<ResultsItem>>> {
+    fun getIngredients(token: String, search: List<String>): LiveData<Result<IngredientResults>> {
         var searchStr = ""
         search.forEachIndexed { index, s ->
             searchStr += if (index == search.lastIndex) {

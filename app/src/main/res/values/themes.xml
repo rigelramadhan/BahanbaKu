@@ -40,6 +40,11 @@
         <item name="endIconTint">@color/secondary</item>
     </style>
 
+<!--    PROGRESS BAR-->
+    <style name="ProgressBar">
+        <item name="android:visibility">invisible</item>
+    </style>
+
 <!--    BUTTON-->
     <style name="Button">
         <item name="backgroundTint">@null</item>

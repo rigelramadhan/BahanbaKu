@@ -1,7 +1,5 @@
 package com.bangkit.bahanbaku.data.remote.response
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class SupplierResponse(
@@ -13,13 +11,31 @@ data class SupplierResponse(
 	val message: String,
 
 	@field:SerializedName("results")
-	val results: SupplierResults
+	val results: SupplierResult
 )
 
-data class SupplierResults(
+data class SupplierResult(
 
 	@field:SerializedName("suppliers")
 	val suppliers: List<SupplierEntity>
+)
+
+data class AddressObj(
+
+	@field:SerializedName("zipCode")
+	val zipCode: String,
+
+	@field:SerializedName("province")
+	val province: String,
+
+	@field:SerializedName("city")
+	val city: String,
+
+	@field:SerializedName("district")
+	val district: String,
+
+	@field:SerializedName("subDistrict")
+	val subDistrict: String
 )
 
 data class ProductItem(
@@ -31,25 +47,15 @@ data class ProductItem(
 	val name: String
 )
 
-data class AddressObj(
+data class SupplierOrigin(
 
-	@field:SerializedName("province")
-	val province: String,
+	@field:SerializedName("lng")
+	val lng: Double,
 
-	@field:SerializedName("city")
-	val city: String,
-
-	@field:SerializedName("district")
-	val district: String,
-
-	@field:SerializedName("sub-district")
-	val subDistrict: String,
-
-	@field:SerializedName("zip-code")
-	val zipCode: String
+	@field:SerializedName("lat")
+	val lat: Double
 )
 
-@Entity(tableName = "supplier")
 data class SupplierEntity(
 
 	@field:SerializedName("product")
@@ -59,15 +65,14 @@ data class SupplierEntity(
 	val address: String,
 
 	@field:SerializedName("origin")
-	val origin: List<Double>,
+	val origin: SupplierOrigin,
 
 	@field:SerializedName("name")
 	val name: String,
 
-	@field:SerializedName("address-obj")
-	val addressObj: AddressObj,
-
-	@PrimaryKey
 	@field:SerializedName("id")
-	val id: String
+	val id: String,
+
+	@field:SerializedName("addressObj")
+	val addressObj: AddressObj
 )

@@ -1,26 +1,35 @@
 package com.bangkit.bahanbaku.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.bahanbaku.data.remote.response.ResultsItem
-import com.bangkit.bahanbaku.databinding.ItemIngredientEcommBinding
+import com.bangkit.bahanbaku.data.remote.response.SuppliersItem
+import com.bangkit.bahanbaku.databinding.ItemEcommBinding
 
-class IngredientsAdapter(private val list: List<ResultsItem>) : RecyclerView.Adapter<IngredientsAdapter.ViewHolder>(){
-    class ViewHolder(val binding: ItemIngredientEcommBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ResultsItem) {
-            item.shippingPrice
+class IngredientsAdapter(private val list: List<SuppliersItem>) :
+    RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() {
+    class ViewHolder(val binding: ItemEcommBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: SuppliersItem) {
+            binding.tvStoreName.text = item.supplierName
+            binding.tvShippingCost.text = "Rp.${item.shippingCost}"
+
+            binding.rvIngredients.apply {
+                adapter = IngredientsItemAdapter(item.products)
+                layoutManager = LinearLayoutManager(this.context)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
+        val binding = ItemEcommBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val supplier = list[position]
+        holder.bind(supplier)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = list.size
 }

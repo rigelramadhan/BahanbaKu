@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.bahanbaku.adapter.EcommAdapter
 import com.bangkit.bahanbaku.databinding.ActivityIngredientBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.utils.Result
@@ -43,11 +45,20 @@ class IngredientActivity : AppCompatActivity() {
         if (ingredients != null) {
             viewModel.getIngredients(token, ingredients.toList()).observe(this) { result ->
                 when (result) {
-                    is Result.Error -> {}
-                    is Result.Loading -> {}
+                    is Result.Error -> {
+                        
+                    }
+                    is Result.Loading -> {
+
+                    }
                     is Result.Success -> {
                         val data = result.data
-
+                        val aboveBelowData = data.above as MutableList
+                        aboveBelowData.addAll(data.under)
+                        binding.rvIngredientsEcomm.apply {
+                            adapter = EcommAdapter(aboveBelowData)
+                            layoutManager = LinearLayoutManager(this@IngredientActivity)
+                        }
                     }
                 }
             }

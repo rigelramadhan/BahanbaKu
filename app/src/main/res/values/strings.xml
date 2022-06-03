@@ -74,4 +74,6 @@
     <string name="error_loading_profile">Error loading profile</string>
     <string name="carry_on">Continue</string>
     <string name="search_hint">Looking For Who?</string>
+    <string name="shipping_cost">Shipping Cost</string>
+    <string name="total_price">Total Price</string>
 </resources>
