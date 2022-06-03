@@ -3,7 +3,9 @@ package com.bangkit.bahanbaku.ui.ingredient
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.adapter.EcommAdapter
 import com.bangkit.bahanbaku.databinding.ActivityIngredientBinding
@@ -46,12 +48,17 @@ class IngredientActivity : AppCompatActivity() {
             viewModel.getIngredients(token, ingredients.toList()).observe(this) { result ->
                 when (result) {
                     is Result.Error -> {
-                        
+                        val error = result.error
+                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+                        binding.progressBar.isVisible = false
                     }
-                    is Result.Loading -> {
 
+                    is Result.Loading -> {
+                        binding.progressBar.isVisible = true
                     }
+
                     is Result.Success -> {
+                        binding.progressBar.isVisible = false
                         val data = result.data
                         val aboveBelowData = data.above as MutableList
                         aboveBelowData.addAll(data.under)

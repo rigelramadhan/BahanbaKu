@@ -3,8 +3,10 @@ package com.bangkit.bahanbaku.ui.search
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.adapter.SearchRecipeAdapter
 import com.bangkit.bahanbaku.databinding.ActivitySearchBinding
@@ -54,9 +56,16 @@ class SearchActivity : AppCompatActivity() {
                 if (!query.isNullOrEmpty()) {
                     viewModel.searchRecipe(token, query).observe(this@SearchActivity) { result ->
                         when (result) {
-                            is Result.Loading -> {}
-                            is Result.Error -> {}
+                            is Result.Loading -> {
+                                binding.progressBar.isVisible = true
+                            }
+                            is Result.Error -> {
+                                val error = result.error
+                                Toast.makeText(this@SearchActivity, error, Toast.LENGTH_SHORT).show()
+                                binding.progressBar.isVisible = false
+                            }
                             is Result.Success -> {
+                                binding.progressBar.isVisible = false
                                 val data = result.data
 
                                 binding.rvRecipes.apply {

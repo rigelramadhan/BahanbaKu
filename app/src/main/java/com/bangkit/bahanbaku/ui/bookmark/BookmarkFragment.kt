@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -83,9 +85,16 @@ class BookmarkFragment : Fragment() {
             if (activity != null) {
                 viewModel.getBookmarks(token as String).observe(requireActivity()) { result ->
                     when (result) {
-                        is Result.Loading -> {}
-                        is Result.Error -> {}
+                        is Result.Loading -> {
+                            binding.progressBar.isVisible = true
+                        }
+                        is Result.Error -> {
+                            val error = result.error
+                            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+                            binding.progressBar.isVisible = false
+                        }
                         is Result.Success -> {
+                            binding.progressBar.isVisible = false
                             val data = result.data
                             adapter = BookmarkAdapter(data)
                             binding.rvBookmark.apply {
