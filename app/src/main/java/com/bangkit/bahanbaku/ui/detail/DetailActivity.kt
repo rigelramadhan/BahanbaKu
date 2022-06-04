@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isVisible
@@ -138,14 +139,40 @@ class DetailActivity : AppCompatActivity() {
                 if (isRecipeBookmarked) {
                     if (recipe != null && !token.isNullOrEmpty()) {
                         viewModel.deleteBookmark(token as String, (recipe as RecipeEntity).id)
-                        item.icon = AppCompatResources.getDrawable(
-                            this,
-                            R.drawable.ic_baseline_bookmark_border_24
-                        )
+                            .observe(this) { result ->
+                                when (result) {
+                                    is Result.Loading -> {
+                                        binding.progressBar.isVisible = true
+                                    }
+                                    is Result.Error -> {
+                                        binding.progressBar.isVisible = false
+                                        val error = result.error
+                                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+                                    }
+                                    is Result.Success -> {
+                                        binding.progressBar.isVisible = false
+                                        val successStatus = result.data.success
+                                        if (successStatus) {
+                                            item.icon = AppCompatResources.getDrawable(
+                                                this,
+                                                R.drawable.ic_baseline_bookmark_border_24
+                                            )
+                                        }
+                                    }
+                                }
+                            }
                     }
                 } else {
                     if (recipe != null && !token.isNullOrEmpty()) {
                         viewModel.addBookmark(token as String, (recipe as RecipeEntity).id)
+                            .observe(this) { result ->
+                                when (result) {
+                                    is Result.Loading -> {
+                                        binding.progressBar.isVisible = true
+                                    }
+//                                    TODO: CONTINUE RESULTS HANDLING
+                                }
+                            }
                         item.icon = AppCompatResources.getDrawable(
                             this,
                             R.drawable.ic_baseline_bookmark_24
