@@ -13,7 +13,7 @@ data class RecipeResponse(
 	val message: String,
 
 	@field:SerializedName("results")
-	val results: RecipeResults
+	val results: List<RecipeEntity>
 )
 
 @Entity(tableName = "recipe")

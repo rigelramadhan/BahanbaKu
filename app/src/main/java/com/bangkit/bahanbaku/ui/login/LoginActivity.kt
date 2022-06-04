@@ -4,10 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.bangkit.bahanbaku.databinding.ActivityLoginBinding
 import com.bangkit.bahanbaku.ui.main.MainActivity
@@ -48,13 +46,13 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
                     }
                     is Result.Success -> {
-                        val data = result.data.results
+                        val token = result.data.token
                         binding.progressBar.isVisible = false
-                        Log.d(TAG, "Token: ${data.token}")
-                        viewModel.saveToken(data.token)
+                        Log.d(TAG, "Token: ${token}")
+                        viewModel.saveToken(token)
 
-                        val intent = Intent(this, MainActivity::class.java)
-                        intent.putExtra("EXTRA_TOKEN", data.token)
+                        Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
                         finish()
                     }
@@ -71,6 +69,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val TAG = "LoginActivity.log"
+        const val TAG = "LoginActivitylog"
     }
 }

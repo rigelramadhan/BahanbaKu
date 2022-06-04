@@ -37,7 +37,8 @@ class ProfileActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                setupView(it)
+                val token = "Bearer $it"
+                setupView(token)
             }
         }
     }

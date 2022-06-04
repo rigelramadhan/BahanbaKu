@@ -47,8 +47,8 @@ class DetailActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                token = it
-                setupView(it)
+                token = "Bearer $it"
+                setupView(token!!)
             }
         }
     }

@@ -24,7 +24,7 @@ class ProfileRepository @Inject constructor(
 ) : CoroutineScope {
     fun saveToken(token: String) {
         launch(Dispatchers.IO) {
-            userPreferences.setToken(token)
+            userPreferences.saveToken(token)
         }
     }
 
@@ -84,7 +84,7 @@ class ProfileRepository @Inject constructor(
             val profile = apiService.getProfile(token).results
             val recipeList = mutableListOf<RecipeEntity>()
             for (id in profile.bookmarks) {
-                recipeList.add(apiService.getRecipeById(token, id).results.recipe)
+                recipeList.add(apiService.getRecipeById(token, id).results)
             }
             emit(Result.Success(recipeList))
         } catch (e: Exception) {
@@ -128,10 +128,14 @@ class ProfileRepository @Inject constructor(
         }
 
     fun checkIfRecipeBookmarked(token: String, id: String): LiveData<Boolean> = liveData {
-        val bookmarks = apiService.getProfile(token)
-        emit(id in bookmarks.results.bookmarks)
+        val bookmarks = apiService.getProfile(token).results.bookmarks
+        var isBookmarked = false
+        if (!bookmarks.isNullOrEmpty()) {
+            isBookmarked = (id in bookmarks)
+        }
+        emit(isBookmarked)
     }
 
     override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main
+        get() = Dispatchers.IO
 }

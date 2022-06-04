@@ -1,56 +1,48 @@
 package com.bangkit.bahanbaku.data.local.datastore
 
-import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
+import javax.inject.Singleton
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("userpref")
+@Singleton
+class UserPreferences @Inject constructor(private val dataStore: DataStore<Preferences>) {
 
-class UserPreferences @Inject constructor(@ApplicationContext context: Context) {
-
-    private val appContext = context.applicationContext
-    private val dataStore = appContext.dataStore
+    private val token = stringPreferencesKey("token")
+    private val firstTime = booleanPreferencesKey("first_time")
 
     fun getToken(): Flow<String> {
         return dataStore.data.map {
-            it[TOKEN] ?: "null"
+            it[token] ?: "null"
         }
     }
 
     fun isFirstTime(): Flow<Boolean> {
         return dataStore.data.map {
-            it[FIRST_TIME] ?: true
+            it[firstTime] ?: true
         }
     }
 
-    suspend fun setToken(token: String) {
+    suspend fun saveToken(token: String) {
         dataStore.edit {
-            it[TOKEN] = token
+            it[this.token] = token
         }
     }
 
     suspend fun setFirstTime(firstTime: Boolean) {
         dataStore.edit {
-            it[FIRST_TIME] = firstTime
+            it[this.firstTime] = firstTime
         }
     }
 
     suspend fun deleteToken() {
         dataStore.edit {
-            it[TOKEN] = "null"
+            it[token] = "null"
         }
-    }
-
-    companion object {
-        private val TOKEN = stringPreferencesKey("token")
-        private val FIRST_TIME = booleanPreferencesKey("first_time")
     }
 }

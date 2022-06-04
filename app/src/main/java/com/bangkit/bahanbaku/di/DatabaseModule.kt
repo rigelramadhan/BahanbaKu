@@ -28,7 +28,9 @@ private const val USER_PREFERENCES = "userpref"
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-//    @Provides
+//    }
+
+    //    @Provides
 //    @Singleton
 //    private fun provideRecipeDatabase(@ApplicationContext context: Context): RecipeDatabase {
 //        return RecipeDatabase.getInstance(context)
@@ -50,17 +52,16 @@ object DatabaseModule {
 //    @Singleton
 //    private fun provideSupplierDatabase(@ApplicationContext context: Context): SupplierDatabase {
 //        return SupplierDatabase.getInstance(context)
-//    }
 
-//    @Provides
-//    @Singleton
-//    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
-//        return PreferenceDataStoreFactory.create(
-//            corruptionHandler = ReplaceFileCorruptionHandler(produceNewData = { emptyPreferences() }),
-//            migrations = listOf(SharedPreferencesMigration(context, USER_PREFERENCES)),
-//            scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
-//            produceFile = { context.preferencesDataStoreFile(USER_PREFERENCES) })
-//    }
+    @Singleton
+    @Provides
+    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
+        return PreferenceDataStoreFactory.create(
+            corruptionHandler = ReplaceFileCorruptionHandler(produceNewData = { emptyPreferences() }),
+            migrations = listOf(SharedPreferencesMigration(context, USER_PREFERENCES)),
+            scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
+            produceFile = { context.preferencesDataStoreFile(USER_PREFERENCES) })
+    }
 
 //    @Provides
 //    @Singleton
