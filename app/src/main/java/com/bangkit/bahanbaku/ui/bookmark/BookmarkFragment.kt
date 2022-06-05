@@ -28,6 +28,7 @@ class BookmarkFragment : Fragment() {
 
     private lateinit var adapter: BookmarkAdapter
     private var token: String? = null
+    val viewModel: BookmarkViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +39,11 @@ class BookmarkFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel: BookmarkViewModel by viewModels()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
         getToken(viewModel)
     }
 

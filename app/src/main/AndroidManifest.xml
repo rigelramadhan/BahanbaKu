@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.bangkit.bahanbaku">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,10 +17,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BahanbaKu"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY" />
+
+        <activity
+            android:name=".ui.updatelocation.UpdateLocationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_update_location" />
         <activity
             android:name=".ui.maps.MapsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/food_map" />
         <activity
             android:name=".ui.snapfood.result.SnapFoodResultActivity"
             android:exported="false" />
@@ -30,16 +53,16 @@
             android:name=".ui.forgotpassword.ForgotPassword"
             android:exported="false" />
         <activity
-            android:label="@string/profile"
             android:name=".ui.profile.ProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/profile" />
         <activity
             android:name=".ui.snaprecipe.SnapRecipeActivity"
             android:exported="false" />
         <activity
-            android:label="Search"
             android:name=".ui.search.SearchActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Search" />
         <activity
             android:name=".ui.ingredient.IngredientActivity"
             android:exported="false" />
@@ -47,13 +70,13 @@
             android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
-            android:label="@string/register"
             android:name=".ui.register.RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/register" />
         <activity
-            android:label="@string/login"
             android:name=".ui.login.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/login" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">

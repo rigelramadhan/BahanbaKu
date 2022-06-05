@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,7 +11,7 @@
         android:paddingBottom="16dp"
         tools:context=".ui.detail.DetailActivity">
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardView"
             android:layout_width="0dp"
             android:layout_height="232dp"
@@ -22,7 +21,9 @@
             app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#E0E0E0"
+            app:strokeWidth="1dp">
 
             <ImageView
                 android:id="@+id/img_recipe"
@@ -31,14 +32,29 @@
                 android:scaleType="centerCrop"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/btn_get_location"
+            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/primary"
+            android:text="@string/location"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_baseline_location_on_24"
+            app:iconTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/cardView"
+            app:layout_constraintEnd_toEndOf="@id/cardView" />
 
         <TextView
             android:id="@+id/tv_recipe"
+            style="@style/Text.Headline.Small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            style="@style/Text.Headline.Small"
             android:text="@string/placeholder_recipe_name"
             app:layout_constraintEnd_toEndOf="@+id/cardView"
             app:layout_constraintStart_toStartOf="@+id/cardView"
@@ -47,28 +63,28 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/card_servings"
             android:layout_width="wrap_content"
-            app:cardCornerRadius="8dp"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/primary"
-            app:layout_constraintTop_toBottomOf="@id/tv_recipe"
+            app:cardCornerRadius="8dp"
             app:layout_constraintStart_toStartOf="@id/tv_recipe"
-            android:layout_height="wrap_content">
+            app:layout_constraintTop_toBottomOf="@id/tv_recipe">
 
             <TextView
                 android:id="@+id/tv_servings"
-                android:textSize="12sp"
-                android:fontFamily="sans-serif-medium"
-                android:layout_marginHorizontal="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/placeholder_servings"/>
+                android:layout_marginHorizontal="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/placeholder_servings"
+                android:textSize="12sp" />
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_description"
+            style="@style/Text.Body.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            style="@style/Text.Body.Medium"
             android:text="@string/placeholder_recipe_description"
             app:layout_constraintEnd_toEndOf="@+id/tv_recipe"
             app:layout_constraintStart_toStartOf="@+id/tv_recipe"
@@ -76,31 +92,31 @@
 
         <TextView
             android:id="@+id/tv_ingredients"
+            style="@style/Text.Title.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            style="@style/Text.Title.Medium"
             android:text="@string/ingredients"
             app:layout_constraintEnd_toEndOf="@+id/tv_description"
             app:layout_constraintStart_toStartOf="@+id/tv_description"
-            app:layout_constraintTop_toBottomOf="@id/tv_description"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
-         <androidx.recyclerview.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_ingredients"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            tools:listitem="@layout/item_detail_list"
             app:layout_constraintEnd_toEndOf="@+id/tv_ingredients"
             app:layout_constraintStart_toStartOf="@+id/tv_ingredients"
-            app:layout_constraintTop_toBottomOf="@+id/tv_ingredients" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_ingredients"
+            tools:listitem="@layout/item_detail_list" />
 
         <TextView
             android:id="@+id/tv_instructions"
+            style="@style/Text.Title.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            style="@style/Text.Title.Medium"
             android:text="@string/instructions"
             app:layout_constraintEnd_toEndOf="@+id/tv_ingredients"
             app:layout_constraintStart_toStartOf="@+id/tv_ingredients"
@@ -111,31 +127,30 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            tools:listitem="@layout/item_detail_list"
             app:layout_constraintEnd_toEndOf="@+id/tv_instructions"
             app:layout_constraintStart_toStartOf="@+id/tv_instructions"
-            app:layout_constraintTop_toBottomOf="@+id/tv_instructions" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_instructions"
+            tools:listitem="@layout/item_detail_list" />
 
         <Button
             android:id="@+id/btn_check_ingredients"
+            style="@style/Button.Active"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Button.Active"
-            app:layout_constraintTop_toBottomOf="@id/rv_instructions"
-            android:text="@string/check_ingredients"
-            android:layout_marginTop="16dp"
             android:layout_marginHorizontal="16dp"
-            />
+            android:layout_marginTop="16dp"
+            android:text="@string/check_ingredients"
+            app:layout_constraintTop_toBottomOf="@id/rv_instructions" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
+            style="@style/ProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/ProgressBar"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

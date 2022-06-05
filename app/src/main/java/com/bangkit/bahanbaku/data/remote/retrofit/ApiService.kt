@@ -89,4 +89,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: String
     ): SupplierByIdResponse
+
+    @GET("/user/nearby-resto")
+    suspend fun getNearbyResto(
+        @Header("Authorization") token: String,
+        @Query("query") query: String
+    ): NearbyRestoResponse
 }

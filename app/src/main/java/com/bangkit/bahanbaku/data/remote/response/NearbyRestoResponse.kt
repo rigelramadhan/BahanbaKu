@@ -4,14 +4,14 @@ import com.google.gson.annotations.SerializedName
 
 data class NearbyRestoResponse(
 
-	@field:SerializedName("success")
+	@field:SerializedName("status")
 	val success: Boolean,
 
 	@field:SerializedName("message")
 	val message: String,
 
 	@field:SerializedName("results")
-	val results: NearbyResults
+	val results: List<RestoEntity>
 )
 
 data class Location(
@@ -36,10 +36,4 @@ data class RestoEntity(
 
 	@field:SerializedName("location")
 	val location: Location
-)
-
-data class NearbyResults(
-
-	@field:SerializedName("resto")
-	val resto: List<RestoEntity>
 )
