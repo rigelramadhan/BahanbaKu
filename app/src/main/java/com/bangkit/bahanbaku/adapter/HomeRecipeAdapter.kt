@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
 import com.bangkit.bahanbaku.databinding.ItemRecipeHomeBinding
 import com.bangkit.bahanbaku.ui.detail.DetailActivity
@@ -33,7 +34,8 @@ class HomeRecipeAdapter(private val list: List<RecipeEntity>) : RecyclerView.Ada
             binding.let {
                 binding.tvRecipe.text = recipe?.title
                 binding.tvRecipeDescription.text = recipe?.description
-                binding.tvServings.text = "${recipe?.servings}"
+                binding.tvServings.text =
+                    itemView.context.getString(R.string.serving).format(recipe?.servings)
 
                 Glide.with(itemView.context)
                     .load(recipe?.image)

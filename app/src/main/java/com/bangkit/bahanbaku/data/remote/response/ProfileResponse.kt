@@ -16,7 +16,7 @@ data class ProfileResponse(
 
 data class ProfileEntity(
 
-	@field:SerializedName("bookmarks")
+	@field:SerializedName("bookmark")
 	val bookmarks: List<String>,
 
 	@field:SerializedName("shipping")

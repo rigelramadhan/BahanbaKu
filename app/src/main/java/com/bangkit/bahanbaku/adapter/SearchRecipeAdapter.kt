@@ -4,9 +4,11 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
 import com.bangkit.bahanbaku.databinding.ItemRecipeSearchBinding
 import com.bangkit.bahanbaku.ui.detail.DetailActivity
+import com.bumptech.glide.Glide
 
 class SearchRecipeAdapter(private val recipes: List<RecipeEntity>) :
     RecyclerView.Adapter<SearchRecipeAdapter.ViewHolder>() {
@@ -34,6 +36,12 @@ class SearchRecipeAdapter(private val recipes: List<RecipeEntity>) :
         fun bind(recipe: RecipeEntity) {
             binding.tvRecipe.text = recipe.title
             binding.tvRecipeDescription.text = recipe.description
+            binding.tvServings.text =
+                itemView.context.getString(R.string.serving).format(recipe.servings)
+
+            Glide.with(itemView)
+                .load(recipe.image)
+                .into(binding.imgRecipe)
         }
     }
 }

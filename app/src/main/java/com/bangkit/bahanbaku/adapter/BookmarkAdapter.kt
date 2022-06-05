@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
 import com.bangkit.bahanbaku.databinding.ItemBookmarkBinding
 import com.bangkit.bahanbaku.ui.detail.DetailActivity
@@ -35,6 +36,8 @@ class BookmarkAdapter(private val bookmarks: List<RecipeEntity>) :
         fun bind(recipe: RecipeEntity) {
             binding.tvRecipe.text = recipe.title
             binding.tvRecipeDescription.text = recipe.title
+            binding.tvServings.text =
+                itemView.context.getString(R.string.serving).format(recipe.servings)
 
             Glide.with(itemView.context)
                 .load(recipe.image)

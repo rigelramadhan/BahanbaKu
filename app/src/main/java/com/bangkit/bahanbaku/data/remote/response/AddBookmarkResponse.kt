@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class AddBookmarkResponse(
 
-	@field:SerializedName("success")
+	@field:SerializedName("status")
 	val success: Boolean,
 
 	@field:SerializedName("message")

@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.adapter.HomeRecipeAdapter
 import com.bangkit.bahanbaku.databinding.FragmentHomeBinding
 import com.bangkit.bahanbaku.ui.bookmark.BookmarkViewModel
@@ -35,12 +37,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return binding.root
-    }
-
-    override fun onResume() {
-        super.onResume()
-        val actionBar = requireActivity().actionBar
-        actionBar?.hide()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -98,6 +94,8 @@ class HomeFragment : Fragment() {
                         val data = result.data
                         binding.cardFeatured.tvRecipe.text = data.title
                         binding.cardFeatured.tvRecipeDescription.text = data.description
+                        binding.cardFeatured.tvServings.text =
+                            getString(R.string.serving).format(data.servings)
 
                         Glide.with(this)
                             .load(data.image)

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -37,12 +38,6 @@ class SnapFoodFragment : Fragment() {
         val viewModel: SnapFoodViewModel by viewModels()
 
         setupView(viewModel)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        val actionBar = requireActivity().actionBar
-        actionBar?.show()
     }
 
     private fun setupView(viewModel: SnapFoodViewModel) {

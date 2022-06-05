@@ -19,9 +19,9 @@ class FoodRepository @Inject constructor(
     fun postSnapFood(token: String, file: File): LiveData<Result<SnapFoodResponse>> = liveData {
         emit(Result.Loading)
 
-        val imageMediaType = "image/jpeg".toMediaTypeOrNull()
+        val imageMediaType = "image".toMediaTypeOrNull()
         val imageMultiPart: MultipartBody.Part = MultipartBody.Part.createFormData(
-            "photo",
+            "gambar",
             file.name,
             file.asRequestBody(imageMediaType)
         )
@@ -30,6 +30,7 @@ class FoodRepository @Inject constructor(
             val response = apiService.uploadSnapFood(token, imageMultiPart)
             emit(Result.Success(response))
         } catch (e: Exception) {
+            e.printStackTrace()
             emit(Result.Error(e.message.toString()))
         }
     }

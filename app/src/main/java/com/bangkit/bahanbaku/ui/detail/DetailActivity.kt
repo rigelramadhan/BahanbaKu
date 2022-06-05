@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isVisible
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.adapter.DetailItemAdapter
@@ -30,6 +31,7 @@ class DetailActivity : AppCompatActivity() {
 
     private val viewModel: DetailViewModel by viewModels()
     private var isRecipeBookmarked = false
+    private var loadingState = false
     private var recipe: RecipeEntity? = null
     private var token: String? = null
 
@@ -75,7 +77,8 @@ class DetailActivity : AppCompatActivity() {
 
                         binding.tvRecipe.text = recipe.title
                         binding.tvDescription.text = recipe.description
-                        binding.tvServings.text = "${recipe.servings} servings"
+                        binding.tvServings.text =
+                            getString(R.string.serving).format(recipe.servings)
 
                         binding.rvIngredients.apply {
                             adapter = DetailItemAdapter(recipe.ingredients)
@@ -129,6 +132,18 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_item_recipe, menu)
+        if (isRecipeBookmarked) {
+            menu.findItem(R.id.bookmark).icon = AppCompatResources.getDrawable(
+                this,
+                R.drawable.ic_baseline_bookmark_24
+            )
+        } else {
+            menu.findItem(R.id.bookmark).icon = AppCompatResources.getDrawable(
+                this,
+                R.drawable.ic_baseline_bookmark_border_24
+            )
+        }
+
 
         return super.onCreateOptionsMenu(menu)
     }
@@ -136,61 +151,74 @@ class DetailActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.bookmark -> {
-                if (isRecipeBookmarked) {
-                    if (recipe != null && !token.isNullOrEmpty()) {
-                        viewModel.deleteBookmark(token as String, (recipe as RecipeEntity).id)
-                            .observe(this) { result ->
-                                when (result) {
-                                    is Result.Loading -> {
-                                        binding.progressBar.isVisible = true
-                                    }
-                                    is Result.Error -> {
-                                        binding.progressBar.isVisible = false
-                                        val error = result.error
-                                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
-                                    }
-                                    is Result.Success -> {
-                                        binding.progressBar.isVisible = false
-                                        val successStatus = result.data.success
-                                        if (successStatus) {
-                                            item.icon = AppCompatResources.getDrawable(
-                                                this,
-                                                R.drawable.ic_baseline_bookmark_border_24
-                                            )
-                                        }
-                                    }
-                                }
-                            }
-                    }
+                if (!isRecipeBookmarked) {
+                    addBookmark(item)
                 } else {
-                    if (recipe != null && !token.isNullOrEmpty()) {
-                        viewModel.addBookmark(token as String, (recipe as RecipeEntity).id)
-                            .observe(this) { result ->
-                                when (result) {
-                                    is Result.Loading -> {
-                                        binding.progressBar.isVisible = true
-                                    }
-                                    is Result.Error -> {
-                                        val error = result.error
-                                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
-                                    }
-                                    is Result.Success -> {
-                                        val successStatus = result.data.success
-                                        if (successStatus) {
-                                            item.icon = AppCompatResources.getDrawable(
-                                                this,
-                                                R.drawable.ic_baseline_bookmark_24
-                                            )
-                                        }
-                                    }
-                                }
-                            }
-                    }
+                    deleteBookmark(item)
                 }
+
+                isRecipeBookmarked = !isRecipeBookmarked
             }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteBookmark(item: MenuItem) {
+        if (!loadingState) {
+            loadingState = true
+            viewModel.deleteBookmark(token as String, (recipe as RecipeEntity).id)
+                .observe(this) { result ->
+                    when (result) {
+                        is Result.Loading -> {
+                            binding.progressBar.isVisible = true
+                        }
+                        is Result.Error -> {
+                            binding.progressBar.isVisible = false
+                            val error = result.error
+                            Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+                        }
+                        is Result.Success -> {
+                            binding.progressBar.isVisible = false
+                            val successStatus = result.data.success
+                            loadingState = false
+
+                            item.icon = AppCompatResources.getDrawable(
+                                this,
+                                R.drawable.ic_baseline_bookmark_border_24
+                            )
+                        }
+                    }
+                }
+        }
+    }
+
+    private fun addBookmark(item: MenuItem) {
+        if (!loadingState) {
+            loadingState = true
+            viewModel.addBookmark(token as String, (recipe as RecipeEntity).id)
+                .observe(this) { result ->
+                    when (result) {
+                        is Result.Loading -> {
+                            binding.progressBar.isVisible = true
+                        }
+                        is Result.Error -> {
+                            val error = result.error
+                            Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+                        }
+                        is Result.Success -> {
+                            binding.progressBar.isVisible = false
+                            val successStatus = result.data.success
+                            loadingState = false
+
+                            item.icon = AppCompatResources.getDrawable(
+                                this,
+                                R.drawable.ic_baseline_bookmark_24
+                            )
+                        }
+                    }
+                }
+        }
     }
 
     companion object {
