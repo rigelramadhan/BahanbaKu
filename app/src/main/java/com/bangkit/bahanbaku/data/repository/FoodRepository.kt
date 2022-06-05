@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.bahanbaku.data.remote.response.SnapFoodResponse
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
+import com.bangkit.bahanbaku.data.remote.retrofit.ApiServiceML
 import com.bangkit.bahanbaku.utils.Result
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -12,7 +13,7 @@ import java.io.File
 import javax.inject.Inject
 
 class FoodRepository @Inject constructor(
-    private val apiService: ApiService,
+    private val apiService: ApiServiceML,
 //    private val database: FoodDatabase
 ) {
     fun postSnapFood(token: String, file: File): LiveData<Result<SnapFoodResponse>> = liveData {

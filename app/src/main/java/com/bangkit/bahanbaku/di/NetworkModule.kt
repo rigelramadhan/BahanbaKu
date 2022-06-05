@@ -2,6 +2,7 @@ package com.bangkit.bahanbaku.di
 
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiConfig
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
+import com.bangkit.bahanbaku.data.remote.retrofit.ApiServiceML
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +17,11 @@ object NetworkModule {
     @Singleton
     fun provideApiService(): ApiService {
         return ApiConfig.getApiService()
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiServiceML(): ApiServiceML {
+        return ApiConfig.getApiServiceML()
     }
 }

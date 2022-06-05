@@ -89,11 +89,4 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: String
     ): SupplierByIdResponse
-
-    @Multipart
-    @POST("/upload")
-    suspend fun uploadSnapFood(
-        @Header("Authorization") token: String,
-        @Part file: MultipartBody.Part
-    ): SnapFoodResponse
 }
