@@ -16,5 +16,5 @@ class CameraViewModel @Inject constructor(
 ) : ViewModel() {
     fun postSnapFood(token: String, file: File) = repository.postSnapFood(token, file)
 
-    fun getToken() = profileRepository.getToken().asLiveData()
+    fun getToken() = profileRepository.getToken()
 }

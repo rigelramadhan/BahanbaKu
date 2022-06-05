@@ -1,6 +1,7 @@
 package com.bangkit.bahanbaku.ui.snapfood
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.FragmentSnapFoodBinding
+import com.bangkit.bahanbaku.ui.camera.CameraActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,8 +28,8 @@ class SnapFoodFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_snap_food, container, false)
+    ): View {
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,12 +47,16 @@ class SnapFoodFragment : Fragment() {
 
     private fun setupView(viewModel: SnapFoodViewModel) {
         binding.btnTakePhoto.setOnClickListener {
+            Toast.makeText(requireContext(), "Button Pressed", Toast.LENGTH_SHORT).show()
             if (!allPermissionsGranted()) {
                 ActivityCompat.requestPermissions(
                     requireActivity(),
                     REQUIRED_PERMISSIONS,
                     REQUEST_CODE_PERMISSIONS
                 )
+            } else {
+                val intent = Intent(requireContext(), CameraActivity::class.java)
+                startActivity(intent)
             }
         }
     }
@@ -69,6 +75,7 @@ class SnapFoodFragment : Fragment() {
                     getString(R.string.permission_not_granted),
                     Toast.LENGTH_SHORT
                 ).show()
+                requireActivity().finish()
             }
         }
     }

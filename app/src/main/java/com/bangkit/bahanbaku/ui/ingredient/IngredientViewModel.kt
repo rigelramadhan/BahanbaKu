@@ -30,5 +30,5 @@ class IngredientViewModel @Inject constructor(
         return repository.getIngredient(token, searchStr)
     }
 
-    fun getToken() = profileRepository.getToken().asLiveData()
+    fun getToken() = profileRepository.getToken()
 }

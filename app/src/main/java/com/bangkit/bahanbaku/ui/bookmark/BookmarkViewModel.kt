@@ -14,7 +14,7 @@ class BookmarkViewModel @Inject constructor(
 ) : ViewModel() {
     fun getBookmarks(token: String) = repository.getBookmarks(token)
 
-    fun getToken() = profileRepository.getToken().asLiveData()
+    fun getToken() = profileRepository.getToken()
 
     fun deleteBookmarks(token: String, id: Int) = repository.deleteBookmarkByPosition(token, id)
 }

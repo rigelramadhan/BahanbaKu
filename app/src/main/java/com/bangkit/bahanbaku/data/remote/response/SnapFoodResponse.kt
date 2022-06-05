@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName
 data class SnapFoodResponse(
 
 	@field:SerializedName("results")
-	val results: List<ResultsItem>
+	val results: List<SnapFoodItem>
 )
 
-data class ResultsItem(
+data class SnapFoodItem(
 
 	@field:SerializedName("image_link")
 	val imageLink: String,

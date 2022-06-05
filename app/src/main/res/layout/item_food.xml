@@ -41,16 +41,17 @@
             android:layout_marginStart="8dp"
             style="@style/Text.Title.Small"
             android:text="@string/placeholder_food_name"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@+id/card_img"
             app:layout_constraintTop_toTopOf="@+id/card_img" />
 
         <TextView
-            android:id="@+id/tv_recipe_description"
+            android:id="@+id/tv_probability"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="@string/placeholder_description_food"
+            android:text="@string/probability"
             style="@style/Text.Body.Medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_recipe"

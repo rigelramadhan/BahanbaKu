@@ -9,69 +9,66 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_camera"
-        android:layout_width="350sp"
-        android:layout_height="300sp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:cardCornerRadius="20sp"
         app:strokeWidth="1dp"
         app:strokeColor="#E0E0E0"
-        app:layout_constraintVertical_bias="0.3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/img_camera"
-                android:layout_width="78dp"
-                android:layout_height="75dp"
-                android:layout_marginTop="20sp"
-                android:src="@drawable/ic_baseline_photo_camera_24"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_title_camera"
-                style="@style/Text.Headline.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20sp"
-                android:layout_marginStart="20sp"
-                android:layout_marginEnd="20sp"
-                android:text="@string/turn_snap_into_reality"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_camera" />
-
-            <TextView
-                android:id="@+id/tv_body_camera"
-                style="@style/Text.Body.Medium"
-                android:layout_width="280dp"
-                android:layout_height="58dp"
-                android:layout_marginStart="30sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="30sp"
-                android:text="@string/text_body_camera"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.6"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title_camera" />
-
-            <Button
-                android:id="@+id/btn_Take_Photo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Take_foto"
-                android:layout_marginTop="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_body_camera" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginStart="-16dp"
+        android:layout_marginEnd="-16dp"
+        android:layout_marginTop="-32dp"
+        android:layout_marginBottom="-32dp"
+        app:layout_constraintEnd_toEndOf="@id/tv_title_camera"
+        app:layout_constraintBottom_toBottomOf="@id/btn_take_photo"
+        app:layout_constraintStart_toStartOf="@id/tv_title_camera"
+        app:layout_constraintTop_toTopOf="@id/img_camera">
     </com.google.android.material.card.MaterialCardView>
 
+
+    <ImageView
+        android:id="@+id/img_camera"
+        android:layout_width="78dp"
+        android:layout_height="75dp"
+        android:src="@drawable/ic_baseline_photo_camera_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_title_camera"
+        style="@style/Text.Headline.Small"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:layout_marginHorizontal="32dp"
+        android:textAlignment="center"
+        android:text="@string/turn_snap_into_reality"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_camera" />
+
+    <TextView
+        android:id="@+id/tv_body_camera"
+        style="@style/Text.Body.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:text="@string/text_body_camera"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_camera"
+        app:layout_constraintEnd_toEndOf="@id/tv_title_camera"
+        app:layout_constraintStart_toStartOf="@id/tv_title_camera"
+        />
+
+    <Button
+        android:id="@+id/btn_take_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="@string/Take_foto"
+        app:layout_constraintEnd_toEndOf="@id/tv_body_camera"
+        app:layout_constraintStart_toStartOf="@id/tv_body_camera"
+        app:layout_constraintTop_toBottomOf="@+id/tv_body_camera" />
 </androidx.constraintlayout.widget.ConstraintLayout>

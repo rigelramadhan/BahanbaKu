@@ -18,6 +18,6 @@ class SnapFoodViewModel @Inject constructor(
     ) : ViewModel() {
 
     fun getToken(): LiveData<String> {
-        return profileRepository.getToken().asLiveData()
+        return profileRepository.getToken()
     }
 }

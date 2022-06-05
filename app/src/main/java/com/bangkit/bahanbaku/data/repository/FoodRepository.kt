@@ -2,6 +2,7 @@ package com.bangkit.bahanbaku.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.bangkit.bahanbaku.data.remote.response.SnapFoodResponse
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
 import com.bangkit.bahanbaku.utils.Result
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -14,7 +15,7 @@ class FoodRepository @Inject constructor(
     private val apiService: ApiService,
 //    private val database: FoodDatabase
 ) {
-    fun postSnapFood(token: String, file: File): LiveData<Result<List<String>>> = liveData {
+    fun postSnapFood(token: String, file: File): LiveData<Result<SnapFoodResponse>> = liveData {
         emit(Result.Loading)
 
         val imageMediaType = "image/jpeg".toMediaTypeOrNull()
@@ -25,8 +26,8 @@ class FoodRepository @Inject constructor(
         )
 
         try {
-
-//            emit(Result.Success())
+            val response = apiService.uploadSnapFood(token, imageMultiPart)
+            emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }

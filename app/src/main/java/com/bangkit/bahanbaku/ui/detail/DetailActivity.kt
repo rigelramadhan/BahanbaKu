@@ -170,13 +170,21 @@ class DetailActivity : AppCompatActivity() {
                                     is Result.Loading -> {
                                         binding.progressBar.isVisible = true
                                     }
-//                                    TODO: CONTINUE RESULTS HANDLING
+                                    is Result.Error -> {
+                                        val error = result.error
+                                        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+                                    }
+                                    is Result.Success -> {
+                                        val successStatus = result.data.success
+                                        if (successStatus) {
+                                            item.icon = AppCompatResources.getDrawable(
+                                                this,
+                                                R.drawable.ic_baseline_bookmark_24
+                                            )
+                                        }
+                                    }
                                 }
                             }
-                        item.icon = AppCompatResources.getDrawable(
-                            this,
-                            R.drawable.ic_baseline_bookmark_24
-                        )
                     }
                 }
             }

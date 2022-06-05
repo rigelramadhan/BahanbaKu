@@ -76,4 +76,5 @@
     <string name="search_hint">Looking For Who?</string>
     <string name="shipping_cost">Shipping Cost</string>
     <string name="total_price">Total Price</string>
+    <string name="probability">Probability: $d%</string>
 </resources>

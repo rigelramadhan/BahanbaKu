@@ -28,7 +28,7 @@ class ProfileRepository @Inject constructor(
         }
     }
 
-    fun getToken() = userPreferences.getToken()
+    fun getToken() = userPreferences.getToken().asLiveData()
 
     fun getProfile(token: String): LiveData<Result<ProfileResponse>> = liveData {
         emit(Result.Loading)

@@ -21,5 +21,5 @@ class DetailViewModel @Inject constructor(
 
     fun deleteBookmark(token: String, id: String) = profileRepository.deleteBookmark(token, id)
 
-    fun getToken() = profileRepository.getToken().asLiveData()
+    fun getToken() = profileRepository.getToken()
 }

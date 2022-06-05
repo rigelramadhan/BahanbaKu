@@ -14,5 +14,5 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(private val profileRepository: ProfileRepository) :
     ViewModel() {
-    fun getToken() = profileRepository.getToken().asLiveData()
+    fun getToken() = profileRepository.getToken()
 }

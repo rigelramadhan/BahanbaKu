@@ -18,7 +18,6 @@ import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.ActivityCameraBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.ui.snapfood.result.SnapFoodResultActivity
-import com.bangkit.bahanbaku.utils.Result
 import com.bangkit.bahanbaku.utils.createFile
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -49,6 +48,7 @@ class CameraActivity : AppCompatActivity() {
 
     private fun setupView() {
         binding.btnTakeSnap.setOnClickListener {
+            Toast.makeText(this, "Button pressed", Toast.LENGTH_SHORT).show()
             takePhoto()
         }
     }
@@ -115,13 +115,7 @@ class CameraActivity : AppCompatActivity() {
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                    viewModel.getToken().observe(this@CameraActivity) {
-                        if (it.length < 5) {
-                            backToLoginPage()
-                        } else {
-                            postSnapFood(it, photoFile)
-                        }
-                    }
+                    proceedPicture(photoFile)
                 }
 
                 override fun onError(exception: ImageCaptureException) {
@@ -131,31 +125,14 @@ class CameraActivity : AppCompatActivity() {
         )
     }
 
-    private fun backToLoginPage() {
-        val intent = Intent(this@CameraActivity, LoginActivity::class.java)
-        intent.flags =
-            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+    private fun proceedPicture(photoFile: File) {
+        val intent = Intent(this, SnapFoodResultActivity::class.java)
+        intent.putExtra(SnapFoodResultActivity.EXTRA_PICTURE, photoFile)
+        intent.putExtra(
+            SnapFoodResultActivity.EXTRA_IS_BACK_CAMERA,
+            cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
+        )
         startActivity(intent)
         finish()
-    }
-
-    private fun postSnapFood(token: String, photoFile: File) {
-        viewModel.postSnapFood(token, photoFile)
-            .observe(this@CameraActivity) { result ->
-                when (result) {
-                    is Result.Error -> {}
-                    is Result.Loading -> {}
-                    is Result.Success -> {
-                        val intent = Intent()
-                        intent.putExtra(SnapFoodResultActivity.EXTRA_PICTURE, photoFile)
-                        intent.putExtra(
-                            SnapFoodResultActivity.EXTRA_IS_BACK_CAMERA,
-                            cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
-                        )
-                        startActivity(intent)
-                        finish()
-                    }
-                }
-            }
     }
 }

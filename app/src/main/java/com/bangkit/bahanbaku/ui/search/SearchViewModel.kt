@@ -20,6 +20,6 @@ class SearchViewModel @Inject constructor(
     fun searchRecipe(token: String, search: String) = recipeRepository.searchRecipe(token, search)
 
     fun getToken(): LiveData<String> {
-        return profileRepository.getToken().asLiveData()
+        return profileRepository.getToken()
     }
 }

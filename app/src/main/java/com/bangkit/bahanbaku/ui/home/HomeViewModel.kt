@@ -20,7 +20,7 @@ class HomeViewModel @Inject constructor(
 
     fun getFeaturedRecipe(token: String) = recipeRepository.getFeaturedRecipe(token)
 
-    fun getToken() = profileRepository.getToken().asLiveData()
+    fun getToken() = profileRepository.getToken()
 
     fun getProfile(token: String) = profileRepository.getProfile(token)
 }

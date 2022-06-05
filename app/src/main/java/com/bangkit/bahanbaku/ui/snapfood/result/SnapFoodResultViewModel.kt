@@ -1,17 +1,18 @@
-package com.bangkit.bahanbaku.ui.profile
+package com.bangkit.bahanbaku.ui.snapfood.result
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
+import com.bangkit.bahanbaku.data.repository.FoodRepository
 import com.bangkit.bahanbaku.data.repository.ProfileRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(
+class SnapFoodResultViewModel @Inject constructor(
+    private val foodRepository: FoodRepository,
     private val profileRepository: ProfileRepository
 ) : ViewModel() {
-    fun getProfile(token: String) = profileRepository.getProfile(token)
-
     fun getToken() = profileRepository.getToken()
+
+    fun snapFood(token: String, file: File) = foodRepository.postSnapFood(token, file)
 }
