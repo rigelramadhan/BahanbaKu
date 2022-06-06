@@ -61,6 +61,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -126,27 +127,25 @@
             style="@style/Text.Title.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/password"
-            android:layout_marginTop="20sp"
             android:layout_marginStart="16sp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_email_profile_1"
+            android:layout_marginTop="20sp"
+            android:text="@string/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/tv_email_profile_1" />
 
         <TextView
             android:id="@+id/tv_password_profile_1"
             style="@style/Text.Body.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/notification_password"
             android:layout_marginStart="16sp"
+            android:text="@string/notification_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title_password_profile"
-            />
+            app:layout_constraintTop_toBottomOf="@id/tv_title_password_profile" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -159,5 +158,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_logout"
+        style="@style/Text.Title.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120sp"
+        android:layout_marginEnd="120sp"
+        android:layout_marginTop="64dp"
+        android:text="@string/logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

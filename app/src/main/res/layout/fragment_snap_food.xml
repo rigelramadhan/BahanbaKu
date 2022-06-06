@@ -9,21 +9,21 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_camera"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:cardCornerRadius="20sp"
-        app:strokeWidth="1dp"
-        app:strokeColor="#E0E0E0"
+        android:layout_width="382dp"
+        android:layout_height="390dp"
         android:layout_marginStart="-16dp"
-        android:layout_marginEnd="-16dp"
         android:layout_marginTop="-32dp"
+        android:layout_marginEnd="-16dp"
         android:layout_marginBottom="-32dp"
-        app:layout_constraintEnd_toEndOf="@id/tv_title_camera"
+        app:cardCornerRadius="20sp"
         app:layout_constraintBottom_toBottomOf="@id/btn_take_photo"
+        app:layout_constraintEnd_toEndOf="@id/tv_title_camera"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tv_title_camera"
-        app:layout_constraintTop_toTopOf="@id/img_camera">
-    </com.google.android.material.card.MaterialCardView>
-
+        app:layout_constraintTop_toTopOf="@id/img_camera"
+        app:layout_constraintVertical_bias="0.0"
+        app:strokeColor="#E0E0E0"
+        app:strokeWidth="1dp"></com.google.android.material.card.MaterialCardView>
 
     <ImageView
         android:id="@+id/img_camera"
@@ -64,6 +64,7 @@
 
     <Button
         android:id="@+id/btn_take_photo"
+        style="@style/Text.Title.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
@@ -71,4 +72,26 @@
         app:layout_constraintEnd_toEndOf="@id/tv_body_camera"
         app:layout_constraintStart_toStartOf="@id/tv_body_camera"
         app:layout_constraintTop_toBottomOf="@+id/tv_body_camera" />
+
+    <TextView
+        style="@style/Text.Title.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/or"
+
+        app:layout_constraintBottom_toTopOf="@+id/btn_gallery"
+        app:layout_constraintEnd_toEndOf="@+id/btn_take_photo"
+        app:layout_constraintStart_toStartOf="@+id/btn_take_photo"
+        app:layout_constraintTop_toBottomOf="@+id/btn_take_photo" />
+
+    <Button
+        android:id="@+id/btn_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gallery"
+        style="@style/Text.Title.Medium"
+        android:layout_marginTop="50sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_take_photo"
+        app:layout_constraintStart_toStartOf="@+id/btn_take_photo"
+        app:layout_constraintTop_toBottomOf="@+id/btn_take_photo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

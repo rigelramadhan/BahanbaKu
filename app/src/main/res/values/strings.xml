@@ -86,4 +86,7 @@
     <string name="title_activity_update_location">UpdateLocationActivity</string>
     <string name="nearby_rating">%f - Rated by %d users</string>
     <string name="update_location">Update Location</string>
+    <string name="logout">Log out</string>
+    <string name="gallery">Gallery</string>
+    <string name="or">Or</string>
 </resources>
