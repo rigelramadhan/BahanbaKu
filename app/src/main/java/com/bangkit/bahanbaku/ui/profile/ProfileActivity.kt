@@ -58,8 +58,12 @@ class ProfileActivity : AppCompatActivity() {
                     val data = result.data
                     val profile = data.results
 
+
                     binding.tvEmailProfile.text = profile.email
                     binding.tvNameProfile.text = profile.username
+                    binding.tvNameProfile1.text = profile.username
+                    binding.tvEmailProfile1.text = profile.email
+
 
                     Glide.with(this)
                         .load(profile.picture)

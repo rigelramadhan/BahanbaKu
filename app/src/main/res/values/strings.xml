@@ -85,4 +85,7 @@
     <string name="food_map">Food Map</string>
     <string name="title_activity_update_location">UpdateLocationActivity</string>
     <string name="nearby_rating">%f - Rated by %d users</string>
+    <string name="logout">Log out</string>
+    <string name="gallery">Gallery</string>
+    <string name="or">Or</string>
 </resources>
