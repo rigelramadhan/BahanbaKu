@@ -1,149 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA"
     android:paddingBottom="16dp">
 
-    <ImageView
-        android:id="@+id/img_background_oval"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginEnd="-48dp"
-        android:layout_marginTop="-48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dr_oval_background" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/img_background_oval2"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="-48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/dr_oval_background" />
+        <ImageView
+            android:id="@+id/img_background_oval"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="-48dp"
+            android:layout_marginEnd="-48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/dr_oval_background" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_search"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/dr_edittext_primary"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="24dp"
-        app:queryHint="@string/search_for_recipes"
-        android:queryHint="Search a recipe"
-        app:layout_constraintEnd_toStartOf="@+id/img_profile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <ImageView
+            android:id="@+id/img_background_oval2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="-48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/dr_oval_background" />
 
-    <ImageView
-        android:id="@+id/img_search_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_search_24"
-        app:layout_constraintTop_toTopOf="@id/card_search"
-        app:layout_constraintBottom_toBottomOf="@id/card_search"
-        app:layout_constraintStart_toStartOf="@id/card_search"
-        android:elevation="2dp"
-        android:layout_marginStart="16dp"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_search"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/dr_edittext_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:queryHint="Search a recipe"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintEnd_toStartOf="@+id/img_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryHint="@string/search_for_recipes" />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/img_search_icon"
-        app:layout_constraintBottom_toBottomOf="@id/img_search_icon"
-        app:layout_constraintStart_toEndOf="@id/img_search_icon"
-        android:layout_marginStart="8dp"
-        android:elevation="2dp"
-        style="@style/Text.Body.Medium"
-        android:text="@string/search_for_recipes"/>
+        <ImageView
+            android:id="@+id/img_search_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:elevation="2dp"
+            android:src="@drawable/ic_baseline_search_24"
+            app:layout_constraintBottom_toBottomOf="@id/card_search"
+            app:layout_constraintStart_toStartOf="@id/card_search"
+            app:layout_constraintTop_toTopOf="@id/card_search" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_profile"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:elevation="2dp"
-        android:src="@color/primary"
-        app:layout_constraintBottom_toBottomOf="@id/card_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/card_search" />
+        <TextView
+            style="@style/Text.Body.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:elevation="2dp"
+            android:text="@string/search_for_recipes"
+            app:layout_constraintBottom_toBottomOf="@id/img_search_icon"
+            app:layout_constraintStart_toEndOf="@id/img_search_icon"
+            app:layout_constraintTop_toTopOf="@id/img_search_icon" />
 
-    <TextView
-        android:id="@+id/tv_featured"
-        style="@style/Text.Title.Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/featured_this_week"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_search" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_profile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:elevation="2dp"
+            android:src="@color/primary"
+            app:layout_constraintBottom_toBottomOf="@id/card_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/card_search" />
 
-    <!--    -->
-    <include
-        android:id="@+id/card_featured"
-        layout="@layout/item_featured_recipe"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_featured"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="16dp"
-        />
-    <!--    -->
+        <TextView
+            android:id="@+id/tv_featured"
+            style="@style/Text.Title.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/featured_this_week"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_search" />
 
-    <TextView
-        android:id="@+id/tv_discover"
-        style="@style/Text.Title.Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="19dp"
-        android:text="@string/discover_new_recipes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_featured" />
+        <!--    -->
+        <include
+            android:id="@+id/card_featured"
+            layout="@layout/item_featured_recipe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_featured" />
+        <!--    -->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_discover_recipes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_discover"
-        tools:listitem="@layout/item_recipe_home" />
+        <TextView
+            android:id="@+id/tv_discover"
+            style="@style/Text.Title.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="19dp"
+            android:text="@string/discover_new_recipes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_featured" />
 
-    <TextView
-        android:id="@+id/tv_categories"
-        style="@style/Text.Title.Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="19dp"
-        android:text="@string/categories"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_discover_recipes" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_discover_recipes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_discover"
+            tools:listitem="@layout/item_recipe_home" />
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/ProgressBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_get_location"
+            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/primary"
+            android:text="@string/update_location"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_baseline_location_on_24"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_discover_recipes" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

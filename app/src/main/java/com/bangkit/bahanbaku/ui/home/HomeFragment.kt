@@ -19,6 +19,7 @@ import com.bangkit.bahanbaku.ui.bookmark.BookmarkViewModel
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.ui.profile.ProfileActivity
 import com.bangkit.bahanbaku.ui.search.SearchActivity
+import com.bangkit.bahanbaku.ui.updatelocation.UpdateLocationActivity
 import com.bangkit.bahanbaku.utils.Result
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -70,6 +71,11 @@ class HomeFragment : Fragment() {
 
         binding.cardSearch.setOnClickListener {
             val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnGetLocation.setOnClickListener {
+            val intent = Intent(requireContext(), UpdateLocationActivity::class.java)
             startActivity(intent)
         }
     }

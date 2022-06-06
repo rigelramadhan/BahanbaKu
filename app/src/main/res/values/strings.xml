@@ -77,7 +77,7 @@
     <string name="shipping_cost">Shipping Cost</string>
     <string name="total_price">Total Price</string>
 
-    <string name="probability">Probability: %d%</string>
+    <string name="probability">Accuracy: %d\%%</string>
     <string name="serving">%d servings</string>
     <string name="search">Search</string>
     <string name="location">Location</string>
@@ -85,4 +85,5 @@
     <string name="food_map">Food Map</string>
     <string name="title_activity_update_location">UpdateLocationActivity</string>
     <string name="nearby_rating">%f - Rated by %d users</string>
+    <string name="update_location">Update Location</string>
 </resources>

@@ -8,6 +8,7 @@
     app:strokeColor="#E0E0E0"
     android:foreground="?android:attr/selectableItemBackground"
     xmlns:tools="http://schemas.android.com/tools"
+    android:backgroundTint="@color/pure_white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"

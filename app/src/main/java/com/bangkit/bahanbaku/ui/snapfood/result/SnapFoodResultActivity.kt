@@ -91,7 +91,7 @@ class SnapFoodResultActivity : AppCompatActivity() {
                     Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
                 }
                 is Result.Success -> {
-                    binding.progressBar.isVisible = true
+                    binding.progressBar.isVisible = false
                     val data = result.data.results
                     binding.rvFoods.apply {
                         adapter = SnapFoodResultAdapter(data)

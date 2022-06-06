@@ -34,9 +34,12 @@ class SnapFoodResultAdapter(private val list: List<SnapFoodItem>) :
     class ViewHolder(val binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(itemFood: SnapFoodItem) {
             binding.tvRecipe.text = itemFood.food
-            binding.tvProbability.text = String.format(
-                itemView.context.getString(R.string.probability),
-                itemFood.probability
+
+            val probability = itemFood.probability.toDouble() * 100
+            val probabilityInt = probability.toInt()
+
+            binding.tvProbability.text = itemView.context.getString(R.string.probability).format(
+                probabilityInt
             )
 
             Glide.with(itemView)
