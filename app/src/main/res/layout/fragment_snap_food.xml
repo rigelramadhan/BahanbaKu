@@ -9,8 +9,8 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_camera"
-        android:layout_width="382dp"
-        android:layout_height="390dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="-16dp"
         android:layout_marginTop="-32dp"
         android:layout_marginEnd="-16dp"
@@ -23,28 +23,28 @@
         app:layout_constraintTop_toTopOf="@id/img_camera"
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="#E0E0E0"
-        app:strokeWidth="1dp"></com.google.android.material.card.MaterialCardView>
+        app:strokeWidth="1dp" />
 
     <ImageView
         android:id="@+id/img_camera"
         android:layout_width="78dp"
         android:layout_height="75dp"
         android:src="@drawable/ic_baseline_photo_camera_24"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
         android:id="@+id/tv_title_camera"
         style="@style/Text.Headline.Small"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
         android:layout_marginHorizontal="32dp"
-        android:textAlignment="center"
+        android:layout_marginTop="20sp"
         android:text="@string/turn_snap_into_reality"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_camera" />
@@ -55,43 +55,39 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textAlignment="center"
         android:text="@string/text_body_camera"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_camera"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@id/tv_title_camera"
         app:layout_constraintStart_toStartOf="@id/tv_title_camera"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tv_title_camera" />
 
     <Button
         android:id="@+id/btn_take_photo"
-        style="@style/Text.Title.Medium"
+        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
+        android:backgroundTint="@color/primary"
         android:text="@string/Take_foto"
+        android:textColor="@color/black"
+        app:icon="@drawable/ic_baseline_photo_camera_24"
+        app:iconTint="@color/black"
         app:layout_constraintEnd_toEndOf="@id/tv_body_camera"
-        app:layout_constraintStart_toStartOf="@id/tv_body_camera"
+        app:layout_constraintStart_toEndOf="@id/btn_gallery"
         app:layout_constraintTop_toBottomOf="@+id/tv_body_camera" />
-
-    <TextView
-        style="@style/Text.Title.Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/or"
-
-        app:layout_constraintBottom_toTopOf="@+id/btn_gallery"
-        app:layout_constraintEnd_toEndOf="@+id/btn_take_photo"
-        app:layout_constraintStart_toStartOf="@+id/btn_take_photo"
-        app:layout_constraintTop_toBottomOf="@+id/btn_take_photo" />
 
     <Button
         android:id="@+id/btn_gallery"
+        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary"
         android:text="@string/gallery"
-        style="@style/Text.Title.Medium"
-        android:layout_marginTop="50sp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_take_photo"
-        app:layout_constraintStart_toStartOf="@+id/btn_take_photo"
-        app:layout_constraintTop_toBottomOf="@+id/btn_take_photo" />
+        android:textColor="@color/black"
+        app:icon="@drawable/ic_baseline_photo_library_24"
+        app:iconTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/btn_take_photo"
+        app:layout_constraintEnd_toStartOf="@id/btn_take_photo"
+        app:layout_constraintStart_toStartOf="@id/tv_body_camera"
+        app:layout_constraintTop_toTopOf="@id/btn_take_photo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
