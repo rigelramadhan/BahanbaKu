@@ -1,13 +1,18 @@
 package com.bangkit.bahanbaku.ui.snapfood
 
 import android.Manifest
+import android.app.Activity
+import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -17,7 +22,12 @@ import androidx.navigation.fragment.findNavController
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.FragmentSnapFoodBinding
 import com.bangkit.bahanbaku.ui.camera.CameraActivity
+import com.bangkit.bahanbaku.ui.snapfood.result.SnapFoodResultActivity
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import java.io.OutputStream
 
 @AndroidEntryPoint
 class SnapFoodFragment : Fragment() {
@@ -54,6 +64,46 @@ class SnapFoodFragment : Fragment() {
                 startActivity(intent)
             }
         }
+
+        binding.btnGallery.setOnClickListener {
+            startGallery()
+        }
+    }
+
+    private fun startGallery() {
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, getString(R.string.import_picture))
+        launcherIntentGallery.launch(chooser)
+    }
+
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            val selectedImage: Uri = it.data?.data as Uri
+            val myFile = fromUriToFile(selectedImage, requireContext())
+            val intent = Intent(requireContext(), SnapFoodResultActivity::class.java)
+            intent.putExtra(SnapFoodResultActivity.EXTRA_PICTURE, myFile)
+            startActivity(intent)
+        }
+    }
+
+    private fun fromUriToFile(selectedImage: Uri, context: Context): File {
+        val contentResolver: ContentResolver = context.contentResolver
+        val myFile = com.bangkit.bahanbaku.utils.createTempFile(context)
+
+        val inputStream = contentResolver.openInputStream(selectedImage) as InputStream
+        val outputStream: OutputStream = FileOutputStream(myFile)
+        val buf = ByteArray(1024)
+        var len: Int
+
+        while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
+        outputStream.close()
+        inputStream.close()
+
+        return myFile
     }
 
     @Deprecated("Deprecated in Java")

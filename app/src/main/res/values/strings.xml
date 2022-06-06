@@ -89,4 +89,5 @@
     <string name="logout">Log out</string>
     <string name="gallery">Gallery</string>
     <string name="or">Or</string>
+    <string name="import_picture">Import a picture</string>
 </resources>
