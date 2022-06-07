@@ -3,7 +3,7 @@
 
     <PreferenceCategory android:title="Profile">
 
-        <EditTextPreference
+        <Preference
             android:icon="@drawable/ic_baseline_manage_account"
             android:key="key_edit_profile"
             android:selectAllOnFocus="true"
