@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Profile">
+
+        <EditTextPreference
+            android:icon="@drawable/ic_baseline_manage_account"
+            android:key="key_edit_profile"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/edit_profile_information" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Appearance">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:icon="@drawable/ic_baseline_day_night"
+            android:key="key_dark_mode"
+            android:title="@string/dark_mode" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

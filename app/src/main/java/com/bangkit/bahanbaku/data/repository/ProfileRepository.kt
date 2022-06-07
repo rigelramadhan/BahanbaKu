@@ -12,6 +12,10 @@ import com.bangkit.bahanbaku.utils.Result
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.coroutines.CoroutineContext
@@ -60,6 +64,40 @@ class ProfileRepository @Inject constructor(
             val response = apiService.register(username, email, password)
             emit(Result.Success(response))
         } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun updateUser(
+        token: String,
+        username: String,
+        email: String,
+        password: String
+    ): LiveData<Result<UpdateProfileResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.updateProfile(token, username, email, password, "")
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun uploadPicture(
+        token: String,
+        file: File
+    ): LiveData<Result<UploadPictureResponse>> = liveData {
+        emit(Result.Loading)
+
+        val mediaType = "image".toMediaTypeOrNull()
+        val multipartBody =
+            MultipartBody.Part.createFormData("image", file.name, file.asRequestBody(mediaType))
+
+        try {
+            val response = apiService.uploadPicture(token, multipartBody)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            e.printStackTrace()
             emit(Result.Error(e.message.toString()))
         }
     }

@@ -26,6 +26,11 @@
             android:value="YOUR_API_KEY" />
 
         <activity
+            android:name=".ui.profile.edit.EditProfileActivity"
+            android:label="@string/edit_profile"
+            android:exported="false" />
+
+        <activity
             android:name=".ui.updatelocation.UpdateLocationActivity"
             android:exported="false"
             android:label="@string/title_activity_update_location" />

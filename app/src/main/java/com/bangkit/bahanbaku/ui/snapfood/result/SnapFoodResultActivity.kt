@@ -56,8 +56,6 @@ class SnapFoodResultActivity : AppCompatActivity() {
         appExecutor.diskIO.execute {
             file = reduceFileImage(file as File)
             compressingDone.postValue(true)
-
-//            binding.progressBar.isVisible = false
         }
 
         compressingDone.observe(this) { done ->

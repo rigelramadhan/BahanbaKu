@@ -31,6 +31,8 @@ class HomeFragment : Fragment() {
         FragmentHomeBinding.inflate(layoutInflater)
     }
 
+    private val viewModel: HomeViewModel by viewModels()
+
     private var token: String? = null
 
     override fun onCreateView(
@@ -42,9 +44,13 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel: HomeViewModel by viewModels()
 
         Log.d("MAINACTV", "activity called")
+        getToken(viewModel)
+    }
+
+    override fun onResume() {
+        super.onResume()
         getToken(viewModel)
     }
 
@@ -71,11 +77,6 @@ class HomeFragment : Fragment() {
 
         binding.cardSearch.setOnClickListener {
             val intent = Intent(requireContext(), SearchActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.btnGetLocation.setOnClickListener {
-            val intent = Intent(requireContext(), UpdateLocationActivity::class.java)
             startActivity(intent)
         }
     }

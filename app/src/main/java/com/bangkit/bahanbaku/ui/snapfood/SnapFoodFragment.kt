@@ -23,6 +23,7 @@ import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.FragmentSnapFoodBinding
 import com.bangkit.bahanbaku.ui.camera.CameraActivity
 import com.bangkit.bahanbaku.ui.snapfood.result.SnapFoodResultActivity
+import com.bangkit.bahanbaku.utils.fromUriToFile
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.io.FileOutputStream
@@ -88,22 +89,6 @@ class SnapFoodFragment : Fragment() {
             intent.putExtra(SnapFoodResultActivity.EXTRA_PICTURE, myFile)
             startActivity(intent)
         }
-    }
-
-    private fun fromUriToFile(selectedImage: Uri, context: Context): File {
-        val contentResolver: ContentResolver = context.contentResolver
-        val myFile = com.bangkit.bahanbaku.utils.createTempFile(context)
-
-        val inputStream = contentResolver.openInputStream(selectedImage) as InputStream
-        val outputStream: OutputStream = FileOutputStream(myFile)
-        val buf = ByteArray(1024)
-        var len: Int
-
-        while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
-        outputStream.close()
-        inputStream.close()
-
-        return myFile
     }
 
     @Deprecated("Deprecated in Java")

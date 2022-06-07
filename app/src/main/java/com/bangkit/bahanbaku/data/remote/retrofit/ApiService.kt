@@ -41,6 +41,7 @@ interface ApiService {
         @Field("location") location: List<Double>
     ): UpdateLocationResponse
 
+    @Multipart
     @POST("user/upload-picture")
     suspend fun uploadPicture(
         @Header("Authorization") token: String,

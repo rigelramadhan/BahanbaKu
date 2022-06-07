@@ -57,6 +57,9 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
     implementation 'com.google.code.gson:gson:2.8.9'
 
+//    PREFERENCE
+    implementation 'androidx.preference:preference-ktx:1.2.0'
+
 //    NETWORKING
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
