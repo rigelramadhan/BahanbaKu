@@ -71,7 +71,7 @@ class UpdateLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun setupView(token: String) {
         binding.btnUpdateLocation.setOnClickListener {
             if (location != null) {
-                viewModel.updateLocation(token, location!!.longitude, location!!.latitude)
+                viewModel.updateLocation(token, location!!.latitude, location!!.longitude)
                     .observe(this) { result ->
                         when (result) {
                             is Result.Loading -> {

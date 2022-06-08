@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/img_container1"
-        android:src="@drawable/illustration_laptop_veggies"/>
+        android:src="@drawable/ic_illustratoin_auth"/>
 
     <ImageView
         android:id="@+id/img_container1"

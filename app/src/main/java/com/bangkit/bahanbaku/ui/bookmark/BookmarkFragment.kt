@@ -91,10 +91,14 @@ class BookmarkFragment : Fragment() {
                             val error = result.error
                             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
                             binding.progressBar.isVisible = false
+                            binding.imgNoBookmark.isVisible = true
                         }
                         is Result.Success -> {
                             binding.progressBar.isVisible = false
                             val data = result.data
+
+                            binding.imgNoBookmark.isVisible = data.isEmpty()
+
                             adapter = BookmarkAdapter(data)
                             binding.rvBookmark.apply {
                                 adapter = this@BookmarkFragment.adapter

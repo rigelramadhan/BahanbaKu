@@ -27,12 +27,13 @@
 
     <ImageView
         android:id="@+id/img_camera"
-        android:layout_width="78dp"
-        android:layout_height="75dp"
-        android:src="@drawable/ic_baseline_photo_camera_24"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="64dp"
+        android:src="@drawable/ic_illustration_snapfood"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 

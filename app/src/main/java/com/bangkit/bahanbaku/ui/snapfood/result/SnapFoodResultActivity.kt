@@ -91,6 +91,9 @@ class SnapFoodResultActivity : AppCompatActivity() {
                 is Result.Success -> {
                     binding.progressBar.isVisible = false
                     val data = result.data.results
+
+                    binding.imgSnapfoodLoading.isVisible = data.isEmpty()
+
                     binding.rvFoods.apply {
                         adapter = SnapFoodResultAdapter(data)
                         layoutManager = LinearLayoutManager(this@SnapFoodResultActivity)

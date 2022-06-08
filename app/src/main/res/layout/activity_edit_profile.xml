@@ -8,10 +8,13 @@
 
     <ImageView
         android:id="@+id/img_login_illustration"
-        android:layout_width="0dp"
-        android:layout_height="142dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="48dp"
-        android:src="@drawable/illustration_laptop_veggies"
+        android:layout_marginHorizontal="32dp"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_illustratoin_auth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

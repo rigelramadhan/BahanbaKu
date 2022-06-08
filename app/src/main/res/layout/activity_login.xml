@@ -23,7 +23,7 @@
         android:layout_height="142dp"
         android:layout_marginTop="48dp"
         android:elevation="4dp"
-        android:src="@drawable/illustration_laptop_veggies"
+        android:src="@drawable/ic_illustration_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
