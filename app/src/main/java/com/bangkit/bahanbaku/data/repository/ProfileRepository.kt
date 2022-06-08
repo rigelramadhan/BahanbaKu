@@ -3,8 +3,6 @@ package com.bangkit.bahanbaku.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
-import com.bangkit.bahanbaku.data.local.datastore.AuthSharedPreferences
-import com.bangkit.bahanbaku.data.local.datastore.DataStoreManager
 import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
 import com.bangkit.bahanbaku.data.remote.response.*
 import com.bangkit.bahanbaku.data.remote.retrofit.ApiService
@@ -15,6 +13,8 @@ import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -115,8 +115,17 @@ class ProfileRepository @Inject constructor(
     ): LiveData<Result<UpdateLocationResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val location = Location(lon, lat)
-            val response = apiService.updateLocation(token, location)
+            val location = JSONObject()
+            location.put("lat", lat)
+            location.put("lng", lon)
+
+            val bodyObject = JSONObject()
+            bodyObject.put("location", location)
+
+            val requestBody = bodyObject.toString()
+                .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
+
+            val response = apiService.updateLocation(token, requestBody)
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))

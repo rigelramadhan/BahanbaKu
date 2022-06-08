@@ -2,6 +2,7 @@ package com.bangkit.bahanbaku.data.remote.retrofit
 
 import com.bangkit.bahanbaku.data.remote.response.*
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface ApiService {
@@ -38,7 +39,7 @@ interface ApiService {
     @PUT("user/update-location")
     suspend fun updateLocation(
         @Header("Authorization") token: String,
-        @Body location: Location
+        @Body location: RequestBody
     ): UpdateLocationResponse
 
     @Multipart
