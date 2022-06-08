@@ -9,12 +9,14 @@
     <ImageView
         android:id="@+id/img_register_illustration"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"
+        android:layout_height="0dp"
+        android:scaleType="centerInside"
+        android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintBottom_toTopOf="@id/img_container1"
+        android:src="@drawable/illustration_laptop_veggies"/>
 
     <ImageView
         android:id="@+id/img_container1"
@@ -24,9 +26,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_register_illustration"
-        app:srcCompat="@drawable/dr_page_container_up"
-        app:tint="@color/primary" />
+        app:layout_constraintTop_toTopOf="@id/tf_name"
+        app:srcCompat="@drawable/dr_page_container_up" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tf_name"
@@ -34,11 +35,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/img_container1">
+        app:layout_constraintBottom_toTopOf="@id/tf_email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_name"
@@ -53,11 +54,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tf_name">
+        app:layout_constraintBottom_toTopOf="@id/tf_password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email"
@@ -73,11 +74,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginBottom="42dp"
         android:hint="@string/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tf_email">
+        app:layout_constraintBottom_toTopOf="@id/btn_register">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
@@ -93,32 +94,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/register"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/tf_password" />
-
-    <Button
-        android:id="@+id/btn_login_with_google"
-        style="@style/Button.Active.Secondary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="11dp"
-        android:text="@string/login_with_google"
-        android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/btn_register" />
+        app:layout_constraintBottom_toTopOf="@id/img_container2"/>
 
     <ImageView
         android:id="@+id/img_container2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="-24dp"
         android:src="@drawable/dr_page_container_up_2"
+        app:tint="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_login_with_google" />
+        app:layout_constraintTop_toTopOf="@id/tv_login" />
 
     <TextView
         android:id="@+id/tv_login"
@@ -128,8 +119,8 @@
         android:text="@string/already_have_an_account"
         app:layout_constraintStart_toStartOf="@id/img_container2"
         app:layout_constraintEnd_toEndOf="@id/img_container2"
-        app:layout_constraintTop_toTopOf="@id/img_container2"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintBottom_toTopOf="@id/btn_login"
+        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btn_login"
@@ -137,10 +128,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginBottom="18dp"
         android:text="@string/login"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/tv_login" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"

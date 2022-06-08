@@ -38,7 +38,7 @@ interface ApiService {
     @PUT("user/update-location")
     suspend fun updateLocation(
         @Header("Authorization") token: String,
-        @Field("location") location: List<Double>
+        @Body location: Location
     ): UpdateLocationResponse
 
     @Multipart

@@ -34,6 +34,12 @@ class ProfileRepository @Inject constructor(
 
     fun getToken() = userPreferences.getToken().asLiveData()
 
+    fun deleteToken() {
+        launch(Dispatchers.IO) {
+            userPreferences.deleteToken()
+        }
+    }
+
     fun getProfile(token: String): LiveData<Result<ProfileResponse>> = liveData {
         emit(Result.Loading)
         try {
@@ -102,14 +108,15 @@ class ProfileRepository @Inject constructor(
         }
     }
 
-    suspend fun updateLocation(
+    fun updateLocation(
         token: String,
         lon: Double,
         lat: Double
     ): LiveData<Result<UpdateLocationResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.updateLocation(token, listOf(lon, lat))
+            val location = Location(lon, lat)
+            val response = apiService.updateLocation(token, location)
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))

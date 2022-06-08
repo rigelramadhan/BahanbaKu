@@ -45,8 +45,9 @@ class IngredientActivity : AppCompatActivity() {
 
     private fun setupView(token: String) {
         val ingredients = intent.getStringArrayListExtra(EXTRA_SEARCH)
+        val ingredientsTest = arrayOf("ayam", "mie")
         if (ingredients != null) {
-            viewModel.getIngredients(token, ingredients.toList()).observe(this) { result ->
+            viewModel.getIngredients(token, ingredientsTest.toList()).observe(this) { result ->
                 when (result) {
                     is Result.Error -> {
                         val error = result.error

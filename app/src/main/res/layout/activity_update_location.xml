@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.updatelocation.UpdateLocationActivity">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_maps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40sp"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/bg_search_corner"
-        app:iconifiedByDefault="false"
-        app:queryHint="@string/search_hint"
-        />
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -33,15 +18,30 @@
         />
 
     <Button
-        android:id="@+id/continue_maps"
+        android:id="@+id/btn_update_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40sp"
         android:layout_marginStart="20sp"
         android:layout_marginEnd="20sp"
         android:text="@string/carry_on"
+        app:icon="@drawable/ic_baseline_location_on_24"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        android:backgroundTint="@color/primary"
+        android:textColor="@color/secondary"
+        app:iconTint="@color/secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ProgressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

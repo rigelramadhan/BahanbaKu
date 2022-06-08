@@ -37,7 +37,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun getToken() {
         viewModel.getToken().observe(this) {
-            if (it == "null") {
+            if (it.length <= 5) {
                 val intent = Intent(this, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)

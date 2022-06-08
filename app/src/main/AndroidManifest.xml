@@ -4,6 +4,7 @@
     package="com.bangkit.bahanbaku">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -27,12 +28,11 @@
 
         <activity
             android:name=".ui.profile.edit.EditProfileActivity"
-            android:label="@string/edit_profile"
-            android:exported="false" />
-
+            android:exported="false"
+            android:label="@string/edit_profile" />
         <activity
             android:name=".ui.updatelocation.UpdateLocationActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_update_location" />
         <activity
             android:name=".ui.maps.MapsActivity"
@@ -57,7 +57,7 @@
         <activity
             android:name=".ui.search.SearchActivity"
             android:exported="false"
-            android:label="Search" />
+            android:label="@string/search" />
         <activity
             android:name=".ui.ingredient.IngredientActivity"
             android:exported="false" />

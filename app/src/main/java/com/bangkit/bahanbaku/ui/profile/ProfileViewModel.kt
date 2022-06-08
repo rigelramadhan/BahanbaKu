@@ -20,4 +20,6 @@ class ProfileViewModel @Inject constructor(
     fun uploadPicture(token: String, file: File) = profileRepository.uploadPicture(token, file)
 
     fun getToken() = profileRepository.getToken()
+
+    fun deleteToken() = profileRepository.deleteToken()
 }

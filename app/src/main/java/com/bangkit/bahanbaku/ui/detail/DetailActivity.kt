@@ -120,12 +120,7 @@ class DetailActivity : AppCompatActivity() {
     private fun cleanseIngredients(list: List<String>): List<String> {
         val mutableList = mutableListOf<String>()
         list.forEach { s ->
-            val separatedString = s.split(",")
-            val ingredientAndAmountString = separatedString[0]
-            val cleansedString =
-                "${ingredientAndAmountString[2]} ${ingredientAndAmountString[0]} ${ingredientAndAmountString[1]}"
-
-            mutableList.add(cleansedString)
+            mutableList.add(s)
         }
 
         return mutableList

@@ -100,4 +100,5 @@
     <string name="profile_picture_updated">Profile picture updated</string>
     <string name="get_loc_failed">Get location failed</string>
     <string name="youre_here">You\'re here!</string>
+    <string name="location_updated_success">Location updated successfully</string>
 </resources>
