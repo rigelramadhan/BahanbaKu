@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import com.bangkit.bahanbaku.R
+import com.bangkit.bahanbaku.data.remote.response.Location
 import com.bangkit.bahanbaku.databinding.ActivityMapsBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.utils.Result
@@ -73,6 +74,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     }
                     is Result.Success -> {
                         val restos = result.data.results
+
+                        var lastLoc: Location
+
                         restos.forEach { resto ->
                             val position = LatLng(resto.location.lat, resto.location.lng)
                             val rating = getString(R.string.nearby_rating).format(

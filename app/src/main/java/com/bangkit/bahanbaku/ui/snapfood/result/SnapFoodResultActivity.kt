@@ -49,8 +49,12 @@ class SnapFoodResultActivity : AppCompatActivity() {
         binding.progressBar.isVisible = true
         file = intent.getSerializableExtra(EXTRA_PICTURE) as File
         isBack = intent.getBooleanExtra(EXTRA_IS_BACK_CAMERA, true)
+        val isGallery = intent.getBooleanExtra(EXTRA_IS_FROM_GALLERY, false)
 
-        val result = rotateBitmap(BitmapFactory.decodeFile((file as File).path), isBack)
+        var result = BitmapFactory.decodeFile((file as File).path)
+        if (!isGallery) {
+            result = rotateBitmap(result, isBack)
+        }
         result.compress(Bitmap.CompressFormat.JPEG, 100, FileOutputStream(file))
 
         appExecutor.diskIO.execute {
@@ -63,6 +67,7 @@ class SnapFoodResultActivity : AppCompatActivity() {
                 file?.let { loadFoodResult(it) }
             }
         }
+
         binding.imgSnapFood.setImageBitmap(result)
     }
 
@@ -113,6 +118,7 @@ class SnapFoodResultActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_PICTURE = "extra_picture"
+        const val EXTRA_IS_FROM_GALLERY = "extra_is_from_gallery"
         const val EXTRA_IS_BACK_CAMERA = "extra_is_back_camera"
     }
 }

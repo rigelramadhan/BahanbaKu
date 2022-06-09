@@ -87,6 +87,7 @@ class SnapFoodFragment : Fragment() {
             val myFile = fromUriToFile(selectedImage, requireContext())
             val intent = Intent(requireContext(), SnapFoodResultActivity::class.java)
             intent.putExtra(SnapFoodResultActivity.EXTRA_PICTURE, myFile)
+            intent.putExtra(SnapFoodResultActivity.EXTRA_IS_FROM_GALLERY, true)
             startActivity(intent)
         }
     }
