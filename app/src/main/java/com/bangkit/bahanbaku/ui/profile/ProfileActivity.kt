@@ -3,18 +3,17 @@ package com.bangkit.bahanbaku.ui.profile
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.ActivityProfileBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.ui.preference.PreferenceFragment
-import com.bangkit.bahanbaku.ui.snapfood.result.SnapFoodResultActivity
 import com.bangkit.bahanbaku.utils.AppExecutors
 import com.bangkit.bahanbaku.utils.Result
 import com.bangkit.bahanbaku.utils.fromUriToFile
@@ -46,7 +45,6 @@ class ProfileActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().add(R.id.fragment_settings, PreferenceFragment())
             .commit()
 
-        getToken()
     }
 
     private fun getToken() {
@@ -94,7 +92,6 @@ class ProfileActivity : AppCompatActivity() {
 
                     binding.tvEmailProfile.text = profile.email
                     binding.tvNameProfile.text = profile.username
-
 
                     Glide.with(this)
                         .load(profile.picture)
@@ -164,5 +161,10 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getToken()
     }
 }

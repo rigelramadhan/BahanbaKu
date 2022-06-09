@@ -1,10 +1,10 @@
 package com.bangkit.bahanbaku.ui.ingredient
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.adapter.EcommAdapter
@@ -45,9 +45,8 @@ class IngredientActivity : AppCompatActivity() {
 
     private fun setupView(token: String) {
         val ingredients = intent.getStringArrayListExtra(EXTRA_SEARCH)
-        val ingredientsTest = arrayOf("ayam", "mie")
         if (ingredients != null) {
-            viewModel.getIngredients(token, ingredientsTest.toList()).observe(this) { result ->
+            viewModel.getIngredients(token, ingredients.toList()).observe(this) { result ->
                 when (result) {
                     is Result.Error -> {
                         val error = result.error

@@ -34,7 +34,5 @@ class EcommAdapter(private val list: List<AboveBelowItem>) :
         holder.bind(item)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = list.size
 }

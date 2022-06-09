@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.adapter.HomeRecipeAdapter
 import com.bangkit.bahanbaku.databinding.FragmentHomeBinding
-import com.bangkit.bahanbaku.ui.bookmark.BookmarkViewModel
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.ui.profile.ProfileActivity
 import com.bangkit.bahanbaku.ui.search.SearchActivity
@@ -77,6 +75,11 @@ class HomeFragment : Fragment() {
 
         binding.cardSearch.setOnClickListener {
             val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnGetLocation.setOnClickListener {
+            val intent = Intent(requireContext(), UpdateLocationActivity::class.java)
             startActivity(intent)
         }
     }

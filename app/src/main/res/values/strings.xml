@@ -101,4 +101,7 @@
     <string name="get_loc_failed">Get location failed</string>
     <string name="youre_here">You\'re here!</string>
     <string name="location_updated_success">Location updated successfully</string>
+    <string name="order">Order</string>
+    <string name="text_our_service_uses_location">Our service uses location to get the best ingredients prices for you :)</string>
+    <string name="update_your_location">Update your location!</string>
 </resources>

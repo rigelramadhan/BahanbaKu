@@ -82,7 +82,7 @@ class ProfileRepository @Inject constructor(
     ): LiveData<Result<UpdateProfileResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.updateProfile(token, username, email, password, "")
+            val response = apiService.updateProfile(token, username, email, password)
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))

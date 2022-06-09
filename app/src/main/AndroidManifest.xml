@@ -40,6 +40,7 @@
             android:label="@string/food_map" />
         <activity
             android:name=".ui.snapfood.result.SnapFoodResultActivity"
+            android:label="@string/snapfood"
             android:exported="false" />
         <activity
             android:name=".ui.camera.CameraActivity"
@@ -60,9 +61,11 @@
             android:label="@string/search" />
         <activity
             android:name=".ui.ingredient.IngredientActivity"
+            android:label="@string/ingredients"
             android:exported="false" />
         <activity
             android:name=".ui.detail.DetailActivity"
+            android:label="@string/recipe"
             android:exported="false" />
         <activity
             android:name=".ui.register.RegisterActivity"

@@ -27,13 +27,12 @@ interface ApiService {
     ): ProfileResponse
 
     @FormUrlEncoded
-    @PUT("user/edit")
+    @PUT("user/update")
     suspend fun updateProfile(
         @Header("Authorization") token: String,
         @Field("username") username: String,
         @Field("email") email: String,
-        @Field("password") password: String,
-        @Field("new-password") newPassword: String
+        @Field("password") password: String
     ): UpdateProfileResponse
 
     @PUT("user/update-location")
@@ -75,7 +74,7 @@ interface ApiService {
         @Path("id") id: String
     ): RecipeByIdResponse
 
-    @GET("/ingredient")
+    @GET("/ingredients")
     suspend fun getIngredient(
         @Header("Authorization") token: String,
         @Query("search") search: String

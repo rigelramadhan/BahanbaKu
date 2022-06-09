@@ -1,13 +1,12 @@
 package com.bangkit.bahanbaku.ui.detail
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
@@ -34,6 +33,7 @@ class DetailActivity : AppCompatActivity() {
     private var isRecipeBookmarked = MutableLiveData(false)
     private var recipe: RecipeEntity? = null
     private var token: String? = null
+    private var isBookmarkChanged = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,7 +101,8 @@ class DetailActivity : AppCompatActivity() {
             val ingredients = recipe?.ingredients
             if (ingredients != null) {
                 val cleansedList = cleanseIngredients(ingredients)
-                val arrayList = arrayListOf<String>().addAll(cleansedList)
+                val arrayList = arrayListOf<String>()
+                arrayList.addAll(cleansedList)
                 val intent = Intent(this, IngredientActivity::class.java)
                 intent.putExtra(IngredientActivity.EXTRA_SEARCH, arrayList)
                 startActivity(intent)
@@ -123,7 +124,25 @@ class DetailActivity : AppCompatActivity() {
             mutableList.add(s)
         }
 
-        return mutableList
+        val outputList = mutableListOf<String>()
+
+
+        for (data in mutableList) {
+            val re = Regex("^[0-9].*")
+            var ingredient = data.split(',')[0]
+            if(re.matches(ingredient)){
+                val arrayIngredient = ingredient.split(' ')
+                ingredient = ""
+                for (i in 2 until arrayIngredient.size) {
+                    ingredient += arrayIngredient[i] + " "
+                }
+                ingredient = ingredient.split('(')[0]
+            }
+            ingredient = ingredient.trim()
+            outputList.add(ingredient)
+        }
+
+        return outputList
     }
 
     private fun checkIfRecipeBookmarked(token: String, id: String) {
@@ -154,6 +173,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.bookmark -> {
+                isBookmarkChanged = true
                 isRecipeBookmarked.postValue(!(isRecipeBookmarked.value as Boolean))
             }
         }
@@ -164,10 +184,14 @@ class DetailActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         isRecipeBookmarked.observe(this) { bookmarked ->
-            if (bookmarked) {
-                addBookmark()
-            } else {
-                deleteBookmark()
+            if (isBookmarkChanged) {
+                if (bookmarked) {
+                    addBookmark()
+                } else {
+                    deleteBookmark()
+                }
+
+                isBookmarkChanged = false
             }
         }
     }

@@ -12,6 +12,7 @@
     <color name="yellow_100">#ffff00</color>
 
     <color name="primary">#FDD835</color>
+    <color name="primary_darker">#F9A825</color>
     <color name="secondary">#555555</color>
 
     <color name="transparent_black">#BD000000</color>

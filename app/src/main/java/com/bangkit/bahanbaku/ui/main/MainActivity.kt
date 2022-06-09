@@ -3,7 +3,6 @@ package com.bangkit.bahanbaku.ui.main
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,7 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.ActivityMainBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
-import com.bangkit.bahanbaku.ui.updatelocation.UpdateLocationActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,8 +30,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         validateToken()
 
-        setupView()
-
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
@@ -44,13 +41,6 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-    }
-
-    private fun setupView() {
-        binding.btnGetLocation.setOnClickListener {
-            val intent = Intent(this, UpdateLocationActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun validateToken() {
