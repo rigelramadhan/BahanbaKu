@@ -104,4 +104,8 @@
     <string name="order">Order</string>
     <string name="text_our_service_uses_location">Our service uses location to get the best ingredients prices for you :)</string>
     <string name="update_your_location">Update your location!</string>
+    <string name="title_introduction">Welcome to Bahan Baku!</string>
+    <string name="introduction">In this application you can find recipes and ingredients foods that are suitable for business with best price from many stores.</string>
+    <string name="skip">Skip</string>
+    <string name="start">Start</string>
 </resources>
