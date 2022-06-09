@@ -35,9 +35,11 @@ class BookmarkAdapter(private val bookmarks: List<RecipeEntity>) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: RecipeEntity) {
             binding.tvRecipe.text = recipe.title
-            binding.tvRecipeDescription.text = recipe.title
+            binding.tvRecipeDescription.text = recipe.description
             binding.tvServings.text =
                 itemView.context.getString(R.string.serving).format(recipe.servings)
+
+            binding.rating.tvRating.text = recipe.rating.toString()
 
             Glide.with(itemView.context)
                 .load(recipe.image)

@@ -37,6 +37,8 @@ class HomeRecipeAdapter(private val list: List<RecipeEntity>) : RecyclerView.Ada
                 binding.tvServings.text =
                     itemView.context.getString(R.string.serving).format(recipe?.servings)
 
+                binding.rating.tvRating.text = recipe?.rating.toString()
+
                 Glide.with(itemView.context)
                     .load(recipe?.image)
                     .into(binding.imgRecipe)
