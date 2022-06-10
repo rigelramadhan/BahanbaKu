@@ -9,16 +9,15 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isVisible
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.adapter.DetailItemAdapter
 import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
 import com.bangkit.bahanbaku.databinding.ActivityDetailBinding
-import com.bangkit.bahanbaku.ui.ingredient.IngredientActivity
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.ui.maps.MapsActivity
-import com.bangkit.bahanbaku.ui.updatelocation.UpdateLocationActivity
 import com.bangkit.bahanbaku.utils.Result
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,10 +31,11 @@ class DetailActivity : AppCompatActivity() {
 
     private val viewModel: DetailViewModel by viewModels()
     private var isRecipeBookmarked = MutableLiveData(false)
-    private var recipe: RecipeEntity? = null
+    internal var recipe: RecipeEntity? = null
+    internal var isLocationNull = true
     private var token: String? = null
     private var isBookmarkChanged = false
-    private var isLocationNull = true
+    private lateinit var ingredientsDialog: IngredientsDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,20 +111,9 @@ class DetailActivity : AppCompatActivity() {
         binding.btnCheckIngredients.setOnClickListener {
             val ingredients = recipe?.ingredients
             if (ingredients != null) {
-                val cleansedList = cleanseIngredients(ingredients)
-                val arrayList = arrayListOf<String>()
-                arrayList.addAll(cleansedList)
-
-                if (isLocationNull) {
-                    val intent = Intent(this, UpdateLocationActivity::class.java)
-                    intent.putExtra(UpdateLocationActivity.EXTRA_TO_INGREDIENTS, true)
-                    intent.putExtra(IngredientActivity.EXTRA_SEARCH, arrayList)
-                    startActivity(intent)
-                } else {
-                    val intent = Intent(this, IngredientActivity::class.java)
-                    intent.putExtra(IngredientActivity.EXTRA_SEARCH, arrayList)
-                    startActivity(intent)
-                }
+                ingredientsDialog = IngredientsDialog()
+                ingredientsDialog.setStyle(DialogFragment.STYLE_NORMAL, R.style.TransparentDialog)
+                ingredientsDialog.show(supportFragmentManager, INGREDIENTS_DIALOG)
             }
         }
 
@@ -137,19 +126,19 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun cleanseIngredients(list: List<String>): List<String> {
-        val mutableList = mutableListOf<String>()
+    internal fun cleanseIngredients(list: List<String>): ArrayList<String> {
+        val arrayList = arrayListOf<String>()
         list.forEach { s ->
-            mutableList.add(s)
+            arrayList.add(s)
         }
 
-        val outputList = mutableListOf<String>()
+        val outputList = arrayListOf<String>()
 
 
-        for (data in mutableList) {
+        for (data in arrayList) {
             val re = Regex("^[0-9].*")
             var ingredient = data.split(',')[0]
-            if(re.matches(ingredient)){
+            if (re.matches(ingredient)) {
                 val arrayIngredient = ingredient.split(' ')
                 ingredient = ""
                 for (i in 2 until arrayIngredient.size) {
@@ -263,5 +252,6 @@ class DetailActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "DetailActivity.log"
         const val EXTRA_RECIPE_ID = "extra_recipe_id"
+        const val INGREDIENTS_DIALOG = "ingredients_dialog"
     }
 }
