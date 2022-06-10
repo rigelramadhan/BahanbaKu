@@ -32,7 +32,7 @@ data class RestoEntity(
 	val restaurantName: String,
 
 	@field:SerializedName("rating")
-	val rating: Int,
+	val rating: Double,
 
 	@field:SerializedName("location")
 	val location: Location

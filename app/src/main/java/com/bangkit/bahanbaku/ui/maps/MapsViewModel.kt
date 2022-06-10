@@ -19,5 +19,7 @@ class MapsViewModel@Inject constructor(
         return profileRepository.getToken()
     }
 
+    fun updateLocation(token: String, lat: Double, lng: Double) = profileRepository.updateLocation(token, lng, lat)
+
     fun getNearby(token: String, query: String) = foodRepository.getNearbyResto(token, query)
 }

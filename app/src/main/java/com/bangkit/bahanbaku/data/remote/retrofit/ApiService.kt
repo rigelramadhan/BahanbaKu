@@ -94,6 +94,6 @@ interface ApiService {
     @GET("/user/nearby-resto")
     suspend fun getNearbyResto(
         @Header("Authorization") token: String,
-        @Query("query") query: String
+        @Query("keyword") query: String
     ): NearbyRestoResponse
 }
