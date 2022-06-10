@@ -110,4 +110,8 @@
     <string name="start">Start</string>
     <string name="title_introduction_menu_food">introduce the food recognition menu</string>
     <string name="introduction_menu_food">food recognition is a feature of the raw material application that allows users to take photos of food for food name detection</string>
+    <string name="title_introduction_ingredients">cheapest ingredients!</string>
+    <string name="introduction_menu_ingredients">this app can find the cheapest ingredients around you.</string>
+    <string name="title_introduction_brand">Bahan Baku</string>
+    <string name="introduction_menu_brand">let\'s join together in our application.</string>
 </resources>
