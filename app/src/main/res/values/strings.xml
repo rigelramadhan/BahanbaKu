@@ -116,4 +116,5 @@
     <string name="introduction_menu_brand">let\'s join together in our application.</string>
     <string name="distance_under_50_km_from_suppliers">Distance under 50 km from suppliers</string>
     <string name="distance_above_50_km_from_suppliers">Distance above 50 km from suppliers</string>
+    <string name="select_ingredients_to_order">Select ingredients to order</string>
 </resources>

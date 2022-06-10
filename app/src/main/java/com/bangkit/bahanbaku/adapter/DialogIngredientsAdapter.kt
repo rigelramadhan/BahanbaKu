@@ -20,11 +20,7 @@ class DialogIngredientsAdapter(private val list: ArrayList<IngredientEntity>) :
 
         holder.binding.cbIngredient.setOnClickListener {
             val isChecked = holder.binding.cbIngredient.isChecked
-
-            ingredient.checked = !isChecked
-
-            holder.binding.cbIngredient.isChecked = ingredient.checked
-            notifyItemChanged(position)
+            ingredient.checked = isChecked
         }
     }
 
