@@ -6,8 +6,10 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.adapter.EcommAdapter
 import com.bangkit.bahanbaku.databinding.ActivityIngredientBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
@@ -66,12 +68,29 @@ class IngredientActivity : AppCompatActivity() {
                         val data = result.data
 
                         val aboveData = data.above
+
+                        binding.imgAboveNotFound.isVisible = aboveData.isEmpty()
+
                         binding.rvIngredientsEcommAbove50.apply {
                             adapter = EcommAdapter(aboveData)
                             layoutManager = LinearLayoutManager(this@IngredientActivity)
                         }
 
                         val belowData = data.under
+
+                        if (belowData.isNotEmpty()) {
+                            val constraintSet = ConstraintSet()
+                            constraintSet.clone(binding.constraintIngredients)
+                            constraintSet.connect(
+                                R.id.tv_above_50,
+                                ConstraintSet.TOP,
+                                R.id.rv_ingredients_ecomm_under_50,
+                                ConstraintSet.BOTTOM
+                            )
+                        }
+
+                        binding.imgUnderNotFound.isVisible = belowData.isEmpty()
+
                         binding.rvIngredientsEcommUnder50.apply {
                             adapter = EcommAdapter(belowData)
                             layoutManager = LinearLayoutManager(this@IngredientActivity)
