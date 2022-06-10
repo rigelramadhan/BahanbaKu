@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.adapter.HomeRecipeAdapter
 import com.bangkit.bahanbaku.databinding.FragmentHomeBinding
+import com.bangkit.bahanbaku.ui.detail.DetailActivity
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.ui.profile.ProfileActivity
 import com.bangkit.bahanbaku.ui.search.SearchActivity
@@ -88,6 +89,7 @@ class HomeFragment : Fragment() {
     private fun setupData(viewModel: HomeViewModel) {
         if (token != null) {
             val token = this.token as String
+
             viewModel.getFeaturedRecipe(token).observe(requireActivity()) { result ->
                 when (result) {
                     is Result.Loading -> {
@@ -107,6 +109,12 @@ class HomeFragment : Fragment() {
                         binding.cardFeatured.tvRecipeDescription.text = data.description
                         binding.cardFeatured.tvServings.text =
                             getString(R.string.serving).format(data.servings)
+
+                        binding.cardFeatured.cardFeatured.setOnClickListener {
+                            val intent = Intent(requireContext(), DetailActivity::class.java)
+                            intent.putExtra(DetailActivity.EXTRA_RECIPE_ID, data.id)
+                            startActivity(intent)
+                        }
 
                         Glide.with(this)
                             .load(data.image)

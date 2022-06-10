@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.ActivityUpdateLocationBinding
+import com.bangkit.bahanbaku.ui.ingredient.IngredientActivity
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.ui.main.MainActivity
 import com.bangkit.bahanbaku.utils.Result
@@ -87,9 +88,22 @@ class UpdateLocationActivity : AppCompatActivity(), OnMapReadyCallback {
                                     Toast.LENGTH_SHORT
                                 ).show()
 
-                                val intent = Intent(this, MainActivity::class.java)
-                                startActivity(intent)
-                                finish()
+                                val toIngredients =
+                                    intent.getBooleanExtra(EXTRA_TO_INGREDIENTS, false)
+
+                                if (toIngredients) {
+                                    val search =
+                                        intent.getStringArrayExtra(IngredientActivity.EXTRA_SEARCH)
+
+                                    val intent = Intent(this, IngredientActivity::class.java)
+                                    intent.putExtra(IngredientActivity.EXTRA_SEARCH, search)
+                                    startActivity(intent)
+                                    finish()
+                                } else {
+                                    val intent = Intent(this, MainActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                }
                             }
                         }
                     }
@@ -150,4 +164,7 @@ class UpdateLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
+    companion object {
+        const val EXTRA_TO_INGREDIENTS = "extra_to_ingredients"
+    }
 }

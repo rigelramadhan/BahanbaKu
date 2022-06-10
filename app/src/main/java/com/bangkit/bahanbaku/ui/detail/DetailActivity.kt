@@ -34,6 +34,7 @@ class DetailActivity : AppCompatActivity() {
     private var recipe: RecipeEntity? = null
     private var token: String? = null
     private var isBookmarkChanged = false
+    private var isLocationNull = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,6 +104,9 @@ class DetailActivity : AppCompatActivity() {
                 val cleansedList = cleanseIngredients(ingredients)
                 val arrayList = arrayListOf<String>()
                 arrayList.addAll(cleansedList)
+
+
+
                 val intent = Intent(this, IngredientActivity::class.java)
                 intent.putExtra(IngredientActivity.EXTRA_SEARCH, arrayList)
                 startActivity(intent)
