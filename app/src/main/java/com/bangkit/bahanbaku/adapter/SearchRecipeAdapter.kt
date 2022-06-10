@@ -39,6 +39,8 @@ class SearchRecipeAdapter(private val recipes: List<RecipeEntity>) :
             binding.tvServings.text =
                 itemView.context.getString(R.string.serving).format(recipe.servings)
 
+            binding.rating.tvRating.text = recipe.rating.toString()
+
             Glide.with(itemView)
                 .load(recipe.image)
                 .into(binding.imgRecipe)

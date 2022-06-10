@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.BahanbaKu" parent="Theme.Material3.Light">
         <!-- Primary brand color. -->
@@ -6,8 +6,9 @@
         <item name="colorPrimaryVariant">@color/primary</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryVariant">@color/secondary</item>
+        <item name="colorSecondary">@color/primary</item>
+        <item name="colorSecondaryVariant">@color/primary</item>
+        <item name="colorOnSurfaceVariant">@color/primary</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/secondary</item>
@@ -17,10 +18,21 @@
         <item name="android:navigationBarColor">@color/primary</item>
 
         <item name="actionBarStyle">@style/ActionBar</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
 
     <style name="ActionBar" parent="Widget.Material3.Light.ActionBar.Solid">
         <item name="background">@color/white</item>
+    </style>
+
+<!--    BOTTOM NAV-->
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorSurface">@color/primary_lighter</item>
+        <item name="colorOnSurfaceVariant">@color/primary</item>
     </style>
 
 <!--    TEXT FIELD-->

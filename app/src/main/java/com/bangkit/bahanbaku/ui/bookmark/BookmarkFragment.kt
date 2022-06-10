@@ -36,6 +36,16 @@ class BookmarkFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        adapter = BookmarkAdapter()
+        binding.rvBookmark.apply {
+            adapter = this@BookmarkFragment.adapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         getToken(viewModel)
@@ -61,6 +71,7 @@ class BookmarkFragment : Fragment() {
 
     private fun setupView(viewModel: BookmarkViewModel) {
         if (token != null) {
+
             ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
                 override fun onMove(
                     recyclerView: RecyclerView,
@@ -74,37 +85,36 @@ class BookmarkFragment : Fragment() {
                     viewModel.deleteBookmarks(token as String, viewHolder.adapterPosition)
                         .observe(requireActivity()) { result ->
                             if (result is Result.Success) {
-                                adapter.notifyItemRemoved(viewHolder.adapterPosition)
+                                updateList()
                             }
                         }
                 }
             }).attachToRecyclerView(binding.rvBookmark)
 
             if (activity != null) {
-                viewModel.getBookmarks(token as String).observe(requireActivity()) { result ->
-                    when (result) {
-                        is Result.Loading -> {
-                            binding.progressBar.isVisible = true
-                        }
-                        is Result.Error -> {
-                            val error = result.error
-                            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
-                            binding.progressBar.isVisible = false
-                            binding.imgNoBookmark.isVisible = true
-                        }
-                        is Result.Success -> {
-                            binding.progressBar.isVisible = false
-                            val data = result.data
+                updateList()
+            }
+        }
+    }
 
-                            binding.imgNoBookmark.isVisible = data.isEmpty()
+    private fun updateList() {
+        viewModel.getBookmarks(token as String).observe(requireActivity()) { result ->
+            when (result) {
+                is Result.Loading -> {
+                    binding.progressBar.isVisible = true
+                }
+                is Result.Error -> {
+                    val error = result.error
+                    Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+                    binding.progressBar.isVisible = false
+                    binding.imgNoBookmark.isVisible = true
+                }
+                is Result.Success -> {
+                    binding.progressBar.isVisible = false
+                    val data = result.data
 
-                            adapter = BookmarkAdapter(data)
-                            binding.rvBookmark.apply {
-                                adapter = this@BookmarkFragment.adapter
-                                layoutManager = LinearLayoutManager(requireContext())
-                            }
-                        }
-                    }
+                    adapter.submitList(data)
+                    binding.imgNoBookmark.isVisible = data.isEmpty()
                 }
             }
         }

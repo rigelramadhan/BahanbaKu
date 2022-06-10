@@ -19,6 +19,12 @@
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/ic_baseline_day_night.xml" value="0.2235" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.2235" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.2235" />
+        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/ic_illustration_location.xml" value="0.265" />
+        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/ic_illustration_login.xml" value="0.2235" />
+        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/ic_illustration_no_bookmark.xml" value="0.2235" />
+        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/ic_illustration_snapfood.xml" value="0.2235" />
+        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/ic_illustration_thinking.xml" value="0.2235" />
+        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/ic_illustratoin_auth.xml" value="0.2235" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/ic_launcher_background.xml" value="0.262" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/illustration_laptop_veggies.xml" value="0.271" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/manage_accounts-48px.xml" value="0.2235" />
@@ -39,7 +45,7 @@
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/activity_snap_recipe.xml" value="0.358695652173913" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/activity_update_location.xml" value="0.36302083333333335" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/card_snapfood.xml" value="0.358695652173913" />
-        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/dialog_ingredients.xml" value="0.2164855072463768" />
+        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/dialog_ingredients.xml" value="0.25" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/fragment_bookmark.xml" value="0.3494791666666667" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/fragment_preference.xml" value="0.36302083333333335" />
