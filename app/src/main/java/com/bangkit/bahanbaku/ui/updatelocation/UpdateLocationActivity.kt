@@ -95,8 +95,9 @@ class UpdateLocationActivity : AppCompatActivity(), OnMapReadyCallback {
                                     intent.getBooleanExtra(EXTRA_TO_INGREDIENTS, false)
 
                                 if (toIngredients) {
-                                    val search =
-                                        intent.getStringArrayExtra(IngredientActivity.EXTRA_SEARCH)
+                                    val search = intent.getStringArrayListExtra(
+                                        IngredientActivity.EXTRA_SEARCH
+                                    )
 
                                     val intent = Intent(this, IngredientActivity::class.java)
                                     intent.putExtra(IngredientActivity.EXTRA_SEARCH, search)

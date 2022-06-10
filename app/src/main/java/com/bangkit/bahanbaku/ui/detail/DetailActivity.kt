@@ -18,6 +18,7 @@ import com.bangkit.bahanbaku.databinding.ActivityDetailBinding
 import com.bangkit.bahanbaku.ui.ingredient.IngredientActivity
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.ui.maps.MapsActivity
+import com.bangkit.bahanbaku.ui.updatelocation.UpdateLocationActivity
 import com.bangkit.bahanbaku.utils.Result
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,6 +61,13 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setupView(token: String) {
+        viewModel.getProfile(token).observe(this) {
+            if (it is Result.Success) {
+                val location = it.data.results.origin
+                isLocationNull = (location.lat == 0.0 && location.lng == 0.0)
+            }
+        }
+
         val recipeId = intent.getStringExtra(EXTRA_RECIPE_ID)
         if (recipeId != null) {
             viewModel.getRecipe(token, recipeId).observe(this) { result ->
@@ -107,11 +115,16 @@ class DetailActivity : AppCompatActivity() {
                 val arrayList = arrayListOf<String>()
                 arrayList.addAll(cleansedList)
 
-
-
-                val intent = Intent(this, IngredientActivity::class.java)
-                intent.putExtra(IngredientActivity.EXTRA_SEARCH, arrayList)
-                startActivity(intent)
+                if (isLocationNull) {
+                    val intent = Intent(this, UpdateLocationActivity::class.java)
+                    intent.putExtra(UpdateLocationActivity.EXTRA_TO_INGREDIENTS, true)
+                    intent.putExtra(IngredientActivity.EXTRA_SEARCH, arrayList)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(this, IngredientActivity::class.java)
+                    intent.putExtra(IngredientActivity.EXTRA_SEARCH, arrayList)
+                    startActivity(intent)
+                }
             }
         }
 

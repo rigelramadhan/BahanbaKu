@@ -1,8 +1,6 @@
 package com.bangkit.bahanbaku.ui.detail
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
 import com.bangkit.bahanbaku.data.repository.ProfileRepository
 import com.bangkit.bahanbaku.data.repository.RecipeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,4 +20,6 @@ class DetailViewModel @Inject constructor(
     fun deleteBookmark(token: String, id: String) = profileRepository.deleteBookmark(token, id)
 
     fun getToken() = profileRepository.getToken()
+
+    fun getProfile(token: String) = profileRepository.getProfile(token)
 }
