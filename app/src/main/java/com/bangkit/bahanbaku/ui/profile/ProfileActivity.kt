@@ -19,8 +19,11 @@ import com.bangkit.bahanbaku.utils.Result
 import com.bangkit.bahanbaku.utils.fromUriToFile
 import com.bangkit.bahanbaku.utils.reduceFileImage
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.signature.ObjectKey
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
+import kotlin.random.Random
 
 @AndroidEntryPoint
 class ProfileActivity : AppCompatActivity() {
@@ -57,12 +60,12 @@ class ProfileActivity : AppCompatActivity() {
             } else {
                 val token = "Bearer $it"
                 this.token = token
-                setupView(token)
+                setupView()
             }
         }
     }
 
-    private fun setupView(token: String) {
+    private fun setupView() {
         binding.imgProfile.setOnClickListener {
             startGallery()
         }
@@ -71,38 +74,7 @@ class ProfileActivity : AppCompatActivity() {
             viewModel.deleteToken()
         }
 
-        viewModel.getProfile(token).observe(this) { result ->
-            when (result) {
-                is Result.Error -> {
-                    binding.progressBar.isVisible = false
-                    Toast.makeText(
-                        this,
-                        getString(R.string.error_loading_profile),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                is Result.Loading -> {
-                    binding.progressBar.isVisible = true
-                }
-                is Result.Success -> {
-                    binding.progressBar.isVisible = false
-                    val data = result.data
-                    val profile = data.results
-
-
-                    binding.tvEmailProfile.text = profile.email
-                    binding.tvNameProfile.text = profile.username
-
-                    Glide.with(this)
-                        .load(profile.picture)
-                        .into(binding.imgProfile)
-
-                    Glide.with(this)
-                        .load(profile.picture)
-                        .into(binding.imgProfileBackground)
-                }
-            }
-        }
+        loadProfile()
     }
 
     private fun startGallery() {
@@ -119,6 +91,8 @@ class ProfileActivity : AppCompatActivity() {
         if (activityResult.resultCode == Activity.RESULT_OK) {
             val selectedImage: Uri = activityResult.data?.data as Uri
             var myFile = fromUriToFile(selectedImage, this)
+
+            binding.progressBar.isVisible = true
 
             appExecutor.diskIO.execute {
                 myFile = reduceFileImage(myFile)
@@ -156,7 +130,50 @@ class ProfileActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-                        getToken()
+                        loadProfile()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun loadProfile() {
+        if (token != null) {
+            viewModel.getProfile(token as String).observe(this) { result ->
+                when (result) {
+                    is Result.Error -> {
+                        binding.progressBar.isVisible = false
+                        Toast.makeText(
+                            this,
+                            getString(R.string.error_loading_profile),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    is Result.Loading -> {
+                        binding.progressBar.isVisible = true
+                    }
+                    is Result.Success -> {
+                        binding.progressBar.isVisible = false
+                        val data = result.data
+                        val profile = data.results
+
+                        binding.tvEmailProfile.text = profile.email
+                        binding.tvNameProfile.text = profile.username
+
+                        Glide.with(this)
+                            .load(profile.picture + "?rand=${Random(2000000)}")
+                            .apply(
+                                RequestOptions().signature(
+                                    ObjectKey(
+                                        System.currentTimeMillis().toString()
+                                    )
+                                )
+                            )
+                            .into(binding.imgProfile)
+
+                        Glide.with(this)
+                            .load(profile.picture + "?rand=${Random(2000000)}")
+                            .into(binding.imgProfileBackground)
                     }
                 }
             }

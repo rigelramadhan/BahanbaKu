@@ -21,6 +21,7 @@ import com.bangkit.bahanbaku.ui.updatelocation.UpdateLocationActivity
 import com.bangkit.bahanbaku.utils.Result
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.random.Random
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -151,7 +152,7 @@ class HomeFragment : Fragment() {
                     is Result.Success -> {
                         val data = result.data.results
                         Glide.with(requireContext())
-                            .load(data.picture)
+                            .load(data.picture + "?rand=${Random(2000000)}")
                             .into(binding.imgProfile)
                     }
                 }
