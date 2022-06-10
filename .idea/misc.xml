@@ -10,6 +10,7 @@
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/dr_container_generan.xml" value="0.262" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/dr_container_white_all_rounded.xml" value="0.193" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/dr_edittext_primary.xml" value="0.262" />
+        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/dr_grad_primary_to_darker.xml" value="0.2315" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/dr_oval_background.xml" value="0.2625" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/dr_page_container_down.xml" value="0.262" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/drawable/dr_page_container_down_2.xml" value="0.262" />
@@ -46,7 +47,7 @@
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/activity_snap_recipe.xml" value="0.358695652173913" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/activity_update_location.xml" value="0.36302083333333335" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/card_snapfood.xml" value="0.358695652173913" />
-        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/dialog_ingredients.xml" value="0.2164855072463768" />
+        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/dialog_ingredients.xml" value="0.25" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/fragment_bookmark.xml" value="0.3494791666666667" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/fragment_preference.xml" value="0.36302083333333335" />
@@ -55,12 +56,12 @@
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/ingredients_dialog.xml" value="0.358695652173913" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_bookmark.xml" value="0.358695652173913" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_detail_list.xml" value="0.358695652173913" />
-        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_ecomm.xml" value="0.358695652173913" />
+        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_ecomm.xml" value="0.33" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_featured_recipe.xml" value="0.358695652173913" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_food.xml" value="0.358695652173913" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_ingredient.xml" value="0.358695652173913" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_ingredient_ecomm.xml" value="0.358695652173913" />
-        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_ingredient_ecomm_response.xml" value="0.15031270217813242" />
+        <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_ingredient_ecomm_response.xml" value="0.25" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_ingredients.xml" value="0.358695652173913" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_profile_setting.xml" value="0.36302083333333335" />
         <entry key="..\:/DicodingProjects/BahanbaKu/app/src/main/res/layout/item_rating.xml" value="0.3605072463768116" />
@@ -108,8 +109,6 @@
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_recipe_list_detail.xml" value="0.25" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/layout/item_recipe_search.xml" value="0.25" />
         <entry key="..\:/TUGAS KULIAH/semester 6/Bangkit Google/capstonnnneeee/app/src/main/res/menu/menu_item_recipe.xml" value="0.25" />
-        <entry key="..\:/Users/user/StudioProjects/BahanbaKu/app/src/main/res/layout/activity_main.xml" value="0.3625" />
-        <entry key="..\:/Users/user/StudioProjects/BahanbaKu/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
       </map>
     </option>
   </component>

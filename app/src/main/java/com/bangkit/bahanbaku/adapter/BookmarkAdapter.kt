@@ -3,6 +3,8 @@ package com.bangkit.bahanbaku.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.data.remote.response.RecipeEntity
@@ -10,8 +12,8 @@ import com.bangkit.bahanbaku.databinding.ItemBookmarkBinding
 import com.bangkit.bahanbaku.ui.detail.DetailActivity
 import com.bumptech.glide.Glide
 
-class BookmarkAdapter(private val bookmarks: List<RecipeEntity>) :
-    RecyclerView.Adapter<BookmarkAdapter.ViewHolder>() {
+class BookmarkAdapter :
+    ListAdapter<RecipeEntity, BookmarkAdapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             ItemBookmarkBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -19,7 +21,7 @@ class BookmarkAdapter(private val bookmarks: List<RecipeEntity>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val recipe = bookmarks[position]
+        val recipe = getItem(position)
         holder.bind(recipe)
 
         holder.binding.cardBookmark.setOnClickListener {
@@ -28,8 +30,6 @@ class BookmarkAdapter(private val bookmarks: List<RecipeEntity>) :
             holder.itemView.context.startActivity(intent)
         }
     }
-
-    override fun getItemCount() = bookmarks.size
 
     inner class ViewHolder(val binding: ItemBookmarkBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -44,6 +44,19 @@ class BookmarkAdapter(private val bookmarks: List<RecipeEntity>) :
             Glide.with(itemView.context)
                 .load(recipe.image)
                 .into(binding.imgRecipe)
+        }
+    }
+
+    companion object {
+        val DIFF_CALLBACK: DiffUtil.ItemCallback<RecipeEntity> = object : DiffUtil.ItemCallback<RecipeEntity>() {
+            override fun areItemsTheSame(oldItem: RecipeEntity, newItem: RecipeEntity): Boolean {
+                return oldItem.title == newItem.title
+            }
+
+            override fun areContentsTheSame(oldItem: RecipeEntity, newItem: RecipeEntity): Boolean {
+                return oldItem == newItem
+            }
+
         }
     }
 }
