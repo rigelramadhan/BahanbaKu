@@ -40,6 +40,8 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         getToken()
     }
 
@@ -179,6 +181,11 @@ class DetailActivity : AppCompatActivity() {
             R.id.bookmark -> {
                 isBookmarkChanged = true
                 isRecipeBookmarked.postValue(!(isRecipeBookmarked.value as Boolean))
+            }
+
+            android.R.id.home -> {
+                onBackPressed()
+                return true
             }
         }
 

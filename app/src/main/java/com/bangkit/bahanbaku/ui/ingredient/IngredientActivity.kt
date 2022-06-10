@@ -2,6 +2,7 @@ package com.bangkit.bahanbaku.ui.ingredient
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +26,8 @@ class IngredientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         getToken()
     }
@@ -61,16 +64,33 @@ class IngredientActivity : AppCompatActivity() {
                     is Result.Success -> {
                         binding.progressBar.isVisible = false
                         val data = result.data
-                        val aboveBelowData = data.above as MutableList
-                        aboveBelowData.addAll(data.under)
-                        binding.rvIngredientsEcomm.apply {
-                            adapter = EcommAdapter(aboveBelowData)
+
+                        val aboveData = data.above
+                        binding.rvIngredientsEcommAbove50.apply {
+                            adapter = EcommAdapter(aboveData)
+                            layoutManager = LinearLayoutManager(this@IngredientActivity)
+                        }
+
+                        val belowData = data.under
+                        binding.rvIngredientsEcommUnder50.apply {
+                            adapter = EcommAdapter(belowData)
                             layoutManager = LinearLayoutManager(this@IngredientActivity)
                         }
                     }
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

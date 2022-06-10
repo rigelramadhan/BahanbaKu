@@ -29,7 +29,11 @@
         <activity
             android:name=".ui.profile.edit.EditProfileActivity"
             android:exported="false"
-            android:label="@string/edit_profile" />
+            android:label="@string/edit_profile">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.profile.ProfileActivity"/>
+        </activity>
         <activity
             android:name=".ui.updatelocation.UpdateLocationActivity"
             android:exported="true"
@@ -51,14 +55,22 @@
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:exported="false"
-            android:label="@string/profile" />
+            android:label="@string/profile">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.main.MainActivity"/>
+        </activity>
         <activity
             android:name=".ui.snaprecipe.SnapRecipeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.search.SearchActivity"
             android:exported="false"
-            android:label="@string/search" />
+            android:label="@string/search">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.main.MainActivity"/>
+        </activity>
         <activity
             android:name=".ui.ingredient.IngredientActivity"
             android:label="@string/ingredients"
@@ -70,7 +82,11 @@
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false"
-            android:label="@string/register" />
+            android:label="@string/register">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.login.LoginActivity"/>
+        </activity>
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"

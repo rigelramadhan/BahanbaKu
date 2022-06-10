@@ -29,10 +29,9 @@
 
     <ImageView
         android:id="@+id/img_container2"
-        android:layout_width="383dp"
+        android:layout_width="match_parent"
         android:layout_height="252dp"
         android:src="@drawable/dr_page_container_up_2"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -204,31 +203,29 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 
-    <TextView
+    <Button
         android:id="@+id/skip"
-        style="@style/Text.Title.Large"
+        style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:text="@string/skip"
-
-        app:layout_constraintEnd_toEndOf="@+id/img_container2"
-        app:layout_constraintHorizontal_bias="0.317"
-
+        android:textColor="@color/secondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_start"
         app:layout_constraintStart_toStartOf="@+id/img_container2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 
     <Button
         android:id="@+id/btn_start"
-        style="@style/Text.Title.Large"
+        style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/primary"
         android:text="@string/start"
-        app:layout_constraintEnd_toEndOf="@+id/img_container2"
-        app:layout_constraintHorizontal_bias="0.437"
-        app:layout_constraintStart_toEndOf="@+id/skip"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:textColor="@color/secondary"
+        app:layout_constraintBottom_toBottomOf="@id/skip"
+        app:layout_constraintTop_toTopOf="@id/skip"
+        tools:layout_editor_absoluteX="196dp" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
