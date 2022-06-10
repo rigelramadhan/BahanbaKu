@@ -149,6 +149,60 @@
         app:layout_constraintStart_toStartOf="@+id/img_container2"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
+    <TextView
+        android:id="@+id/textView5"
+        style="@style/Text.Title.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+
+        android:text="@string/title_introduction_ingredients"
+        app:layout_constraintEnd_toEndOf="@+id/img_container2"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/img_container2"
+        app:layout_constraintTop_toTopOf="@+id/img_container2" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="330dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="24sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24sp"
+        android:text="@string/introduction_menu_ingredients"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/img_container2"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="@+id/img_container2"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView7"
+        style="@style/Text.Title.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+
+        android:text="@string/title_introduction_brand"
+        app:layout_constraintEnd_toEndOf="@+id/img_container2"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/img_container2"
+        app:layout_constraintTop_toTopOf="@+id/img_container2" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="330dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="24sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24sp"
+        android:text="@string/introduction_menu_brand"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/img_container2"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="@+id/img_container2"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
 
     <TextView
         android:id="@+id/skip"
@@ -165,14 +219,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 
-
     <Button
         android:id="@+id/btn_start"
+        style="@style/Text.Title.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/start"
-        style="@style/Text.Title.Large"
         app:layout_constraintEnd_toEndOf="@+id/img_container2"
         app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toEndOf="@+id/skip"
