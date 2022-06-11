@@ -25,6 +25,7 @@ class SnapFoodResultAdapter(private val list: List<SnapFoodItem>) :
         holder.binding.cardFood.setOnClickListener {
             val intent = Intent(holder.itemView.context, SnapRecipeActivity::class.java)
             intent.putExtra(SnapRecipeActivity.EXTRA_FOOD_NAME, food.food)
+            intent.putExtra(SnapRecipeActivity.EXTRA_FOOD_IMAGE, food.imageLink)
             holder.itemView.context.startActivity(intent)
         }
     }

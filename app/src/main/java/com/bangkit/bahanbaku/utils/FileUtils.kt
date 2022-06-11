@@ -82,6 +82,7 @@ fun fromUriToFile(selectedImage: Uri, context: Context): File {
 
 fun reduceFileImage(file: File): File {
     val bitmap = BitmapFactory.decodeFile(file.path)
+
     var compressQuality = 100
     var streamLength: Int
     do {
@@ -90,7 +91,7 @@ fun reduceFileImage(file: File): File {
         val bmpPicByteArray = bmpStream.toByteArray()
         streamLength = bmpPicByteArray.size
         compressQuality -= 5
-    } while (streamLength > 1000000 || compressQuality >= 5)
+    } while (streamLength > 50000 && compressQuality > 15)
     bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
     return file
 }

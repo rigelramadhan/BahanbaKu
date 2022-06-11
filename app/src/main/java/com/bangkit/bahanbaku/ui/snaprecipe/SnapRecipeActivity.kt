@@ -1,17 +1,18 @@
 package com.bangkit.bahanbaku.ui.snaprecipe
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.bahanbaku.adapter.SearchRecipeAdapter
 import com.bangkit.bahanbaku.databinding.ActivitySnapRecipeBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.utils.Result
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,6 +49,13 @@ class SnapRecipeActivity : AppCompatActivity() {
 
     private fun setupView(token: String) {
         val foodName = intent.getStringExtra(EXTRA_FOOD_NAME)
+        val imageLink = intent.getStringExtra(EXTRA_FOOD_IMAGE)
+        binding.tvTitle.text = foodName
+
+        Glide.with(this)
+            .load(imageLink)
+            .into(binding.imgSnapRecipe)
+
         if (!foodName.isNullOrEmpty()) {
             viewModel.getRecipes(token, foodName).observe(this) { result ->
                 when (result) {
@@ -62,6 +70,11 @@ class SnapRecipeActivity : AppCompatActivity() {
                     is Result.Success -> {
                         binding.progressBar.isVisible = false
                         val data = result.data
+
+                        if (data.isEmpty()) {
+                            binding.imgNotFound.isVisible = true
+                        }
+
                         binding.rvRecipes.apply {
                             adapter = SearchRecipeAdapter(data)
                             layoutManager = LinearLayoutManager(this@SnapRecipeActivity)
@@ -85,5 +98,6 @@ class SnapRecipeActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_FOOD_NAME = "extra_food_name"
+        const val EXTRA_FOOD_IMAGE = "extra_food_image"
     }
 }

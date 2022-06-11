@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.adapter.SnapFoodResultAdapter
 import com.bangkit.bahanbaku.databinding.ActivitySnapFoodResultBinding
 import com.bangkit.bahanbaku.ui.login.LoginActivity
@@ -54,24 +55,27 @@ class SnapFoodResultActivity : AppCompatActivity() {
         isBack = intent.getBooleanExtra(EXTRA_IS_BACK_CAMERA, true)
         val isGallery = intent.getBooleanExtra(EXTRA_IS_FROM_GALLERY, false)
 
+        binding.tvStatus.text = getString(R.string.compressing_image)
+        binding.tvStatus.isVisible = true
+
         var result = BitmapFactory.decodeFile((file as File).path)
         if (!isGallery) {
             result = rotateBitmap(result, isBack)
         }
-        result.compress(Bitmap.CompressFormat.JPEG, 100, FileOutputStream(file))
 
         appExecutor.diskIO.execute {
             file = reduceFileImage(file as File)
             compressingDone.postValue(true)
+            result.compress(Bitmap.CompressFormat.JPEG, 100, FileOutputStream(file))
         }
 
         compressingDone.observe(this) { done ->
             if (done) {
                 file?.let { loadFoodResult(it) }
+                binding.imgSnapFood.setImageBitmap(result)
             }
         }
 
-        binding.imgSnapFood.setImageBitmap(result)
     }
 
     private fun loadFoodResult(file: File) {
@@ -90,17 +94,25 @@ class SnapFoodResultActivity : AppCompatActivity() {
             when (result) {
                 is Result.Loading -> {
                     binding.progressBar.isVisible = true
+                    binding.tvStatus.text = getString(R.string.our_machine_is_detecting_the_food)
+                    binding.tvStatus.isVisible = true
+                    binding.imgSnapfoodStatus.setImageResource(R.drawable.ic_illustration_thinking)
                 }
                 is Result.Error -> {
                     binding.progressBar.isVisible = false
+                    binding.tvStatus.isVisible = false
+                    binding.imgSnapfoodStatus.setImageResource(R.drawable.ic_illustration_something_went_wrong)
+                    binding.imgSnapfoodStatus.isVisible = true
+
                     val error = result.error
                     Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
                 }
                 is Result.Success -> {
                     binding.progressBar.isVisible = false
+                    binding.tvStatus.isVisible = false
                     val data = result.data.results
 
-                    binding.imgSnapfoodLoading.isVisible = data.isEmpty()
+                    binding.imgSnapfoodStatus.isVisible = data.isEmpty()
 
                     binding.rvFoods.apply {
                         adapter = SnapFoodResultAdapter(data)

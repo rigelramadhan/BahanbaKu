@@ -3,12 +3,12 @@ package com.bangkit.bahanbaku.ui.search
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -96,6 +96,10 @@ class SearchActivity : AppCompatActivity() {
                 is Result.Success -> {
                     binding.progressBar.isVisible = false
                     val data = result.data
+
+                    if (data.isEmpty()) {
+                        binding.imgNotFound.isVisible = true
+                    }
 
                     binding.rvRecipes.apply {
                         adapter = SearchRecipeAdapter(data)

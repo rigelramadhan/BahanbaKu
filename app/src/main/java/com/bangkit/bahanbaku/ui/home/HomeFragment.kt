@@ -87,6 +87,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupData(viewModel: HomeViewModel) {
+
         if (token != null) {
             val token = this.token as String
 
@@ -109,6 +110,8 @@ class HomeFragment : Fragment() {
                         binding.cardFeatured.tvRecipeDescription.text = data.description
                         binding.cardFeatured.tvServings.text =
                             getString(R.string.serving).format(data.servings)
+
+                        binding.cardFeatured.rating.tvRating.text = data.rating.toString()
 
                         binding.cardFeatured.cardFeatured.setOnClickListener {
                             val intent = Intent(requireContext(), DetailActivity::class.java)

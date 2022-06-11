@@ -117,4 +117,6 @@
     <string name="distance_under_50_km_from_suppliers">Distance under 50 km from suppliers</string>
     <string name="distance_above_50_km_from_suppliers">Distance above 50 km from suppliers</string>
     <string name="select_ingredients_to_order">Select ingredients to order</string>
+    <string name="compressing_image">Compressing image</string>
+    <string name="our_machine_is_detecting_the_food">Our machine is detecting the food</string>
 </resources>
