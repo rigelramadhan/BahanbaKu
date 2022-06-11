@@ -29,7 +29,7 @@
     <string name="go_to_app">Go to App</string>
     <string name="placeholder_is_it_food">Is it Food Name?</string>
     <string name="turn_snap_into_reality">Turn snap into reality!</string>
-    <string name="snapfood_description_before">Take a picture of a food and we’ll identified for you and provide recipes</string>
+    <string name="snapfood_description_before">Here are the top 3 foods that match the best according to us</string>
     <string name="snap_a_food">Snap a Food</string>
     <string name="placeholder_food_name">Food Name</string>
     <string name="placeholder_description_food">This is the description of the food that is taken by the camera of the SnapFood feature.</string>
@@ -119,4 +119,5 @@
     <string name="select_ingredients_to_order">Select ingredients to order</string>
     <string name="compressing_image">Compressing image</string>
     <string name="our_machine_is_detecting_the_food">Our machine is detecting the food</string>
+    <string name="click_to_see_the_recipes">Click to see the recipes</string>
 </resources>
