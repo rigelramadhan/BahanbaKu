@@ -13,6 +13,7 @@ import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 private const val FILENAME_FORMAT = "dd-MM-yyyy"
 
 val timeStamp: String = SimpleDateFormat(
@@ -91,7 +92,7 @@ fun reduceFileImage(file: File): File {
         val bmpPicByteArray = bmpStream.toByteArray()
         streamLength = bmpPicByteArray.size
         compressQuality -= 5
-    } while (streamLength > 50000 && compressQuality > 15)
+    } while (streamLength > 100000)
     bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
     return file
 }

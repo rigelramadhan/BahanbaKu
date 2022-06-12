@@ -25,6 +25,12 @@
         <item name="background">@color/white</item>
     </style>
 
+    <style name="SplashScreen" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="android:statusBarColor">@color/primary</item>
+    </style>
+
 <!--    DIALOG FRAGMENTS-->
     <style name="TransparentDialog">
         <item name="android:windowIsTranslucent">true</item>
@@ -114,10 +120,12 @@
 
     <style name="Text.Body.Small">
         <item name="android:textSize">12sp</item>
+        <item name="fontFamily">sans-serif-light</item>
     </style>
 
     <style name="Text.Body.Medium">
         <item name="android:textSize">14sp</item>
+        <item name="fontFamily">sans-serif-light</item>
     </style>
 
     <style name="Text.Body.Large">

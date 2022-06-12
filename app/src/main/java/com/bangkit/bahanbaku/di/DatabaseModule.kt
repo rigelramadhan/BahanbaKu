@@ -1,6 +1,5 @@
 package com.bangkit.bahanbaku.di
 
-import android.app.Application
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
@@ -9,9 +8,6 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
-import com.bangkit.bahanbaku.data.local.datastore.AuthSharedPreferences
-import com.bangkit.bahanbaku.data.local.datastore.DataStoreManager
-import com.bangkit.bahanbaku.data.local.datastore.UserPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

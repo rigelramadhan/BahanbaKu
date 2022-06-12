@@ -190,6 +190,14 @@ class ProfileRepository @Inject constructor(
         emit(isBookmarked)
     }
 
+    fun isFirstTime() = userPreferences.isFirstTime().asLiveData()
+
+    fun setFirstTime(firstTime: Boolean) {
+        launch(Dispatchers.IO) {
+            userPreferences.setFirstTime(firstTime)
+        }
+    }
+
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.IO
 }

@@ -139,7 +139,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/featured_this_week"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_search" />
+            app:layout_constraintTop_toBottomOf="@id/card_food_highlight" />
 
         <!--    -->
         <include
@@ -152,6 +152,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_featured" />
+
+        <TextView
+            android:id="@+id/tv_highlighted_food"
+            style="@style/Text.Title.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/our_local_cuisine_highlight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_search" />
+
+        <!--    -->
+        <include
+            android:id="@+id/card_food_highlight"
+            layout="@layout/item_local_food_highlight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_highlighted_food" />
         <!--    -->
 
         <TextView

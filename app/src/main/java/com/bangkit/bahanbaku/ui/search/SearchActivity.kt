@@ -48,6 +48,11 @@ class SearchActivity : AppCompatActivity() {
             } else {
                 val token = "Bearer $it"
                 this.token = token
+
+                val extraHighlight = intent.getStringExtra(EXTRA_HIGHLIGHT)
+                if (!extraHighlight.isNullOrEmpty()) {
+                    searchRecipe(token, extraHighlight)
+                }
             }
         }
     }
@@ -119,5 +124,9 @@ class SearchActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    companion object {
+        const val EXTRA_HIGHLIGHT = "extra_highlight"
     }
 }

@@ -84,6 +84,12 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireContext(), UpdateLocationActivity::class.java)
             startActivity(intent)
         }
+
+        binding.cardFoodHighlight.cardLocalHighlight.setOnClickListener {
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            intent.putExtra(SearchActivity.EXTRA_HIGHLIGHT, "bakso")
+            startActivity(intent)
+        }
     }
 
     private fun setupData(viewModel: HomeViewModel) {

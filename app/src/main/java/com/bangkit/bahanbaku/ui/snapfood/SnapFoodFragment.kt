@@ -2,8 +2,6 @@ package com.bangkit.bahanbaku.ui.snapfood
 
 import android.Manifest
 import android.app.Activity
-import android.content.ContentResolver
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -13,22 +11,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.FragmentSnapFoodBinding
 import com.bangkit.bahanbaku.ui.camera.CameraActivity
 import com.bangkit.bahanbaku.ui.snapfood.result.SnapFoodResultActivity
 import com.bangkit.bahanbaku.utils.fromUriToFile
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
-import java.io.OutputStream
 
 @AndroidEntryPoint
 class SnapFoodFragment : Fragment() {
@@ -53,7 +45,7 @@ class SnapFoodFragment : Fragment() {
 
     private fun setupView(viewModel: SnapFoodViewModel) {
         binding.btnTakePhoto.setOnClickListener {
-            Toast.makeText(requireContext(), "Button Pressed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.opening_camera), Toast.LENGTH_SHORT).show()
             if (!allPermissionsGranted()) {
                 ActivityCompat.requestPermissions(
                     requireActivity(),
@@ -67,6 +59,7 @@ class SnapFoodFragment : Fragment() {
         }
 
         binding.btnGallery.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.opening_gallery), Toast.LENGTH_SHORT).show()
             startGallery()
         }
     }

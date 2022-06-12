@@ -2,12 +2,12 @@ package com.bangkit.bahanbaku.ui.camera
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -16,7 +16,6 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.bangkit.bahanbaku.R
 import com.bangkit.bahanbaku.databinding.ActivityCameraBinding
-import com.bangkit.bahanbaku.ui.login.LoginActivity
 import com.bangkit.bahanbaku.ui.snapfood.result.SnapFoodResultActivity
 import com.bangkit.bahanbaku.utils.createFile
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,7 +47,7 @@ class CameraActivity : AppCompatActivity() {
 
     private fun setupView() {
         binding.btnTakeSnap.setOnClickListener {
-            Toast.makeText(this, "Button pressed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Capturing photo, please wait", Toast.LENGTH_SHORT).show()
             takePhoto()
         }
     }

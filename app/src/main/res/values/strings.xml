@@ -120,4 +120,12 @@
     <string name="compressing_image">Compressing image</string>
     <string name="our_machine_is_detecting_the_food">Our machine is detecting the food</string>
     <string name="click_to_see_the_recipes">Click to see the recipes</string>
+    <string name="wrong_credentials">Wrong credentials</string>
+    <string name="login_failed">Login failed</string>
+    <string name="did_you_know_various_bakso">Did you know that there are various of bakso?</string>
+    <string name="did_you_know_bakso_desc">Bakso is a comfort food for a lot of people. But little did we know, there are more bakso than we thought.Wanna know?</string>
+    <string name="click_to_see_what_we_mean">Click to see what we mean</string>
+    <string name="our_local_cuisine_highlight">Our Local Cuisine Highlight</string>
+    <string name="opening_camera">Opening camera</string>
+    <string name="opening_gallery">Opening gallery</string>
 </resources>

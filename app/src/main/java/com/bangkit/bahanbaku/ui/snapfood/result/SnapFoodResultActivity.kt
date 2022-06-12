@@ -1,7 +1,6 @@
 package com.bangkit.bahanbaku.ui.snapfood.result
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.MenuItem
@@ -21,7 +20,6 @@ import com.bangkit.bahanbaku.utils.reduceFileImage
 import com.bangkit.bahanbaku.utils.rotateBitmap
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
-import java.io.FileOutputStream
 
 @AndroidEntryPoint
 class SnapFoodResultActivity : AppCompatActivity() {
@@ -66,7 +64,6 @@ class SnapFoodResultActivity : AppCompatActivity() {
         appExecutor.diskIO.execute {
             file = reduceFileImage(file as File)
             compressingDone.postValue(true)
-            result.compress(Bitmap.CompressFormat.JPEG, 100, FileOutputStream(file))
         }
 
         compressingDone.observe(this) { done ->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.bangkit.bahanbaku">
+    package="com.bangkit.bahanbaku" >
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -20,7 +20,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BahanbaKu"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
+        tools:targetApi="m" >
+        <activity
+            android:name=".ui.splashscreen.SplashScreenActivity"
+            android:theme="@style/SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.landing.LandingPageActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -29,10 +41,10 @@
         <activity
             android:name=".ui.profile.edit.EditProfileActivity"
             android:exported="false"
-            android:label="@string/edit_profile">
+            android:label="@string/edit_profile" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.profile.ProfileActivity"/>
+                android:value=".ui.profile.ProfileActivity" />
         </activity>
         <activity
             android:name=".ui.updatelocation.UpdateLocationActivity"
@@ -44,8 +56,8 @@
             android:label="@string/food_map" />
         <activity
             android:name=".ui.snapfood.result.SnapFoodResultActivity"
-            android:label="@string/snapfood"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/snapfood" />
         <activity
             android:name=".ui.camera.CameraActivity"
             android:exported="false" />
@@ -55,10 +67,10 @@
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:exported="false"
-            android:label="@string/profile">
+            android:label="@string/profile" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.main.MainActivity"/>
+                android:value=".ui.main.MainActivity" />
         </activity>
         <activity
             android:name=".ui.snaprecipe.SnapRecipeActivity"
@@ -66,26 +78,26 @@
         <activity
             android:name=".ui.search.SearchActivity"
             android:exported="false"
-            android:label="@string/search">
+            android:label="@string/search" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.main.MainActivity"/>
+                android:value=".ui.main.MainActivity" />
         </activity>
         <activity
             android:name=".ui.ingredient.IngredientActivity"
-            android:label="@string/ingredients"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/ingredients" />
         <activity
             android:name=".ui.detail.DetailActivity"
-            android:label="@string/recipe"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/recipe" />
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false"
-            android:label="@string/register">
+            android:label="@string/register" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.login.LoginActivity"/>
+                android:value=".ui.login.LoginActivity" />
         </activity>
         <activity
             android:name=".ui.login.LoginActivity"
@@ -93,12 +105,7 @@
             android:label="@string/login" />
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false" >
         </activity>
     </application>
 

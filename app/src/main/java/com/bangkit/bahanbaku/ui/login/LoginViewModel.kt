@@ -14,4 +14,8 @@ class LoginViewModel @Inject constructor(
     fun saveToken(token: String) {
         profileRepository.saveToken(token)
     }
+
+    fun isFirstTime() = profileRepository.isFirstTime()
+
+    fun setFirstTime(firstTime: Boolean) = profileRepository.setFirstTime(firstTime)
 }

@@ -81,6 +81,7 @@
         <TextView
             android:id="@+id/tv_description"
             style="@style/Text.Body.Medium"
+            android:fontFamily="sans-serif-light"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

@@ -57,14 +57,23 @@ class IngredientActivity : AppCompatActivity() {
                         val error = result.error
                         Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
                         binding.progressBar.isVisible = false
+                        binding.tvAbove50.isVisible = false
+                        binding.tvUnder50.isVisible = false
+                        binding.imgErrorIllustration.isVisible = true
                     }
 
                     is Result.Loading -> {
+                        binding.tvAbove50.isVisible = false
+                        binding.tvUnder50.isVisible = false
                         binding.progressBar.isVisible = true
+                        binding.imgErrorIllustration.isVisible = false
                     }
 
                     is Result.Success -> {
+                        binding.tvAbove50.isVisible = true
+                        binding.tvUnder50.isVisible = true
                         binding.progressBar.isVisible = false
+                        binding.imgErrorIllustration.isVisible = false
                         val data = result.data
 
                         val aboveData = data.above
