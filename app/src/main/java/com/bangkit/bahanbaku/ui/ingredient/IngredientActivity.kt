@@ -88,6 +88,7 @@ class IngredientActivity : AppCompatActivity() {
                         val belowData = data.under
 
                         if (belowData.isNotEmpty()) {
+
                             val constraintSet = ConstraintSet()
                             constraintSet.clone(binding.constraintIngredients)
                             constraintSet.connect(
@@ -96,6 +97,7 @@ class IngredientActivity : AppCompatActivity() {
                                 R.id.rv_ingredients_ecomm_under_50,
                                 ConstraintSet.BOTTOM
                             )
+                            constraintSet.applyTo(binding.constraintIngredients)
                         }
 
                         binding.imgUnderNotFound.isVisible = belowData.isEmpty()
